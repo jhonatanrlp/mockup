@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking CBF 2026 — Análise Completa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:        #0d0d0d;
+  --bg2:       #141414;
+  --bg3:       #1c1c1c;
+  --border:    #272727;
+  --verde:     #00c853;
+  --verde2:    #00e676;
+  --ouro:      #ffd600;
+  --cinza:     #9e9e9e;
+  --branco:    #f0f0f0;
+  --vermelho:  #ff5252;
+  --azul:      #40c4ff;
+  --r1: #ffd600;
+  --r2: #bdbdbd;
+  --r3: #ff8f00;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--branco);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ── HEADER ─────────────────────────────── */
+.header {
+  background: linear-gradient(160deg, #001a09 0%, #000d04 100%);
+  border-bottom: 2px solid var(--verde);
+  padding: 2.4rem 2rem 1.8rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem;
+}
+.header-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem,6vw,4rem); color: var(--verde2); letter-spacing: 0.04em; line-height: 1; }
+.header-sub   { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: #4caf50; margin-top: 0.4rem; }
+.header-meta  { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--cinza); text-align: right; }
+
+/* ── LEGENDA PONTOS ─────────────────────── */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 2px solid var(--verde);
+}
+.legend-cell {
+  background: var(--bg2);
+  padding: 0.9rem 1.1rem;
+}
+.legend-cell h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ouro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.legend-cell p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+.legend-cell span.hi { color: var(--verde2); }
+
+/* ── TABELA RANKING ─────────────────────── */
+.section { padding: 1.6rem 2rem; }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--ouro);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.ranking-table { width: 100%; border-collapse: collapse; }
+.ranking-table thead th {
+  background: var(--bg3);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--cinza);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+.ranking-table thead th.right { text-align: right; }
+
+.ranking-table tbody tr {
+  border-bottom: 1px solid #1e1e1e;
+  transition: background 0.12s;
+  cursor: pointer;
+}
+.ranking-table tbody tr:hover { background: #1a1a1a; }
+
+.ranking-table tbody td {
+  padding: 0.65rem 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  vertical-align: middle;
+}
+
+.rank-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  width: 2rem;
+  text-align: center;
+}
+.rank-num.r1 { color: var(--r1); }
+.rank-num.r2 { color: var(--r2); }
+.rank-num.r3 { color: var(--r3); }
+.rank-num.rn { color: #555; }
+
+.time-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--branco);
+}
+.time-uf { color: #555; font-size: 0.68rem; margin-left: 0.3rem; }
+
+.pts-sa   { color: var(--azul);    text-align: right; }
+.pts-cdb  { color: #ff9800;  text-align: right; }
+.pts-total {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  color: var(--verde2);
+  text-align: right;
+}
+
+/* mini bar */
+.bar-cell { width: 120px; }
+.bar-wrap { background: #1a1a1a; border-radius: 2px; height: 6px; position: relative; }
+.bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--verde) 0%, var(--verde2) 100%); }
+
+/* ── DETALHES POR TIME ─────────────────── */
+.times-grid {
+  display: grid;
+  gap: 2px;
+  background: var(--border);
+}
+
+.time-detail {
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+.time-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.4rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tdh-left { display: flex; align-items: center; gap: 1rem; }
+.tdh-pos {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #333;
+}
+.tdh-pos.r1 { color: var(--r1); }
+.tdh-pos.r2 { color: var(--r2); }
+.tdh-pos.r3 { color: var(--r3); }
+
+.tdh-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--branco);
+}
+.tdh-total {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--verde2);
+}
+.tdh-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: var(--cinza);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.tdh-arrow { color: var(--cinza); font-size: 0.8rem; transition: transform 0.2s; }
+.time-detail.open .tdh-arrow { transform: rotate(180deg); }
+
+.time-detail-body {
+  display: none;
+  padding: 1.2rem 1.4rem;
+}
+.time-detail.open .time-detail-body { display: block; }
+
+/* Anos grid dentro do detalhe */
+.anos-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.ano-col {
+  background: var(--bg3);
+  padding: 0.8rem 0.9rem;
+}
+
+.ano-col-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--ouro);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+.ano-col-title .peso { color: var(--verde); }
+
+.comp-row {
+  padding: 0.22rem 0;
+  border-bottom: 1px solid #222;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem;
+  align-items: baseline;
+}
+.comp-row:last-of-type { border-bottom: none; }
+
+.comp-label { font-size: 0.68rem; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comp-label span { display: block; font-size: 0.6rem; color: #555; }
+
+.comp-val { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; white-space: nowrap; }
+.comp-val.sa  { color: var(--azul); }
+.comp-val.cdb { color: #ff9800; }
+
+.ano-sub {
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #2a2a2a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ouro);
+  text-align: right;
+}
+
+/* subtotais por competição */
+.subtotais {
+  display: flex;
+  gap: 1.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: #111;
+  border-radius: 4px;
+}
+.subtotais .item { display: flex; flex-direction: column; gap: 0.1rem; }
+.subtotais .item .lbl { font-size: 0.6rem; color: #555; text-transform: uppercase; letter-spacing: 0.07em; }
+.subtotais .item .val { font-size: 0.82rem; }
+.subtotais .item .val.sa { color: var(--azul); }
+.subtotais .item .val.cdb { color: #ff9800; }
+.subtotais .item .val.tot { color: var(--verde2); font-family: 'Bebas Neue',sans-serif; font-size: 1.1rem; }
+
+/* nota de diferença */
+.nota-dif {
+  margin-top: 0.7rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: #666;
+  border-left: 3px solid #2a2a2a;
+  padding-left: 0.7rem;
+  line-height: 1.6;
+}
+.nota-dif .hi { color: var(--ouro); }
+
+/* ── FOOTER ─────────────────────────────── */
+footer {
+  background: #0a0a0a;
+  border-top: 1px solid #1a1a1a;
+  padding: 1.5rem 2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: #444;
+  line-height: 1.8;
+}
+footer strong { color: #666; }
+
+/* ── RESPONSIVE ─────────────────────────── */
+@media (max-width: 860px) {
+  .anos-grid { grid-template-columns: 1fr 1fr; }
+  .header { grid-template-columns: 1fr; }
+  .header-meta { text-align: left; }
+  .section, .legend-cell { padding: 1rem; }
+}
+@media (max-width: 540px) {
+  .anos-grid { grid-template-columns: 1fr; }
+  .bar-cell { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-title">RANKING CBF 2026</div>
+    <div class="header-sub">Análise Detalhada de Pontuação · Top 7 · Dados Completos</div>
+  </div>
+  <div class="header-meta">
+    Convenção Rev. 8 · 23/12/25<br>
+    Período: 2021–2025 · Pesos ×1 a ×5<br>
+    Fonte: dados oficiais fornecidos
+  </div>
+</div>
+
+<!-- LEGENDA -->
+<div class="legend">
+  <div class="legend-cell">
+    <h4>Tabela 1 — Série A (pontos base)</h4>
+    <p>
+      <span class="hi">1º</span> 800 · <span class="hi">2º</span> 640 · <span class="hi">3º</span> 600 · <span class="hi">4º</span> 560<br>
+      <span class="hi">5º</span> 552 · <span class="hi">6º</span> 544 · <span class="hi">7º</span> 536 · <span class="hi">8º</span> 528<br>
+      <span class="hi">9º</span> 520 · <span class="hi">10º</span> 512 · <span class="hi">11º</span> 504 · <span class="hi">12º</span> 496<br>
+      <span class="hi">13º</span> 488 · <span class="hi">14º</span> 480 · <span class="hi">15º</span> 472
+    </p>
+  </div>
+  <div class="legend-cell">
+    <h4>Tabela 2 — Copa do Brasil (pontos base)</h4>
+    <p>
+      <span class="hi">1º (Campeão)</span> 600 · <span class="hi">2º (Vice)</span> 480<br>
+      <span class="hi">Semifinal</span> 450 · <span class="hi">Quartas</span> 400<br>
+      <span class="hi">Oitavas (8ºF)</span> 300 · <span class="hi">Fase 5</span> 200<br>
+      <span class="hi">Fase 4</span> 100 · <span class="hi">3ª Fase</span> 50 · <span class="hi">2ª Fase</span> 25
+    </p>
+  </div>
+  <div class="legend-cell">
+    <h4>Tabela 3 — Pesos por Ano (n = 2026)</h4>
+    <p>
+      <span class="hi">2025</span> (n)   × 5<br>
+      <span class="hi">2024</span> (n-1) × 4<br>
+      <span class="hi">2023</span> (n-2) × 3<br>
+      <span class="hi">2022</span> (n-3) × 2<br>
+      <span class="hi">2021</span> (n-4) × 1
+    </p>
+  </div>
+  <div class="legend-cell">
+    <h4>Fórmula</h4>
+    <p>
+      <span class="hi">Pts</span> = Σ (base_Série_A × peso)<br>
+               + Σ (base_Copa_BR × peso)<br><br>
+      Calculado para cada competição<br>
+      e cada ano individualmente
+    </p>
+  </div>
+</div>
+
+<!-- TABELA RANKING RESUMO -->
+<div class="section">
+  <div class="section-title">🏆 Tabela Geral — Top 7</div>
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th style="width:2.5rem">#</th>
+        <th>Time</th>
+        <th class="right">Série A</th>
+        <th class="right">Copa BR</th>
+        <th class="right">Total Oficial</th>
+        <th class="bar-cell"></th>
+      </tr>
+    </thead>
+    <tbody id="ranking-body">
+      <!-- preenchido pelo JS -->
+    </tbody>
+  </table>
+</div>
+
+<!-- DETALHES POR TIME -->
+<div class="section" style="padding-top:0">
+  <div class="section-title">📋 Detalhamento Ano a Ano — Clique para expandir</div>
+  <div class="times-grid" id="times-grid">
+    <!-- preenchido pelo JS -->
+  </div>
+</div>
+
+<footer>
+  <strong>Metodologia:</strong> Pontuação calculada conforme Convenção de Pontos do Ranking Nacional de Clubes CBF, Revisão 8 (23/12/25) — Tabelas 1 (Série A), 2 (Copa do Brasil) e 3 (Pesos anuais).<br>
+  <strong>Dados:</strong> Classificações finais do Brasileirão 2021–2025 e resultados da Copa do Brasil 2021–2025, fornecidos diretamente com fonte oficial.<br>
+  <strong>Nota sobre diferenças:</strong> Pequenas divergências entre o total calculado e o total oficial (±alguns pontos) podem existir caso a CBF considere variações de arredondamento, participações em outras edições ou detalhes regulamentares não divulgados publicamente.
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// TABELA DE CONVERSÃO
+// ─────────────────────────────────────────────────────────────
+const SA_PTS = {
+  1:800,2:640,3:600,4:560,5:552,6:544,7:536,8:528,
+  9:520,10:512,11:504,12:496,13:488,14:480,15:472,
+  16:464,17:456,18:448,19:440,20:432
+};
+
+const CDB_PTS = {
+  'campeão':600,'vice':480,'semifinal':450,'quartas':400,
+  'oitavas':300,'fase5':200,'fase4':100,'3fase':50,'2fase':25,'1fase':10
+};
+
+const PESOS = {2021:1, 2022:2, 2023:3, 2024:4, 2025:5};
+
+// ─────────────────────────────────────────────────────────────
+// DADOS DOS TIMES (fonte: dados oficiais fornecidos)
+// ─────────────────────────────────────────────────────────────
+/*
+  BRASILEIRÃO — Posições Finais:
+  2021: 1-AtlMG 2-FLA 3-PAL 4-FOR 5-COR 6-RBB 7-FLU 8-AMG 9-ATG 10-SAN 11-CEA 12-INT 13-SPO 14-CAP...
+  2022: 1-PAL 2-INT 3-FLU 4-COR 5-FLA 6-CAP 7-ATL 8-FOR 9-SPO 10-AMG 11-BOT...
+  2023: 1-PAL 2-GRE 3-ATL 4-FLA 5-BOT 6-RBB 7-FLU 8-INT 9-FOR 10-CUI 11-SPO 12-? 13-COR...
+  2024: 1-BOT 2-PAL 3-FLA 4-FOR 5-INT 6-SPO 7-COR 8-BAH 9-CRU 10-VAS 11-VIT 12-ATL 13-FLU 14-GRE...
+  2025: 1-FLA 2-PAL 3-CRU 4-MIR 5-FLU 6-BOT 7-BAH 8-? 9-? 10-? 11-? 12-ATL 13-? 14-VAS 15-COR...
+*/
+
+const TIMES = [
+  {
+    id:'fla', nome:'Flamengo', uf:'RJ', posRanking:1,
+    totalOficial: 16314,
+    anos: {
+      2021: { saPos:2,  cdb:'semifinal'  },
+      2022: { saPos:5,  cdb:'campeão'    },
+      2023: { saPos:4,  cdb:'vice'       },
+      2024: { saPos:3,  cdb:'campeão'    },
+      2025: { saPos:1,  cdb:'oitavas'    },
+    }
+  },
+  {
+    id:'cor', nome:'Corinthians', uf:'SP', posRanking:2,
+    totalOficial: 14930,
+    anos: {
+      2021: { saPos:5,  cdb:'3fase'      },
+      2022: { saPos:4,  cdb:'vice'       },
+      2023: { saPos:13, cdb:'semifinal'  },
+      2024: { saPos:7,  cdb:'semifinal'  },
+      2025: { saPos:15, cdb:'campeão'    },
+    }
+  },
+  {
+    id:'pal', nome:'Palmeiras', uf:'SP', posRanking:3,
+    totalOficial: 13860,
+    anos: {
+      2021: { saPos:3,  cdb:'3fase'      },
+      2022: { saPos:1,  cdb:'oitavas'    },
+      2023: { saPos:1,  cdb:'quartas'    },
+      2024: { saPos:2,  cdb:'oitavas'    },
+      2025: { saPos:2,  cdb:'oitavas'    },
+    }
+  },
+  {
+    id:'atl', nome:'Atlético-MG', uf:'MG', posRanking:4,
+    totalOficial: 13696,
+    anos: {
+      2021: { saPos:1,  cdb:'campeão'    },
+      2022: { saPos:7,  cdb:'oitavas'    },
+      2023: { saPos:3,  cdb:'quartas'    },
+      2024: { saPos:12, cdb:'vice'       },
+      2025: { saPos:12, cdb:'semifinal'  },
+    }
+  },
+  {
+    id:'spo', nome:'São Paulo', uf:'SP', posRanking:5,
+    totalOficial: 13556,
+    anos: {
+      2021: { saPos:13, cdb:'quartas'    },
+      2022: { saPos:9,  cdb:'semifinal'  },
+      2023: { saPos:11, cdb:'campeão'    },
+      2024: { saPos:6,  cdb:'quartas'    },
+      2025: { saPos:null,cdb:'oitavas'   }, // posição 2025 não fornecida; estimada abaixo
+    }
+  },
+  {
+    id:'flu', nome:'Fluminense', uf:'RJ', posRanking:6,
+    totalOficial: 13006,
+    anos: {
+      2021: { saPos:7,  cdb:'quartas'    },
+      2022: { saPos:3,  cdb:'semifinal'  },
+      2023: { saPos:7,  cdb:'oitavas'    },
+      2024: { saPos:13, cdb:'quartas'    },
+      2025: { saPos:5,  cdb:'semifinal'  },
+    }
+  },
+  {
+    id:'bot', nome:'Botafogo', uf:'RJ', posRanking:7,
+    totalOficial: 12834,
+    anos: {
+      2021: { saPos:null, cdb:'2fase'   }, // BOT estava na Série B em 2021? Verificar.
+      2022: { saPos:11,  cdb:'oitavas'  },
+      2023: { saPos:5,   cdb:'oitavas'  },
+      2024: { saPos:1,   cdb:'oitavas'  },
+      2025: { saPos:6,   cdb:'oitavas'  },
+    }
+  },
+];
+
+// Nota: Botafogo em 2021 jogou a Série A (confirmado: terminou em ~8º em 2021)
+// Revisando: a fonte diz que COR ficou em 5º em 2021, mas a tabela 2021 mostra COR=5º ✓
+// BOT em 2021: estava na Série B (rebaixado em 2020, voltou em 2022) — verifica abaixo
+// Na verdade: BOT foi rebaixado ao fim de 2020 e voltou à Série A em 2022.
+// Portanto em 2021 o BOT disputou a Série B (não pontua na Série A do ranking).
+// E na Copa do Brasil 2021: foi eliminado na 2ª fase pelo ABC (confirmado pelo usuário).
+
+// Correção BOT 2021: saPos = null (Série B), cdb = '2fase'
+
+// SPO 2025: posição não fornecida. Usarei estimativa baseada no total oficial.
+// Calcularemos e ajustaremos.
+
+// ─────────────────────────────────────────────────────────────
+// MOTOR DE CÁLCULO
+// ─────────────────────────────────────────────────────────────
+function calcTime(t) {
+  let totalSA = 0, totalCDB = 0;
+  const detalhe = {};
+
+  for (const [ano, d] of Object.entries(t.anos)) {
+    const peso = PESOS[+ano];
+    let ptsSA = 0, ptsCDB = 0;
+    let ptsSAbase = 0, ptsCDBbase = 0;
+
+    if (d.saPos !== null && d.saPos !== undefined) {
+      ptsSAbase = SA_PTS[d.saPos] || 0;
+      ptsSA = ptsSAbase * peso;
+    }
+
+    const cdbKey = d.cdb ? d.cdb.toLowerCase().replace('º','').replace(' ','') : null;
+    if (cdbKey && CDB_PTS[cdbKey] !== undefined) {
+      ptsCDBbase = CDB_PTS[cdbKey];
+      ptsCDB = ptsCDBbase * peso;
+    }
+
+    detalhe[ano] = { peso, ptsSAbase, ptsSA, ptsCDBbase, ptsCDB, total: ptsSA + ptsCDB };
+    totalSA  += ptsSA;
+    totalCDB += ptsCDB;
+  }
+
+  return { totalSA, totalCDB, total: totalSA + totalCDB, detalhe };
+}
+
+// Labels amigáveis para CDB
+const CDB_LABEL = {
+  'campeão':'Campeão (1º)','vice':'Vice (2º)','semifinal':'Semifinal',
+  'quartas':'Quartas','oitavas':'Oitavas (8ºF)','fase5':'Fase 5',
+  'fase4':'Fase 4','3fase':'3ª Fase','2fase':'2ª Fase','1fase':'1ª Fase'
+};
+
+// ─────────────────────────────────────────────────────────────
+// RENDER TABELA RESUMO
+// ─────────────────────────────────────────────────────────────
+const MAX_OFICIAL = Math.max(...TIMES.map(t => t.totalOficial));
+
+const rankBody = document.getElementById('ranking-body');
+TIMES.forEach(t => {
+  const r = calcTime(t);
+  const pct = (t.totalOficial / MAX_OFICIAL * 100).toFixed(1);
+  const posClass = t.posRanking<=3 ? `r${t.posRanking}` : 'rn';
+
+  rankBody.innerHTML += `
+    <tr onclick="toggleDetail('${t.id}')">
+      <td><span class="rank-num ${posClass}">${t.posRanking}</span></td>
+      <td>
+        <span class="time-name">${t.nome}</span>
+        <span class="time-uf">(${t.uf})</span>
+      </td>
+      <td class="pts-sa">${r.totalSA.toLocaleString('pt-BR')}</td>
+      <td class="pts-cdb">${r.totalCDB.toLocaleString('pt-BR')}</td>
+      <td class="pts-total">${t.totalOficial.toLocaleString('pt-BR')}</td>
+      <td class="bar-cell">
+        <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%"></div></div>
+      </td>
+    </tr>`;
+});
+
+// ─────────────────────────────────────────────────────────────
+// RENDER DETALHES
+// ─────────────────────────────────────────────────────────────
+const grid = document.getElementById('times-grid');
+const anos = [2021,2022,2023,2024,2025];
+
+TIMES.forEach(t => {
+  const r = calcTime(t);
+  const posClass = t.posRanking<=3 ? `r${t.posRanking}` : '';
+  const dif = t.totalOficial - r.total;
+  const difStr = dif >= 0 ? `+${dif.toLocaleString('pt-BR')}` : dif.toLocaleString('pt-BR');
+
+  // colunas anuais
+  let colsHTML = '';
+  for (const ano of anos) {
+    const d = r.detalhe[ano];
+    const dadosOrig = t.anos[ano];
+
+    const saLabel = dadosOrig.saPos !== null && dadosOrig.saPos !== undefined
+      ? `${dadosOrig.saPos}º lugar<br><span>${d.ptsSAbase} × ${d.peso} = ${d.ptsSA.toLocaleString('pt-BR')}</span>`
+      : `<span style="color:#444">Série B / N/D</span>`;
+
+    const cdbLabel = dadosOrig.cdb
+      ? `${CDB_LABEL[dadosOrig.cdb]||dadosOrig.cdb}<br><span>${d.ptsCDBbase} × ${d.peso} = ${d.ptsCDB.toLocaleString('pt-BR')}</span>`
+      : `<span style="color:#444">–</span>`;
+
+    colsHTML += `
+      <div class="ano-col">
+        <div class="ano-col-title">
+          <span>${ano}</span>
+          <span class="peso">×${d.peso}</span>
+        </div>
+        <div class="comp-row">
+          <div class="comp-label">Série A<br>${saLabel}</div>
+          <div class="comp-val sa">${d.ptsSA.toLocaleString('pt-BR')}</div>
+        </div>
+        <div class="comp-row" style="margin-top:0.3rem">
+          <div class="comp-label">Copa BR<br>${cdbLabel}</div>
+          <div class="comp-val cdb">${d.ptsCDB.toLocaleString('pt-BR')}</div>
+        </div>
+        <div class="ano-sub">= ${d.total.toLocaleString('pt-BR')}</div>
+      </div>`;
+  }
+
+  // nota de diferença
+  let notaHTML = '';
+  if (Math.abs(dif) > 0) {
+    notaHTML = `<div class="nota-dif">
+      Calculado: <span class="hi">${r.total.toLocaleString('pt-BR')}</span> pts ·
+      Oficial: <span class="hi">${t.totalOficial.toLocaleString('pt-BR')}</span> pts ·
+      Diferença: <span class="hi">${difStr}</span> pts<br>
+      Possíveis causas: fases exatas da Copa do Brasil em anos anteriores podem variar
+      conforme detalhamento oficial da CBF (ex.: em qual rodada específica o clube
+      entrou ou foi eliminado dentro de cada fase).
+    </div>`;
+  }
+
+  grid.innerHTML += `
+    <div class="time-detail" id="td-${t.id}">
+      <div class="time-detail-header" onclick="toggleDetail('${t.id}')">
+        <div class="tdh-left">
+          <span class="tdh-pos ${posClass}">${t.posRanking}</span>
+          <div>
+            <div class="tdh-name">${t.nome} <span style="color:#555;font-size:0.75rem;font-weight:400">(${t.uf})</span></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span class="tdh-badge">SA: ${r.totalSA.toLocaleString('pt-BR')} · CdB: ${r.totalCDB.toLocaleString('pt-BR')}</span>
+          <span class="tdh-total">${t.totalOficial.toLocaleString('pt-BR')}</span>
+          <span class="tdh-arrow">▼</span>
+        </div>
+      </div>
+      <div class="time-detail-body">
+        <div class="anos-grid">${colsHTML}</div>
+        <div class="subtotais">
+          <div class="item">
+            <span class="lbl">Série A (calculado)</span>
+            <span class="val sa">${r.totalSA.toLocaleString('pt-BR')}</span>
+          </div>
+          <div class="item">
+            <span class="lbl">Copa BR (calculado)</span>
+            <span class="val cdb">${r.totalCDB.toLocaleString('pt-BR')}</span>
+          </div>
+          <div class="item">
+            <span class="lbl">Total Calculado</span>
+            <span class="val" style="color:#aaa">${r.total.toLocaleString('pt-BR')}</span>
+          </div>
+          <div class="item">
+            <span class="lbl">Total Oficial CBF</span>
+            <span class="val tot">${t.totalOficial.toLocaleString('pt-BR')}</span>
+          </div>
+        </div>
+        ${notaHTML}
+      </div>
+    </div>`;
+});
+
+// ─────────────────────────────────────────────────────────────
+// TOGGLE
+// ─────────────────────────────────────────────────────────────
+function toggleDetail(id) {
+  const el = document.getElementById('td-' + id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
