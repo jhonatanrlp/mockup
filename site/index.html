@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Novidário — Mobiliário inovador para espaços de convivência. Área externa, educacional, corporativo, alimentação e interiores." />
+  <title>Novidário | Mobiliário para Espaços de Convivência</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://novidario.com.br/wp-content/uploads/2024/07/cropped-favicon-novidario.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="header__logo" aria-label="Novidário — início">
+        <svg width="160" height="36" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
+          <text x="30" y="24" font-family="Montserrat, sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
+        </svg>
+      </a>
+
+      <!-- Nav principal -->
+      <nav class="header__nav" aria-label="Navegação principal">
+        <a href="pages/produtos.html"  class="nav__link">Produtos</a>
+        <a href="pages/colecoes.html"  class="nav__link">Coleções</a>
+        <a href="pages/downloads.html" class="nav__link">Downloads</a>
+        <a href="pages/blog.html"      class="nav__link">Blog</a>
+        <a href="pages/sobre.html"     class="nav__link">Sobre</a>
+        <a href="pages/contato.html"   class="nav__link">Contato</a>
+      </nav>
+
+      <!-- Ações -->
+      <div class="header__actions">
+        <!-- Busca -->
+        <div class="header__search" role="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" placeholder="Buscar produtos…" aria-label="Buscar produtos" id="search-input" />
+        </div>
+
+        <!-- Orçamento / cart -->
+        <a href="pages/contato.html" class="header__icon-btn" title="Solicitar orçamento" style="position:relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="header__cart-count">0</span>
+        </a>
+
+        <!-- Hamburger -->
+        <button class="header__hamburger" aria-label="Abrir menu" aria-expanded="false" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Navegação mobile">
+      <a href="pages/produtos.html"  class="nav__link">Produtos</a>
+      <a href="pages/colecoes.html"  class="nav__link">Coleções</a>
+      <a href="pages/downloads.html" class="nav__link">Downloads</a>
+      <a href="pages/blog.html"      class="nav__link">Blog</a>
+      <a href="pages/sobre.html"     class="nav__link">Sobre</a>
+      <a href="pages/contato.html"   class="nav__link">Contato</a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-content">
+
+    <!-- ── HERO ── -->
+    <section class="hero" aria-label="Destaque principal">
+      <div class="hero__media">
+        <img
+          src="https://novidario.com.br/wp-content/uploads/2024/08/banner-home-novidario.jpg"
+          alt="Espaço de convivência com mobiliário Novidário"
+          loading="eager"
+          onerror="this.src='assets/images/hero-placeholder.svg'"
+        />
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__content animate-fade-up">
+          <span class="hero__label">Mobiliário Inovador</span>
+          <h1 class="hero__title">
+            A vida acontece<br/>
+            na <span>convivência</span>
+          </h1>
+          <p class="hero__desc">
+            Criamos produtos para espaços de vida coletiva — estéticos, ergonômicos,
+            duráveis e pensados para o design circular.
+          </p>
+          <div class="hero__actions">
+            <a href="pages/produtos.html" class="btn btn--primary btn--lg">
+              Ver Produtos
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="pages/sobre.html" class="btn btn--outline-white btn--lg">Conheça a marca</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STRIP LOJA FÍSICA ── -->
+    <div class="store-strip">
+      <div class="container">
+        <div class="store-strip__inner">
+          <div class="store-strip__text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <strong>Visite nossa primeira loja física!</strong>
+          </div>
+          <span class="store-strip__address">
+            📍 Rua Costa Carvalho, 113 — Pinheiros, São Paulo&nbsp;&nbsp;|&nbsp;&nbsp;Seg–Sex 10h–18h
+          </span>
+          <a href="pages/contato.html" class="btn btn--outline-white btn--sm">Como chegar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SEGMENTOS ── -->
+    <section class="section" aria-labelledby="segmentos-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Onde atuamos</span>
+          <h2 class="section__title" id="segmentos-title">Soluções para cada espaço</h2>
+          <p class="section__subtitle">
+            Do ambiente externo ao corporativo, criamos mobiliário para cada contexto de convivência.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
+
+          <a href="pages/produtos.html?segmento=area-externa" class="segment-card" aria-label="Área externa">
+            <img class="segment-card__img"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-area-externa.jpg"
+              alt="Móveis para área externa"
+              loading="lazy"
+              onerror="this.style.background='#E8E4DF'"
+            />
+            <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__label">Área Externa</span>
+            <span class="segment-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="pages/produtos.html?segmento=educacional" class="segment-card" aria-label="Educacional">
+            <img class="segment-card__img"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-educacional.jpg"
+              alt="Móveis para ambientes educacionais"
+              loading="lazy"
+              onerror="this.style.background='#DDE8E4'"
+            />
+            <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__label">Educacional</span>
+            <span class="segment-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="pages/produtos.html?segmento=corporativo" class="segment-card" aria-label="Corporativo">
+            <img class="segment-card__img"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-corporativo.jpg"
+              alt="Móveis corporativos"
+              loading="lazy"
+              onerror="this.style.background='#E4DEE8'"
+            />
+            <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__label">Corporativo</span>
+            <span class="segment-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="pages/produtos.html?segmento=alimentacao" class="segment-card" aria-label="Alimentação">
+            <img class="segment-card__img"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-alimentacao.jpg"
+              alt="Móveis para restaurantes e gastronomia"
+              loading="lazy"
+              onerror="this.style.background='#E8E4DD'"
+            />
+            <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__label">Alimentação</span>
+            <span class="segment-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="pages/produtos.html?segmento=interiores" class="segment-card" aria-label="Interiores">
+            <img class="segment-card__img"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-interiores.jpg"
+              alt="Móveis para interiores"
+              loading="lazy"
+              onerror="this.style.background='#E4E8DD'"
+            />
+            <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__label">Interiores</span>
+            <span class="segment-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LANÇAMENTOS ── -->
+    <section class="section section--gray" aria-labelledby="lancamentos-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Novidades</span>
+          <h2 class="section__title" id="lancamentos-title">Lançamentos</h2>
+        </div>
+
+        <div class="grid-4" id="lancamentos-grid">
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap" tabindex="-1" aria-hidden="true">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-broto-600x600.jpg"
+                   alt="Cadeira Broto" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+              <div class="product-card__badge">
+                <span class="badge badge--primary">Novo</span>
+              </div>
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Broto</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Cadeira Broto</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Educacional</span>
+                <span class="badge">Madeira</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap" tabindex="-1" aria-hidden="true">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-quadrada-trevo-600x600.jpg"
+                   alt="Mesa Quadrada Trevo" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+              <div class="product-card__badge">
+                <span class="badge badge--primary">Novo</span>
+              </div>
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Trevo</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Mesa Quadrada Trevo</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Corporativo</span>
+                <span class="badge">Alumínio</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap" tabindex="-1" aria-hidden="true">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/poltrona-asa-600x600.jpg"
+                   alt="Poltrona Asa" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Asa</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Poltrona Asa</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Interiores</span>
+                <span class="badge">Estofado</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap" tabindex="-1" aria-hidden="true">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-redonda-voa-600x600.jpg"
+                   alt="Mesa Redonda Voa" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Voa</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Mesa Redonda Voa</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Alimentação</span>
+                <span class="badge">Madeira</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align:center; margin-top: 3rem;">
+          <a href="pages/produtos.html" class="btn btn--outline">
+            Ver todos os produtos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LINHA PÁTIO — DESTAQUE COLEÇÃO ── -->
+    <section class="section" aria-labelledby="patio-title" style="padding: 0; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; min-height:480px;">
+
+        <div style="position:relative; overflow:hidden;">
+          <img
+            src="https://novidario.com.br/wp-content/uploads/2024/08/linha-patio-destaque.jpg"
+            alt="Linha Pátio — mobiliário para área externa"
+            style="width:100%;height:100%;object-fit:cover;"
+            loading="lazy"
+          />
+        </div>
+
+        <div style="background:#F7F5F2; display:flex; align-items:center; padding: 4rem 3.5rem;">
+          <div>
+            <span class="section__label">Coleção em Destaque</span>
+            <h2 id="patio-title" style="font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight:800; color:#2C2C2C; margin-bottom:1rem; line-height:1.15;">
+              Linha Pátio
+            </h2>
+            <p style="font-size:1rem; color:#666; line-height:1.7; margin-bottom:1.5rem;">
+              Uma linha leve, resistente e descontraída! Desenvolvida para restaurantes, bares,
+              clubes e áreas externas. Estrutura em alumínio combinada com madeira maciça — durabilidade
+              sem abrir mão do design.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:2rem;">
+              <span class="badge">Alumínio</span>
+              <span class="badge">Madeira Maciça</span>
+              <span class="badge">Área Externa</span>
+              <span class="badge">Alimentação</span>
+            </div>
+            <a href="pages/colecoes.html#patio" class="btn btn--primary">
+              Explorar Coleção
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PRODUTOS EM DESTAQUE ── -->
+    <section class="section" aria-labelledby="destaque-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Mais pedidos</span>
+          <h2 class="section__title" id="destaque-title">Produtos em Destaque</h2>
+        </div>
+
+        <div class="grid-4">
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-coletivo-curvo-cipo-600x600.jpg"
+                   alt="Banco Coletivo Curvo Cipó" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Cipó</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Banco Coletivo Curvo Cipó</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Área Externa</span>
+                <span class="badge">Aço</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-origem-600x600.jpg"
+                   alt="Cadeira Origem" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Origem</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Cadeira Origem</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Educacional</span>
+                <span class="badge">Madeira</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-broto-600x600.jpg"
+                   alt="Mesa Broto" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Broto</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Mesa Broto</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Educacional</span>
+                <span class="badge">Madeira</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="pages/produto-detail.html" class="product-card__image-wrap">
+              <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-jatai-600x600.jpg"
+                   alt="Cadeira Jataí" loading="lazy" onerror="this.src='assets/images/placeholder-product.svg'" />
+            </a>
+            <div class="product-card__body">
+              <span class="product-card__collection">Coleção Jataí</span>
+              <h3 class="product-card__name"><a href="pages/produto-detail.html">Cadeira Jataí</a></h3>
+              <div class="product-card__tags">
+                <span class="badge">Corporativo</span>
+                <span class="badge">Alumínio</span>
+              </div>
+              <a href="pages/produto-detail.html" class="product-card__cta">
+                Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SUSTENTABILIDADE ── -->
+    <section class="section section--dark" aria-labelledby="sustent-title">
+      <div class="container">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items:center;">
+
+          <div>
+            <span class="section__label">Compromisso</span>
+            <h2 id="sustent-title" style="color:#fff; font-size:clamp(1.75rem,3vw,2.5rem); margin-bottom:1.25rem;">
+              Design circular e sustentabilidade
+            </h2>
+            <p style="color:rgba(255,255,255,.72); line-height:1.75; margin-bottom:1.5rem;">
+              Participamos da economia circular — nossos produtos são desenvolvidos para durar,
+              reparar e, ao final do ciclo, retornar ao sistema produtivo. Utilizamos madeira
+              de floresta plantada certificada, alumínio reciclado e processos que minimizam
+              resíduos desde o projeto até a entrega.
+            </p>
+            <ul style="color:rgba(255,255,255,.72); font-size:0.9rem; list-style:none; display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+              <li style="display:flex; gap:0.75rem; align-items:flex-start;">
+                <span style="color:#E85D20; font-weight:700; flex-shrink:0;">✓</span>
+                Madeira de floresta plantada certificada FSC
+              </li>
+              <li style="display:flex; gap:0.75rem; align-items:flex-start;">
+                <span style="color:#E85D20; font-weight:700; flex-shrink:0;">✓</span>
+                Alumínio com alto índice de reciclagem
+              </li>
+              <li style="display:flex; gap:0.75rem; align-items:flex-start;">
+                <span style="color:#E85D20; font-weight:700; flex-shrink:0;">✓</span>
+                Design pensado para reparo e desmontagem
+              </li>
+              <li style="display:flex; gap:0.75rem; align-items:flex-start;">
+                <span style="color:#E85D20; font-weight:700; flex-shrink:0;">✓</span>
+                Múltiplos prêmios de design e sustentabilidade
+              </li>
+            </ul>
+            <a href="pages/sobre.html#sustentabilidade" class="btn btn--outline-white">
+              Saiba mais sobre nosso compromisso
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+            <div class="stat-item">
+              <div class="stat-item__number">204+</div>
+              <div class="stat-item__label" style="color:rgba(255,255,255,.6);">Produtos no catálogo</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item__number">16</div>
+              <div class="stat-item__label" style="color:rgba(255,255,255,.6);">Coleções exclusivas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item__number">20+</div>
+              <div class="stat-item__label" style="color:rgba(255,255,255,.6);">Anos de experiência</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item__number">5</div>
+              <div class="stat-item__label" style="color:rgba(255,255,255,.6);">Segmentos atendidos</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CLIENTES ── -->
+    <section class="section" aria-labelledby="clientes-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Confiam em nós</span>
+          <h2 class="section__title" id="clientes-title">Quem já escolheu a Novidário</h2>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:3rem; filter:grayscale(1); opacity:0.55;">
+          <span style="font-size:1.25rem; font-weight:800; font-family:sans-serif; letter-spacing:-0.02em;">Itaú</span>
+          <span style="font-size:1.1rem; font-weight:700;">Google Education</span>
+          <span style="font-size:1.1rem; font-weight:700;">Senac</span>
+          <span style="font-size:1.1rem; font-weight:700;">Sesc</span>
+          <span style="font-size:1.1rem; font-weight:700;">Instituto Ayrton Senna</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUOTE ── -->
+    <section class="section section--gray" aria-label="Filosofia da marca">
+      <div class="container" style="max-width:800px;">
+        <div class="quote-block">
+          <p class="quote-block__text">
+            "Boas experiências começam com um espaço para conectar e inspirar."
+          </p>
+          <span class="quote-block__author">— Novidário</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <div class="newsletter" role="complementary" aria-label="Newsletter">
+      <div class="container">
+        <h2 class="newsletter__title">Fique por dentro das novidades</h2>
+        <p class="newsletter__subtitle">
+          Receba lançamentos, inspirações e conteúdos sobre design de espaços coletivos.
+        </p>
+        <form class="newsletter__form" id="newsletter-form" novalidate>
+          <input
+            class="newsletter__input"
+            type="email"
+            placeholder="Seu melhor e-mail"
+            aria-label="E-mail para newsletter"
+            required
+          />
+          <button type="submit" class="btn btn--primary">Inscrever</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Brand -->
+        <div>
+          <div style="margin-bottom:1.5rem;">
+            <svg width="140" height="30" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
+              <text x="30" y="24" font-family="Montserrat, sans-serif" font-weight="800" font-size="18" fill="#ffffff" letter-spacing="0.5">novidário</text>
+            </svg>
+          </div>
+          <p class="footer__brand-desc">
+            Especialistas em mobiliário inovador para espaços de convivência.
+            Design, ergonomia e sustentabilidade em cada peça.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Pinterest">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navegação -->
+        <div>
+          <h3 class="footer__col-title">Navegação</h3>
+          <ul class="footer__links">
+            <li><a href="pages/produtos.html"  class="footer__link">Produtos</a></li>
+            <li><a href="pages/colecoes.html"  class="footer__link">Coleções</a></li>
+            <li><a href="pages/downloads.html" class="footer__link">Downloads</a></li>
+            <li><a href="pages/blog.html"      class="footer__link">Blog</a></li>
+            <li><a href="pages/sobre.html"     class="footer__link">Sobre</a></li>
+            <li><a href="pages/contato.html"   class="footer__link">Contato</a></li>
+          </ul>
+        </div>
+
+        <!-- Segmentos -->
+        <div>
+          <h3 class="footer__col-title">Segmentos</h3>
+          <ul class="footer__links">
+            <li><a href="pages/produtos.html?segmento=area-externa" class="footer__link">Área Externa</a></li>
+            <li><a href="pages/produtos.html?segmento=educacional"  class="footer__link">Educacional</a></li>
+            <li><a href="pages/produtos.html?segmento=corporativo"  class="footer__link">Corporativo</a></li>
+            <li><a href="pages/produtos.html?segmento=alimentacao"  class="footer__link">Alimentação</a></li>
+            <li><a href="pages/produtos.html?segmento=interiores"   class="footer__link">Interiores</a></li>
+          </ul>
+        </div>
+
+        <!-- Contato -->
+        <div>
+          <h3 class="footer__col-title">Contato</h3>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Rua Costa Carvalho, 113<br/>Pinheiros, São Paulo – SP<br/>CEP 05429-130</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.12h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.55 5.55l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+            <span>+55 11 3476-4488<br/>(11) 94489-2555 (WhatsApp)<br/>(11) 97397-8087 (Corporativo)</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:contato@novidario.com.br" class="footer__link">contato@novidario.com.br</a>
+          </div>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Seg–Sex: 10h–18h<br/>Sábados: mediante agendamento</span>
+          </div>
+        </div>
+
+      </div><!-- /footer__grid -->
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © <span id="year"></span> Novidário. Todos os direitos reservados.
+        </p>
+        <p class="footer__credits">
+          Desenvolvido por <a href="https://thedealers.com.br" target="_blank" rel="noopener">The Dealers</a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast de notificação -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

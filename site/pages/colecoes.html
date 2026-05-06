@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça as 16+ coleções exclusivas da Novidário — Broto, Origem, Pátio, Cipó, Jataí, Trilha e muito mais." />
+  <title>Coleções | Novidário</title>
+  <link rel="icon" type="image/png" href="https://novidario.com.br/wp-content/uploads/2024/07/cropped-favicon-novidario.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo">
+        <svg width="160" height="36" viewBox="0 0 160 36" fill="none">
+          <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
+          <text x="30" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
+        </svg>
+      </a>
+      <nav class="header__nav">
+        <a href="produtos.html"  class="nav__link">Produtos</a>
+        <a href="colecoes.html"  class="nav__link active">Coleções</a>
+        <a href="downloads.html" class="nav__link">Downloads</a>
+        <a href="blog.html"      class="nav__link">Blog</a>
+        <a href="sobre.html"     class="nav__link">Sobre</a>
+        <a href="contato.html"   class="nav__link">Contato</a>
+      </nav>
+      <div class="header__actions">
+        <div class="header__search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" placeholder="Buscar produtos…" id="search-input" />
+        </div>
+        <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav>
+      <a href="produtos.html"  class="nav__link">Produtos</a>
+      <a href="colecoes.html"  class="nav__link">Coleções</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="blog.html"      class="nav__link">Blog</a>
+      <a href="sobre.html"     class="nav__link">Sobre</a>
+      <a href="contato.html"   class="nav__link">Contato</a>
+    </nav>
+  </div>
+
+  <main class="page-content">
+
+    <div class="page-hero">
+      <div class="container">
+        <span class="page-hero__label">Design exclusivo</span>
+        <h1 class="page-hero__title">Coleções</h1>
+        <p class="page-hero__subtitle">16 linhas desenvolvidas para diferentes contextos de convivência — cada uma com identidade, materiais e propósito únicos.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Grade 3 colunas -->
+        <div class="grid-3" style="margin-bottom:4rem;">
+
+          <!-- Broto -->
+          <div id="broto" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-broto.jpg"
+              alt="Coleção Broto" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E8E4DF';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Broto</h2>
+              <p class="collection-card__desc">Linha infantil em pinus de floresta plantada certificada. Móveis leves, coloridos e ergonômicos para crianças do berçário ao fundamental.</p>
+              <a href="produtos.html?colecao=broto" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Origem -->
+          <div id="origem" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-origem.jpg"
+              alt="Coleção Origem" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#DDE8E4';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Origem</h2>
+              <p class="collection-card__desc">Inspirada na pedagogia Reggio Emilia. Móveis que incentivam a exploração, a autonomia e o aprendizado ativo em espaços educacionais.</p>
+              <a href="produtos.html?colecao=origem" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Pátio -->
+          <div id="patio" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-patio.jpg"
+              alt="Coleção Pátio" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E8E4DD';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Pátio</h2>
+              <p class="collection-card__desc">Leve, resistente e descontraída. Estrutura em alumínio com madeira maciça — ideal para restaurantes, bares, clubes e áreas externas.</p>
+              <a href="produtos.html?colecao=patio" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Cipó -->
+          <div id="cipo" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-cipo.jpg"
+              alt="Coleção Cipó" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E4DEE8';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Cipó</h2>
+              <p class="collection-card__desc">Madeira cumaru com estrutura em aço. Robustez e elegância para áreas externas que demandam durabilidade sem abrir mão do estilo.</p>
+              <a href="produtos.html?colecao=cipo" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Jataí -->
+          <div id="jatai" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-jatai.jpg"
+              alt="Coleção Jataí" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E4E8DD';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Jataí</h2>
+              <p class="collection-card__desc">Móveis flexíveis e modulares para escolas e escritórios colaborativos. Combina funcionalidade com identidade visual contemporânea.</p>
+              <a href="produtos.html?colecao=jatai" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Trilha -->
+          <div id="trilha" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-trilha.jpg"
+              alt="Coleção Trilha" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#DDE4E8';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Trilha</h2>
+              <p class="collection-card__desc">Projetada para áreas de convívio com estruturas de alumínio. Resistência e design moderno para ambientes de alto tráfego.</p>
+              <a href="produtos.html?colecao=trilha" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Trevo -->
+          <div id="trevo" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-trevo.jpg"
+              alt="Coleção Trevo" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E8E4DF';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Trevo</h2>
+              <p class="collection-card__desc">Leveza e praticidade para escritórios corporativos e ambientes educacionais. Design clean com alta versatilidade de uso.</p>
+              <a href="produtos.html?colecao=trevo" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Voa -->
+          <div id="voa" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-voa.jpg"
+              alt="Coleção Voa" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E4DEE8';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Voa</h2>
+              <p class="collection-card__desc">Mesas e cadeiras com design aéreo e leveza visual. Perfeitas para ambientes de alimentação e espaços de trabalho colaborativo.</p>
+              <a href="produtos.html?colecao=voa" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Pipa -->
+          <div id="pipa" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-pipa.jpg"
+              alt="Coleção Pipa" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#DDE8E4';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Pipa</h2>
+              <p class="collection-card__desc">Ripas em plástico reciclado com referências clássicas da marcenaria. Sustentabilidade com sofisticação para áreas externas e internas.</p>
+              <a href="produtos.html?colecao=pipa" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Less -->
+          <div id="less" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-less.jpg"
+              alt="Coleção Less" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E8E4DD';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Less</h2>
+              <p class="collection-card__desc">Minimalismo funcional em pinus certificado. Menos é mais — design limpo e elegante para ambientes corporativos e residenciais.</p>
+              <a href="produtos.html?colecao=less" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Samba -->
+          <div id="samba" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-samba.jpg"
+              alt="Coleção Samba" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#E4E8DD';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Samba</h2>
+              <p class="collection-card__desc">Ritmo e leveza para ambientes de alimentação e lazer. Cadeiras com personalidade que animam qualquer espaço de convivência.</p>
+              <a href="produtos.html?colecao=samba" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+          <!-- Aramado -->
+          <div id="aramado" class="collection-card" style="border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+            <img class="collection-card__image"
+              src="https://novidario.com.br/wp-content/uploads/2024/08/colecao-aramado.jpg"
+              alt="Coleção Aramado" loading="lazy"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;"
+              onerror="this.style.background='#DDE4E8';this.style.height='200px';"
+            />
+            <div class="collection-card__body" style="padding:1.5rem;">
+              <h2 class="collection-card__name" style="font-size:1.25rem;margin-bottom:.5rem;">Aramado</h2>
+              <p class="collection-card__desc">Estrutura metálica em arame com design industrial contemporâneo. Resistência e transparência visual para cafeterias, bares e escritórios.</p>
+              <a href="produtos.html?colecao=aramado" class="btn btn--outline btn--sm" style="margin-top:1rem;">Ver produtos</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align:center; padding:3rem; background:#F7F5F2; border-radius:12px;">
+          <span class="section__label">Não encontrou o que procura?</span>
+          <h2 style="font-size:1.75rem; font-weight:800; color:#2C2C2C; margin-bottom:1rem;">Fale com nossos especialistas</h2>
+          <p style="color:#666; margin-bottom:1.75rem; max-width:480px; margin-inline:auto;">Nossa equipe pode ajudar a encontrar a solução ideal para o seu projeto.</p>
+          <a href="contato.html" class="btn btn--primary btn--lg">Solicitar consultoria</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="padding-block:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <p style="font-size:.75rem; color:rgba(255,255,255,.4);">© <span id="year"></span> Novidário. Todos os direitos reservados.</p>
+        <a href="../index.html" style="font-size:.75rem; color:rgba(255,255,255,.4);">← Voltar ao início</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>

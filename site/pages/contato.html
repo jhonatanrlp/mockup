@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato com a Novidário — solicite orçamento, tire dúvidas ou visite nossa loja física em Pinheiros, São Paulo." />
+  <title>Contato | Novidário</title>
+  <link rel="icon" type="image/png" href="https://novidario.com.br/wp-content/uploads/2024/07/cropped-favicon-novidario.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo">
+        <svg width="160" height="36" viewBox="0 0 160 36" fill="none">
+          <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
+          <text x="30" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
+        </svg>
+      </a>
+      <nav class="header__nav">
+        <a href="produtos.html"  class="nav__link">Produtos</a>
+        <a href="colecoes.html"  class="nav__link">Coleções</a>
+        <a href="downloads.html" class="nav__link">Downloads</a>
+        <a href="blog.html"      class="nav__link">Blog</a>
+        <a href="sobre.html"     class="nav__link">Sobre</a>
+        <a href="contato.html"   class="nav__link active">Contato</a>
+      </nav>
+      <div class="header__actions">
+        <div class="header__search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" placeholder="Buscar produtos…" id="search-input" />
+        </div>
+        <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav>
+      <a href="produtos.html"  class="nav__link">Produtos</a>
+      <a href="colecoes.html"  class="nav__link">Coleções</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="blog.html"      class="nav__link">Blog</a>
+      <a href="sobre.html"     class="nav__link">Sobre</a>
+      <a href="contato.html"   class="nav__link">Contato</a>
+    </nav>
+  </div>
+
+  <main class="page-content">
+
+    <div class="page-hero">
+      <div class="container">
+        <span class="page-hero__label">Fale conosco</span>
+        <h1 class="page-hero__title">Contato</h1>
+        <p class="page-hero__subtitle">Solicite um orçamento, tire dúvidas ou visite nossa loja física em Pinheiros, São Paulo.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+
+          <!-- Formulário -->
+          <div>
+            <h2 style="font-size:1.5rem; font-weight:800; color:#2C2C2C; margin-bottom:.5rem;">Envie uma mensagem</h2>
+            <p style="color:#666; font-size:.9rem; margin-bottom:2rem;">Respondemos em até 1 dia útil.</p>
+
+            <form id="contact-form" novalidate>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="nome">Nome *</label>
+                  <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">E-mail *</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="seu@email.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="telefone">Telefone</label>
+                <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="perfil">Perfil profissional</label>
+                <select class="form-select" id="perfil" name="perfil">
+                  <option value="">Selecione seu perfil</option>
+                  <option value="arq">Arquiteto / Designer de Interiores</option>
+                  <option value="esp">Especificador / Comprador</option>
+                  <option value="pro">Profissional da área</option>
+                  <option value="out">Não sou profissional da área</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="assunto">Assunto *</label>
+                <select class="form-select" id="assunto" name="assunto" required>
+                  <option value="">Selecione o assunto</option>
+                  <option>Solicitar orçamento</option>
+                  <option>Dúvida sobre produto</option>
+                  <option>Visita à loja</option>
+                  <option>Parceria comercial</option>
+                  <option>Imprensa</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="mensagem">Mensagem *</label>
+                <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Descreva o que precisa…" rows="5" required></textarea>
+              </div>
+
+              <!-- CAPTCHA simples -->
+              <div class="form-group" style="flex-direction:row; align-items:center; gap:1rem;">
+                <label class="form-label" style="white-space:nowrap; margin:0;">11 + 12 =</label>
+                <input class="form-input" type="number" name="captcha" placeholder="Resposta" style="max-width:120px;" required />
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--full">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Enviar mensagem
+              </button>
+
+            </form>
+          </div>
+
+          <!-- Info de contato -->
+          <div>
+
+            <!-- WhatsApp CTAs -->
+            <div style="margin-bottom:2rem;">
+              <h2 style="font-size:1.25rem; font-weight:800; color:#2C2C2C; margin-bottom:1rem;">Fale direto pelo WhatsApp</h2>
+              <div style="display:flex; flex-direction:column; gap:.75rem;">
+                <a href="https://wa.me/5511944892555" target="_blank" rel="noopener"
+                   style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#25D366; color:#fff; border-radius:8px; font-weight:600; font-size:.9rem; text-decoration:none; transition:opacity .2s;"
+                   onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                  <div>
+                    <p style="margin:0; line-height:1.2;">(11) 94489-2555</p>
+                    <p style="margin:0; font-size:.75rem; opacity:.85;">Atendimento geral</p>
+                  </div>
+                </a>
+                <a href="https://wa.me/5511973978087" target="_blank" rel="noopener"
+                   style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#1A9E50; color:#fff; border-radius:8px; font-weight:600; font-size:.9rem; text-decoration:none; transition:opacity .2s;"
+                   onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                  <div>
+                    <p style="margin:0; line-height:1.2;">(11) 97397-8087</p>
+                    <p style="margin:0; font-size:.75rem; opacity:.85;">Atendimento corporativo</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Dados -->
+            <div style="background:#F7F5F2; border-radius:12px; padding:2rem; margin-bottom:2rem;">
+              <h3 style="font-size:1rem; font-weight:800; color:#2C2C2C; margin-bottom:1.25rem;">Informações de contato</h3>
+              <div style="display:flex; flex-direction:column; gap:1.25rem;">
+
+                <div style="display:flex; gap:.875rem; align-items:flex-start;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D20" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.12h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.55 5.55l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+                  <div>
+                    <p style="font-weight:600; color:#333; font-size:.875rem; margin-bottom:.2rem;">Telefone fixo</p>
+                    <a href="tel:+551134764488" style="color:#666; font-size:.875rem;">+55 11 3476-4488</a>
+                  </div>
+                </div>
+
+                <div style="display:flex; gap:.875rem; align-items:flex-start;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D20" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <div>
+                    <p style="font-weight:600; color:#333; font-size:.875rem; margin-bottom:.2rem;">E-mail</p>
+                    <a href="mailto:contato@novidario.com.br" style="color:#666; font-size:.875rem;">contato@novidario.com.br</a>
+                  </div>
+                </div>
+
+                <div style="display:flex; gap:.875rem; align-items:flex-start;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D20" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <div>
+                    <p style="font-weight:600; color:#333; font-size:.875rem; margin-bottom:.2rem;">Loja física — Pinheiros</p>
+                    <p style="color:#666; font-size:.875rem; line-height:1.55;">Rua Costa Carvalho, 113<br/>Pinheiros, São Paulo – SP<br/>CEP 05429-130</p>
+                  </div>
+                </div>
+
+                <div style="display:flex; gap:.875rem; align-items:flex-start;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D20" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div>
+                    <p style="font-weight:600; color:#333; font-size:.875rem; margin-bottom:.2rem;">Horário de atendimento</p>
+                    <p style="color:#666; font-size:.875rem; line-height:1.55;">Segunda a sexta: 10h às 18h<br/>Sábados: mediante agendamento</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Mapa embed -->
+            <div style="border-radius:12px; overflow:hidden; border:1px solid #E5E0DA;">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6847!3d-23.5645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzUyLjIiUyA0NsKwNDEnMDUuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="260"
+                style="border:0; display:block;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localização da loja Novidário em Pinheiros, São Paulo"
+              ></iframe>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fluxo de orçamento -->
+    <section class="section section--gray">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Como funciona</span>
+          <h2 class="section__title">Processo de orçamento</h2>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; position:relative;">
+
+          <div style="position:absolute; top:2.5rem; left:calc(16.66% + 1rem); right:calc(16.66% + 1rem); height:2px; background:linear-gradient(to right, #E85D20, #E85D20); z-index:0; display:none;" class="step-line"></div>
+
+          <div style="text-align:center; position:relative; z-index:1;">
+            <div style="width:56px;height:56px;background:#E85D20;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.25rem;font-weight:800;">1</div>
+            <h3 style="font-size:1rem; font-weight:800; color:#2C2C2C; margin-bottom:.5rem;">Seleção de produtos</h3>
+            <p style="font-size:.875rem; color:#666; line-height:1.6;">Escolha os produtos do catálogo ou nos fale sobre o seu espaço para recebermos sugestões personalizadas.</p>
+          </div>
+
+          <div style="text-align:center; position:relative; z-index:1;">
+            <div style="width:56px;height:56px;background:#E85D20;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.25rem;font-weight:800;">2</div>
+            <h3 style="font-size:1rem; font-weight:800; color:#2C2C2C; margin-bottom:.5rem;">Informações de contato</h3>
+            <p style="font-size:.875rem; color:#666; line-height:1.6;">Preencha o formulário acima ou fale diretamente pelo WhatsApp. Nossa equipe entra em contato em até 1 dia útil.</p>
+          </div>
+
+          <div style="text-align:center; position:relative; z-index:1;">
+            <div style="width:56px;height:56px;background:#E85D20;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.25rem;font-weight:800;">3</div>
+            <h3 style="font-size:1rem; font-weight:800; color:#2C2C2C; margin-bottom:.5rem;">Revisão e aprovação</h3>
+            <p style="font-size:.875rem; color:#666; line-height:1.6;">Receba a proposta detalhada, valide as especificações e feche o pedido com total segurança e transparência.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="padding-block:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <p style="font-size:.75rem; color:rgba(255,255,255,.4);">© <span id="year"></span> Novidário. Todos os direitos reservados.</p>
+        <a href="../index.html" style="font-size:.75rem; color:rgba(255,255,255,.4);">← Voltar ao início</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>
