@@ -436,6 +436,36 @@
 
       applyFilters();
     })();
+
+    /* ── Botão de filtro mobile ── */
+    (function initMobileFilter() {
+      const filterBtn    = document.getElementById('filter-toggle');
+      const sidebar      = document.getElementById('catalog-sidebar');
+      if (!filterBtn || !sidebar) return;
+
+      function showMobileUI() {
+        if (window.innerWidth <= 768) {
+          filterBtn.style.display = 'block';
+          if (!sidebar.classList.contains('open')) {
+            sidebar.style.display = 'none';
+          }
+        } else {
+          filterBtn.style.display = 'none';
+          sidebar.style.display = '';
+          sidebar.style.removeProperty('display');
+        }
+      }
+
+      showMobileUI();
+      window.addEventListener('resize', showMobileUI, { passive: true });
+
+      filterBtn.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('open');
+        sidebar.style.display = isOpen ? 'block' : 'none';
+        filterBtn.setAttribute('aria-expanded', String(isOpen));
+        filterBtn.textContent = isOpen ? 'Ocultar filtros' : 'Mostrar filtros';
+      });
+    })();
   }
 
   /* ══════════════════════════════════════════

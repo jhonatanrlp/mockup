@@ -598,29 +598,76 @@ p:last-child { margin-bottom: 0; }
   opacity: 1;
 }
 
+/* ══════════════════════════════════════════
+   GRIDS SEMÂNTICOS
+══════════════════════════════════════════ */
+
+/* Grid de 5 segmentos — substitui inline style na home */
+.segments-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+/* Split 50/50 — substitui inline style da seção Pátio */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+/* Catálogo: sidebar + conteúdo */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
 /* ── Responsive ── */
+@media (max-width: 1100px) {
+  .segments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   :root {
     --container-pad: 1.25rem;
   }
   h1 { font-size: var(--text-3xl); }
   h2 { font-size: var(--text-2xl); }
+  /* grid-4 → 2 colunas (não 1) */
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-5 { grid-template-columns: repeat(3, 1fr); }
   .section { padding-block: var(--space-16); }
+  .catalog-layout { grid-template-columns: 200px 1fr; }
 }
 
 @media (max-width: 768px) {
   :root {
     --header-height: 64px;
+    --header-total:  64px;
     --container-pad: 1rem;
   }
   h1 { font-size: var(--text-2xl); }
   h2 { font-size: var(--text-xl); }
-  .grid-2,
+
+  /* Grids de produto: 2 colunas no mobile (não 1 — fica menos esparso) */
   .grid-3,
-  .grid-4,
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .grid-2,
   .grid-5 { grid-template-columns: 1fr; }
+
+  /* Segmentos: 2 colunas no mobile */
+  .segments-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+  /* Split vira 1 coluna */
+  .split-grid { grid-template-columns: 1fr; min-height: auto; }
+
+  /* Catálogo: sidebar colapsa */
+  .catalog-layout { grid-template-columns: 1fr; }
+
   .section { padding-block: var(--space-12); }
   .section__title { font-size: var(--text-xl); }
 }
@@ -628,4 +675,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 480px) {
   :root { --container-pad: 0.875rem; }
   h1 { font-size: var(--text-xl); }
+  /* Produtos: 1 coluna em telas muito pequenas */
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .segments-grid   { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
 }

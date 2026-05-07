@@ -757,8 +757,15 @@
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;      /* mais alto = mais presença */
   display: block;
+  min-height: 260px;         /* piso mínimo */
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.segment-card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .segment-card__img {
@@ -798,27 +805,32 @@
   bottom: var(--space-5);
   left: var(--space-5);
   right: var(--space-5);
-  font-size: var(--text-md);
-  font-weight: var(--fw-bold);
+  font-size: var(--text-lg);      /* maior: 20px */
+  font-weight: var(--fw-extra);   /* 800 */
   color: var(--color-white);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+  line-height: 1.2;
 }
 
 .segment-card__arrow {
   position: absolute;
   bottom: var(--space-5);
   right: var(--space-5);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background-color: var(--seg-arrow-color, var(--color-primary));
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-white);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity var(--transition-base), transform var(--transition-base);
+  opacity: 0.7;              /* visível por padrão */
+  transform: translateY(0);
+  transition: opacity var(--transition-base),
+              transform var(--transition-base),
+              width var(--transition-base),
+              height var(--transition-base);
 }
 
 .segment-card[data-seg="area-externa"] .segment-card__arrow { --seg-arrow-color: var(--seg-ext); }
@@ -831,7 +843,8 @@
 
 .segment-card:hover .segment-card__arrow {
   opacity: 1;
-  transform: translateY(0);
+  width: 40px;
+  height: 40px;
 }
 
 /* Linha de acento inferior no card de segmento */
@@ -1534,6 +1547,7 @@
 }
 
 @media (max-width: 768px) {
+  /* ── Header ── */
   .header__nav,
   .header__search {
     display: none;
@@ -1543,41 +1557,60 @@
     display: flex;
   }
 
-  /* Areas-bar: esconde label "Áreas:" no mobile, mantém links com scroll */
-  .areas-bar__label {
-    display: none;
+  /* Header inner: logo + hamburger side by side */
+  .header__inner {
+    grid-template-columns: auto 1fr auto;
   }
+  .header__nav--left  { display: none; }
+  .header__nav--right { justify-self: end; }
+  .header__logo       { justify-self: center; grid-column: 2; }
 
-  .area-link {
-    padding: 0 var(--space-3);
-    font-size: 10px;
-  }
+  /* ── Footer ── */
+  .footer__grid { grid-template-columns: 1fr; }
 
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
+  /* ── Newsletter ── */
+  .newsletter__form { flex-direction: column; }
 
-  .newsletter__form {
-    flex-direction: column;
-  }
-
+  /* ── Store strip ── */
   .store-strip__inner {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
   }
 
+  /* ── Page hero ── */
   .page-hero__title { font-size: var(--text-2xl); }
 
-  .hero__content {
-    text-align: center;
-  }
+  /* ── Hero ── */
+  .hero__content { text-align: center; padding: var(--space-8) var(--container-pad); }
+  .hero__actions { justify-content: center; flex-wrap: wrap; }
 
-  .hero__actions { justify-content: center; }
+  /* ── Segment cards mobile ── */
+  .segment-card { min-height: 200px; }
+  .segment-card__label { font-size: var(--text-base); }
+  .segment-card__arrow { width: 30px; height: 30px; opacity: 0.8; }
 
+  /* ── Product card mobile ── */
+  .product-card__body { padding: var(--space-3) var(--space-4); }
+  .product-card__name { font-size: var(--text-base); }
+
+  /* ── Product gallery ── */
   .product-gallery__thumbs { grid-template-columns: repeat(3, 1fr); }
+
+  /* ── Catálogo: sidebar e filtros mobile ── */
+  .filters { position: static; top: auto; }
+  .catalog-sidebar { display: none; }
+  .catalog-sidebar.open { display: block; }
+
+  /* ── Linha Pátio mobile ── */
+  .split-grid > *:first-child { min-height: 280px; }
+  .split-grid > *:last-child  { padding: 2.5rem 1.5rem; }
 }
 
 @media (max-width: 480px) {
-  .filters { position: static; }
   .hero__title { font-size: 1.75rem; }
+  .segment-card { min-height: 170px; }
+  .segment-card__label { font-size: var(--text-sm); }
+  /* Tags nos cards de produto: muda para 1 por linha no mobile pequeno */
+  .product-card__tags { gap: 0.25rem; }
 }
