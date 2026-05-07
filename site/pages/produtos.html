@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo completo de produtos Novidário — 204 itens para área externa, educacional, corporativo, alimentação e interiores." />
+  <meta name="description" content="Catálogo Novidário — 204 produtos para área externa, educacional, corporativo, alimentação e interiores." />
   <title>Produtos | Novidário</title>
   <link rel="icon" type="image/png" href="https://novidario.com.br/wp-content/uploads/2024/07/cropped-favicon-novidario.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,15 +14,16 @@
 </head>
 <body>
 
+  <!-- ═══ HEADER ═══ -->
   <header class="header" id="header">
     <div class="header__inner">
-      <a href="../index.html" class="header__logo">
-        <svg width="160" height="36" viewBox="0 0 160 36" fill="none">
+      <a href="../index.html" class="header__logo" aria-label="Novidário — início">
+        <svg width="150" height="34" viewBox="0 0 160 36" fill="none">
           <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
           <text x="30" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
         </svg>
       </a>
-      <nav class="header__nav">
+      <nav class="header__nav" aria-label="Navegação principal">
         <a href="produtos.html"  class="nav__link active">Produtos</a>
         <a href="colecoes.html"  class="nav__link">Coleções</a>
         <a href="downloads.html" class="nav__link">Downloads</a>
@@ -31,9 +32,9 @@
         <a href="contato.html"   class="nav__link">Contato</a>
       </nav>
       <div class="header__actions">
-        <div class="header__search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="search" placeholder="Buscar produtos…" id="search-input" />
+        <div class="header__search" role="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" placeholder="Buscar produtos…" aria-label="Buscar produtos" id="search-input" />
         </div>
         <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -42,8 +43,41 @@
     </div>
   </header>
 
+  <!-- ═══ BARRA DE ÁREAS ═══ -->
+  <nav class="areas-bar" aria-label="Atalhos por segmento">
+    <div class="areas-bar__inner">
+      <span class="areas-bar__label">Áreas:</span>
+      <a href="?segmento=area-externa"
+         class="area-link area-link--ext"
+         data-area="area-externa">
+        <span class="area-link__dot" aria-hidden="true"></span>Área Externa
+      </a>
+      <a href="?segmento=educacional"
+         class="area-link area-link--edu"
+         data-area="educacional">
+        <span class="area-link__dot" aria-hidden="true"></span>Educacional
+      </a>
+      <a href="?segmento=corporativo"
+         class="area-link area-link--corp"
+         data-area="corporativo">
+        <span class="area-link__dot" aria-hidden="true"></span>Corporativo
+      </a>
+      <a href="?segmento=alimentacao"
+         class="area-link area-link--food"
+         data-area="alimentacao">
+        <span class="area-link__dot" aria-hidden="true"></span>Alimentação
+      </a>
+      <a href="?segmento=interiores"
+         class="area-link area-link--int"
+         data-area="interiores">
+        <span class="area-link__dot" aria-hidden="true"></span>Interiores
+      </a>
+    </div>
+  </nav>
+
+  <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <nav>
+    <nav aria-label="Navegação mobile">
       <a href="produtos.html"  class="nav__link">Produtos</a>
       <a href="colecoes.html"  class="nav__link">Coleções</a>
       <a href="downloads.html" class="nav__link">Downloads</a>
@@ -55,293 +89,407 @@
 
   <main class="page-content">
 
-    <!-- Page hero -->
-    <div class="page-hero">
+    <!-- Page hero compacto -->
+    <div class="page-hero" style="padding-block: 2.5rem 1.5rem;">
       <div class="container">
-        <span class="page-hero__label">Catálogo completo</span>
-        <h1 class="page-hero__title">Produtos</h1>
-        <p class="page-hero__subtitle">204 produtos para espaços de convivência — externos, educacionais, corporativos e mais.</p>
+        <span class="page-hero__label">Catálogo</span>
+        <h1 class="page-hero__title" style="font-size:2rem;">Produtos</h1>
+        <p class="page-hero__subtitle">204 itens para espaços de convivência</p>
       </div>
     </div>
 
-    <section class="section">
+    <section class="section" style="padding-top: 1rem;">
       <div class="container">
-        <div style="display:grid; grid-template-columns: 260px 1fr; gap: 2rem; align-items:start;">
 
-          <!-- ── FILTROS ── -->
-          <aside>
+        <!-- ── PILLS DE ÁREA (atalho visual acima dos filtros) ── -->
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1.5rem; align-items:center;">
+          <span style="font-size:.75rem; font-weight:600; color:#999; text-transform:uppercase; letter-spacing:.1em; margin-right:.25rem;">Filtrar por área:</span>
+          <button class="seg-pill seg-pill--ext" data-area="area-externa" aria-pressed="false">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>
+            Área Externa
+          </button>
+          <button class="seg-pill seg-pill--edu" data-area="educacional" aria-pressed="false">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-edu);display:inline-block;"></span>
+            Educacional
+          </button>
+          <button class="seg-pill seg-pill--corp" data-area="corporativo" aria-pressed="false">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>
+            Corporativo
+          </button>
+          <button class="seg-pill seg-pill--food" data-area="alimentacao" aria-pressed="false">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>
+            Alimentação
+          </button>
+          <button class="seg-pill seg-pill--int" data-area="interiores" aria-pressed="false">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-int);display:inline-block;"></span>
+            Interiores
+          </button>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items:start;">
+
+          <!-- ══ SIDEBAR DE FILTROS ══ -->
+          <aside aria-label="Filtros de produto">
             <div class="filters">
               <h2 class="filters__title">Filtrar</h2>
 
-              <!-- Ordenação -->
+              <!-- Coleção -->
               <div class="filter-group">
-                <div class="filter-group__title">
-                  Ordenação
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
+                  Coleção
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <select class="form-select" style="margin-top:.5rem;">
-                    <option>Ordenação padrão</option>
-                    <option>Mais recentes</option>
-                    <option>Nome A–Z</option>
-                    <option>Nome Z–A</option>
-                  </select>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Broto" /> Broto</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Origem" /> Origem</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pátio" /> Pátio</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Cipó" /> Cipó</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Jataí" /> Jataí</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trilha" /> Trilha</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trevo" /> Trevo</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Voa" /> Voa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Less" /> Less</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pipa" /> Pipa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Samba" /> Samba</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Asa" /> Asa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Aramado" /> Aramado</label>
                 </div>
               </div>
 
-              <!-- Categorias -->
+              <!-- Tipo de móvel -->
               <div class="filter-group">
-                <div class="filter-group__title">
-                  Categorias
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
+                  Tipo de móvel
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" /> Área Externa</label>
-                  <label class="filter-option"><input type="checkbox" /> Armazenagem</label>
-                  <label class="filter-option"><input type="checkbox" /> Assentos Coletivos</label>
-                  <label class="filter-option"><input type="checkbox" /> Assentos Individuais</label>
-                  <label class="filter-option"><input type="checkbox" /> Cama</label>
-                  <label class="filter-option"><input type="checkbox" /> Mesas</label>
-                  <label class="filter-option"><input type="checkbox" /> Mesas de Apoio / Centro</label>
-                  <label class="filter-option"><input type="checkbox" /> Móveis Auxiliares</label>
-                </div>
-              </div>
-
-              <!-- Ambiente -->
-              <div class="filter-group">
-                <div class="filter-group__title">
-                  Ambiente
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" /> Sala de aula</label>
-                  <label class="filter-option"><input type="checkbox" /> Home office</label>
-                  <label class="filter-option"><input type="checkbox" /> Escritórios</label>
-                  <label class="filter-option"><input type="checkbox" /> Biblioteca</label>
-                  <label class="filter-option"><input type="checkbox" /> Restaurante / Bar</label>
-                  <label class="filter-option"><input type="checkbox" /> Área externa</label>
-                  <label class="filter-option"><input type="checkbox" /> Sala de estar</label>
-                  <label class="filter-option"><input type="checkbox" /> Jardim / Varanda</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Cadeira" /> Cadeira</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Mesa" /> Mesa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Banco" /> Banco</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Poltrona" /> Poltrona</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Lounge" /> Lounge / Sofá</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Estante" /> Estante / Armário</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Apoio" /> Mesa de apoio</label>
                 </div>
               </div>
 
               <!-- Material -->
               <div class="filter-group">
-                <div class="filter-group__title">
+                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
                   Material
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" /> Aço</label>
-                  <label class="filter-option"><input type="checkbox" /> Alumínio</label>
-                  <label class="filter-option"><input type="checkbox" /> Corda</label>
-                  <label class="filter-option"><input type="checkbox" /> Estofados</label>
-                  <label class="filter-option"><input type="checkbox" /> Madeira</label>
-                  <label class="filter-option"><input type="checkbox" /> Plástico</label>
-                  <label class="filter-option"><input type="checkbox" /> Reciclado</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Madeira" /> Madeira</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Alumínio" /> Alumínio</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Aço" /> Aço</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Estofado" /> Estofado</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Reciclado" /> Plástico Reciclado</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Corda" /> Corda</label>
                 </div>
               </div>
 
-              <!-- Coleção -->
+              <!-- Área (redundante, mas útil no sidebar) -->
               <div class="filter-group">
-                <div class="filter-group__title">
-                  Coleção
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
+                  Área de uso
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" /> Broto</label>
-                  <label class="filter-option"><input type="checkbox" /> Voa</label>
-                  <label class="filter-option"><input type="checkbox" /> Asa</label>
-                  <label class="filter-option"><input type="checkbox" /> Cipó</label>
-                  <label class="filter-option"><input type="checkbox" /> Origem</label>
-                  <label class="filter-option"><input type="checkbox" /> Trilha</label>
-                  <label class="filter-option"><input type="checkbox" /> Pátio</label>
-                  <label class="filter-option"><input type="checkbox" /> Jataí</label>
-                  <label class="filter-option"><input type="checkbox" /> Trevo</label>
-                  <label class="filter-option"><input type="checkbox" /> Less</label>
-                  <label class="filter-option"><input type="checkbox" /> Pipa</label>
-                  <label class="filter-option"><input type="checkbox" /> Samba</label>
-                  <label class="filter-option"><input type="checkbox" /> Enredo</label>
-                  <label class="filter-option"><input type="checkbox" /> Aramado</label>
-                  <label class="filter-option"><input type="checkbox" /> Ponte</label>
-                  <label class="filter-option"><input type="checkbox" /> Parte</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="area-externa" /> Área Externa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="educacional" /> Educacional</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="corporativo" /> Corporativo</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="alimentacao" /> Alimentação</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="interiores" /> Interiores</label>
                 </div>
               </div>
 
-              <button class="btn btn--outline btn--full" style="margin-top:.5rem;">Limpar filtros</button>
+              <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:.5rem; display:none;">
+                Limpar filtros
+              </button>
             </div>
           </aside>
 
-          <!-- ── GRID DE PRODUTOS ── -->
+          <!-- ══ ÁREA DE PRODUTOS ══ -->
           <div>
-            <!-- Barra superior -->
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:.75rem;">
-              <p style="font-size:.875rem; color:#666;">Exibindo <strong>1–12</strong> de <strong>204</strong> produtos</p>
+
+            <!-- Barra de controles -->
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:.75rem;">
+              <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;">
+                <p style="font-size:.875rem; color:#666;">
+                  <strong id="products-count">12 produtos</strong>
+                </p>
+                <!-- Chips de filtros ativos -->
+                <div class="active-filters" id="active-filters" aria-live="polite" aria-label="Filtros ativos"></div>
+              </div>
               <div style="display:flex; gap:.5rem; align-items:center;">
-                <span style="font-size:.8rem; color:#999;">Visualização:</span>
-                <button class="header__icon-btn" title="Grid" aria-label="Grid">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                </button>
-                <button class="header__icon-btn" title="Lista" aria-label="Lista">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-                </button>
+                <label for="sort-select" class="sr-only">Ordenação</label>
+                <select id="sort-select" class="form-select" style="height:36px; font-size:.8rem; padding:0 .75rem;">
+                  <option value="default">Padrão</option>
+                  <option value="recent">Mais recentes</option>
+                  <option value="az">Nome A–Z</option>
+                  <option value="za">Nome Z–A</option>
+                </select>
               </div>
             </div>
 
-            <!-- Grid -->
+            <!-- Grid de produtos com data-* -->
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem;" id="products-grid">
 
-              <!-- Produto 1 -->
-              <article class="product-card">
+              <!-- ─── Educacional / Madeira / Broto ─── -->
+              <article class="product-card"
+                data-area="educacional"
+                data-material="Madeira"
+                data-colecao="Broto"
+                data-tipo="Mesa">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-broto-600x600.jpg" alt="Mesa Broto" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-broto-600x600.jpg" alt="Mesa Broto" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Broto</span>
+                  <span class="product-card__collection">Coleção Broto</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Mesa Broto</a></h3>
-                  <div class="product-card__tags"><span class="badge">Educacional</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--edu">Educacional</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Educacional / Madeira / Broto ─── -->
+              <article class="product-card"
+                data-area="educacional"
+                data-material="Madeira"
+                data-colecao="Broto"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-broto-600x600.jpg" alt="Cadeira Broto" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-broto-600x600.jpg" alt="Cadeira Broto" loading="lazy" />
                   <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Broto</span>
+                  <span class="product-card__collection">Coleção Broto</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Broto</a></h3>
-                  <div class="product-card__tags"><span class="badge">Educacional</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--edu">Educacional</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Interiores / Estofado / Asa ─── -->
+              <article class="product-card"
+                data-area="interiores"
+                data-material="Estofado"
+                data-colecao="Asa"
+                data-tipo="Poltrona">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/poltrona-asa-600x600.jpg" alt="Poltrona Asa" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/poltrona-asa-600x600.jpg" alt="Poltrona Asa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Asa</span>
+                  <span class="product-card__collection">Coleção Asa</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Poltrona Asa</a></h3>
-                  <div class="product-card__tags"><span class="badge">Interiores</span><span class="badge">Estofado</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--int">Interiores</span>
+                    <span class="badge">Estofado</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Área externa / Aço / Cipó ─── -->
+              <article class="product-card"
+                data-area="area-externa"
+                data-material="Aço"
+                data-colecao="Cipó"
+                data-tipo="Banco">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-coletivo-curvo-cipo-600x600.jpg" alt="Banco Coletivo Curvo Cipó" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-coletivo-curvo-cipo-600x600.jpg" alt="Banco Coletivo Curvo Cipó" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Cipó</span>
+                  <span class="product-card__collection">Coleção Cipó</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Banco Coletivo Curvo Cipó</a></h3>
-                  <div class="product-card__tags"><span class="badge">Área Externa</span><span class="badge">Aço</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--ext">Área Externa</span>
+                    <span class="badge">Aço</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Educacional / Madeira / Origem ─── -->
+              <article class="product-card"
+                data-area="educacional"
+                data-material="Madeira"
+                data-colecao="Origem"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-origem-600x600.jpg" alt="Cadeira Origem" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-origem-600x600.jpg" alt="Cadeira Origem" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Origem</span>
+                  <span class="product-card__collection">Coleção Origem</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Origem</a></h3>
-                  <div class="product-card__tags"><span class="badge">Educacional</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--edu">Educacional</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Alimentação / Madeira / Voa ─── -->
+              <article class="product-card"
+                data-area="alimentacao"
+                data-material="Madeira"
+                data-colecao="Voa"
+                data-tipo="Mesa">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-redonda-voa-600x600.jpg" alt="Mesa Redonda Voa" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-redonda-voa-600x600.jpg" alt="Mesa Redonda Voa" loading="lazy" />
                   <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Voa</span>
+                  <span class="product-card__collection">Coleção Voa</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Mesa Redonda Voa</a></h3>
-                  <div class="product-card__tags"><span class="badge">Alimentação</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--food">Alimentação</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Corporativo / Alumínio / Trevo ─── -->
+              <article class="product-card"
+                data-area="corporativo"
+                data-material="Alumínio"
+                data-colecao="Trevo"
+                data-tipo="Mesa">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-quadrada-trevo-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-quadrada-trevo-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Trevo</span>
+                  <span class="product-card__collection">Coleção Trevo</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Mesa Quadrada Trevo</a></h3>
-                  <div class="product-card__tags"><span class="badge">Corporativo</span><span class="badge">Alumínio</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--corp">Corporativo</span>
+                    <span class="badge">Alumínio</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Corporativo / Alumínio / Jataí ─── -->
+              <article class="product-card"
+                data-area="corporativo"
+                data-material="Alumínio"
+                data-colecao="Jataí"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-jatai-600x600.jpg" alt="Cadeira Jataí" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-jatai-600x600.jpg" alt="Cadeira Jataí" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Jataí</span>
+                  <span class="product-card__collection">Coleção Jataí</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Jataí</a></h3>
-                  <div class="product-card__tags"><span class="badge">Corporativo</span><span class="badge">Alumínio</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--corp">Corporativo</span>
+                    <span class="badge">Alumínio</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Corporativo / Madeira / Less ─── -->
+              <article class="product-card"
+                data-area="corporativo"
+                data-material="Madeira"
+                data-colecao="Less"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-uma-600x600.jpg" alt="Cadeira Uma" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-uma-600x600.jpg" alt="Cadeira Uma" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Less</span>
+                  <span class="product-card__collection">Coleção Less</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Uma</a></h3>
-                  <div class="product-card__tags"><span class="badge">Corporativo</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--corp">Corporativo</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Área externa / Reciclado / Pipa ─── -->
+              <article class="product-card"
+                data-area="area-externa"
+                data-material="Reciclado"
+                data-colecao="Pipa"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-pipa-600x600.jpg" alt="Cadeira Pipa" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-pipa-600x600.jpg" alt="Cadeira Pipa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Pipa</span>
+                  <span class="product-card__collection">Coleção Pipa</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Pipa</a></h3>
-                  <div class="product-card__tags"><span class="badge">Área Externa</span><span class="badge">Reciclado</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--ext">Área Externa</span>
+                    <span class="badge">Reciclado</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Área externa / Alumínio / Trilha ─── -->
+              <article class="product-card"
+                data-area="area-externa"
+                data-material="Alumínio"
+                data-colecao="Trilha"
+                data-tipo="Banco">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-trilha-600x600.jpg" alt="Banco Trilha" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-trilha-600x600.jpg" alt="Banco Trilha" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Trilha</span>
+                  <span class="product-card__collection">Coleção Trilha</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Banco Trilha</a></h3>
-                  <div class="product-card__tags"><span class="badge">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--ext">Área Externa</span>
+                    <span class="badge">Alumínio</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <article class="product-card">
+              <!-- ─── Alimentação / Madeira / Samba ─── -->
+              <article class="product-card"
+                data-area="alimentacao"
+                data-material="Madeira"
+                data-colecao="Samba"
+                data-tipo="Cadeira">
                 <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-samba-600x600.jpg" alt="Cadeira Samba" loading="lazy" onerror="this.src='../assets/images/placeholder-product.svg'" />
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-samba-600x600.jpg" alt="Cadeira Samba" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Samba</span>
+                  <span class="product-card__collection">Coleção Samba</span>
                   <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Samba</a></h3>
-                  <div class="product-card__tags"><span class="badge">Alimentação</span><span class="badge">Madeira</span></div>
+                  <div class="product-card__tags">
+                    <span class="badge badge--food">Alimentação</span>
+                    <span class="badge">Madeira</span>
+                  </div>
                   <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
+
+              <!-- Estado: sem resultados -->
+              <div class="no-results" id="no-results" aria-live="assertive">
+                <div class="no-results__icon">🔍</div>
+                <p class="no-results__title">Nenhum produto encontrado</p>
+                <p style="font-size:.875rem; color:#999; margin-bottom:1rem;">Tente combinar filtros diferentes ou limpe os filtros ativos.</p>
+                <button class="btn btn--outline" onclick="document.getElementById('clear-filters').click()">Limpar filtros</button>
+              </div>
 
             </div><!-- /products-grid -->
 
             <!-- Paginação -->
-            <nav class="pagination" aria-label="Paginação de produtos">
+            <nav class="pagination" aria-label="Paginação">
               <a href="#" class="pagination__btn" aria-label="Anterior">‹</a>
               <a href="#" class="pagination__btn active" aria-current="page">1</a>
               <a href="#" class="pagination__btn">2</a>
@@ -351,14 +499,14 @@
               <a href="#" class="pagination__btn" aria-label="Próxima">›</a>
             </nav>
 
-          </div><!-- /produtos lado direito -->
+          </div><!-- /área de produtos -->
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER (inline simplificado) -->
+  <!-- Footer simplificado -->
   <footer class="footer">
     <div class="container">
       <div style="padding-block:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">

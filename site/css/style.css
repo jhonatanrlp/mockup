@@ -17,6 +17,41 @@
   --color-text-light:    #666666;
   --color-text-muted:    #999999;
 
+  /* ── Cores por segmento ──────────────────────
+     Cada área tem: cor base, versão escura,
+     versão muito clara (bg tint) e label legível
+  ─────────────────────────────────────────── */
+
+  /* Área Externa — verde natural */
+  --seg-ext:          #2E7D32;
+  --seg-ext-dark:     #1B5E20;
+  --seg-ext-tint:     #E8F5E9;
+  --seg-ext-label:    "Área Externa";
+
+  /* Educacional — azul ensino */
+  --seg-edu:          #1565C0;
+  --seg-edu-dark:     #0D47A1;
+  --seg-edu-tint:     #E3F2FD;
+  --seg-edu-label:    "Educacional";
+
+  /* Corporativo — cinza slate */
+  --seg-corp:         #37474F;
+  --seg-corp-dark:    #263238;
+  --seg-corp-tint:    #ECEFF1;
+  --seg-corp-label:   "Corporativo";
+
+  /* Alimentação — terra/caramelo */
+  --seg-food:         #BF360C;
+  --seg-food-dark:    #8D2407;
+  --seg-food-tint:    #FBE9E7;
+  --seg-food-label:   "Alimentação";
+
+  /* Interiores — ameixa/vinho */
+  --seg-int:          #6A1B9A;
+  --seg-int-dark:     #4A148C;
+  --seg-int-tint:     #F3E5F5;
+  --seg-int-label:    "Interiores";
+
   /* Neutros */
   --color-white:         #FFFFFF;
   --color-bg:            #F7F5F2;   /* bege levíssimo */
@@ -72,8 +107,10 @@
   --container-max: 1280px;
   --container-pad: 1.5rem;
 
-  /* Header */
-  --header-height: 80px;
+  /* Header — altura base + barra de áreas */
+  --header-height:      80px;
+  --areas-bar-height:   40px;
+  --header-total:       120px; /* header + barra */
 
   /* Bordas */
   --radius-sm:  4px;
@@ -317,6 +354,107 @@ p:last-child { margin-bottom: 0; }
   background-color: rgba(232,93,32,.12);
   color: var(--color-primary);
 }
+
+/* ── Badges por segmento ── */
+.badge--ext  { background-color: var(--seg-ext-tint);  color: var(--seg-ext-dark); }
+.badge--edu  { background-color: var(--seg-edu-tint);  color: var(--seg-edu-dark); }
+.badge--corp { background-color: var(--seg-corp-tint); color: var(--seg-corp-dark); }
+.badge--food { background-color: var(--seg-food-tint); color: var(--seg-food-dark); }
+.badge--int  { background-color: var(--seg-int-tint);  color: var(--seg-int-dark); }
+
+/* ── Card: acento de segmento (faixa superior) ── */
+.product-card[data-area="area-externa"]  { --card-accent: var(--seg-ext); }
+.product-card[data-area="educacional"]   { --card-accent: var(--seg-edu); }
+.product-card[data-area="corporativo"]   { --card-accent: var(--seg-corp); }
+.product-card[data-area="alimentacao"]   { --card-accent: var(--seg-food); }
+.product-card[data-area="interiores"]    { --card-accent: var(--seg-int); }
+
+.product-card[data-area]::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background-color: var(--card-accent, transparent);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  z-index: 1;
+}
+
+/* ── Estado: hidden por filtro ── */
+.product-card.is-hidden {
+  display: none;
+}
+
+/* ── Estado: sem resultados ── */
+.no-results {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+  color: var(--color-text-muted);
+}
+.no-results.show {
+  display: block;
+}
+.no-results__icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
+.no-results__title {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-2);
+}
+
+/* ── Chips de filtros ativos ── */
+.active-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  min-height: 32px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.25rem 0.625rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.filter-chip:hover { background-color: var(--color-primary); }
+.filter-chip__x { font-size: 0.9em; opacity: .7; margin-left: 2px; }
+
+/* ── Pill de segmento ativo no filtro sidebar ── */
+.seg-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: border-color var(--transition-fast),
+              background-color var(--transition-fast),
+              color var(--transition-fast);
+  background: none;
+  color: var(--color-text-light);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.seg-pill:hover         { border-color: var(--pill-color, var(--color-primary)); color: var(--pill-color, var(--color-primary)); }
+.seg-pill.active        { background-color: var(--pill-color, var(--color-primary)); border-color: var(--pill-color, var(--color-primary)); color: #fff; }
+
+.seg-pill--ext  { --pill-color: var(--seg-ext); }
+.seg-pill--edu  { --pill-color: var(--seg-edu); }
+.seg-pill--corp { --pill-color: var(--seg-corp); }
+.seg-pill--food { --pill-color: var(--seg-food); }
+.seg-pill--int  { --pill-color: var(--seg-int); }
 
 /* ── Grid utilitários ── */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }

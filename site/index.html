@@ -70,6 +70,28 @@
     </div>
   </header>
 
+  <!-- ═══ BARRA DE ÁREAS ═══ -->
+  <nav class="areas-bar" aria-label="Atalhos por segmento">
+    <div class="areas-bar__inner">
+      <span class="areas-bar__label">Áreas:</span>
+      <a href="pages/produtos.html?segmento=area-externa" class="area-link area-link--ext">
+        <span class="area-link__dot" aria-hidden="true"></span>Área Externa
+      </a>
+      <a href="pages/produtos.html?segmento=educacional" class="area-link area-link--edu">
+        <span class="area-link__dot" aria-hidden="true"></span>Educacional
+      </a>
+      <a href="pages/produtos.html?segmento=corporativo" class="area-link area-link--corp">
+        <span class="area-link__dot" aria-hidden="true"></span>Corporativo
+      </a>
+      <a href="pages/produtos.html?segmento=alimentacao" class="area-link area-link--food">
+        <span class="area-link__dot" aria-hidden="true"></span>Alimentação
+      </a>
+      <a href="pages/produtos.html?segmento=interiores" class="area-link area-link--int">
+        <span class="area-link__dot" aria-hidden="true"></span>Interiores
+      </a>
+    </div>
+  </nav>
+
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav aria-label="Navegação mobile">
@@ -151,70 +173,65 @@
 
         <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
 
-          <a href="pages/produtos.html?segmento=area-externa" class="segment-card" aria-label="Área externa">
+          <a href="pages/produtos.html?segmento=area-externa" class="segment-card" data-seg="area-externa" aria-label="Área externa">
             <img class="segment-card__img"
               src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-area-externa.jpg"
-              alt="Móveis para área externa"
-              loading="lazy"
-              onerror="this.style.background='#E8E4DF'"
+              alt="Móveis para área externa" loading="lazy"
             />
             <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__tag" aria-hidden="true">Área Externa</span>
             <span class="segment-card__label">Área Externa</span>
             <span class="segment-card__arrow" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </a>
 
-          <a href="pages/produtos.html?segmento=educacional" class="segment-card" aria-label="Educacional">
+          <a href="pages/produtos.html?segmento=educacional" class="segment-card" data-seg="educacional" aria-label="Educacional">
             <img class="segment-card__img"
               src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-educacional.jpg"
-              alt="Móveis para ambientes educacionais"
-              loading="lazy"
-              onerror="this.style.background='#DDE8E4'"
+              alt="Móveis para ambientes educacionais" loading="lazy"
             />
             <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__tag" aria-hidden="true">Educacional</span>
             <span class="segment-card__label">Educacional</span>
             <span class="segment-card__arrow" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </a>
 
-          <a href="pages/produtos.html?segmento=corporativo" class="segment-card" aria-label="Corporativo">
+          <a href="pages/produtos.html?segmento=corporativo" class="segment-card" data-seg="corporativo" aria-label="Corporativo">
             <img class="segment-card__img"
               src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-corporativo.jpg"
-              alt="Móveis corporativos"
-              loading="lazy"
-              onerror="this.style.background='#E4DEE8'"
+              alt="Móveis corporativos" loading="lazy"
             />
             <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__tag" aria-hidden="true">Corporativo</span>
             <span class="segment-card__label">Corporativo</span>
             <span class="segment-card__arrow" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </a>
 
-          <a href="pages/produtos.html?segmento=alimentacao" class="segment-card" aria-label="Alimentação">
+          <a href="pages/produtos.html?segmento=alimentacao" class="segment-card" data-seg="alimentacao" aria-label="Alimentação">
             <img class="segment-card__img"
               src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-alimentacao.jpg"
-              alt="Móveis para restaurantes e gastronomia"
-              loading="lazy"
-              onerror="this.style.background='#E8E4DD'"
+              alt="Móveis para restaurantes e gastronomia" loading="lazy"
             />
             <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__tag" aria-hidden="true">Alimentação</span>
             <span class="segment-card__label">Alimentação</span>
             <span class="segment-card__arrow" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </a>
 
-          <a href="pages/produtos.html?segmento=interiores" class="segment-card" aria-label="Interiores">
+          <a href="pages/produtos.html?segmento=interiores" class="segment-card" data-seg="interiores" aria-label="Interiores">
             <img class="segment-card__img"
               src="https://novidario.com.br/wp-content/uploads/2024/08/segmento-interiores.jpg"
-              alt="Móveis para interiores"
-              loading="lazy"
-              onerror="this.style.background='#E4E8DD'"
+              alt="Móveis para interiores" loading="lazy"
             />
             <div class="segment-card__overlay" aria-hidden="true"></div>
+            <span class="segment-card__tag" aria-hidden="true">Interiores</span>
             <span class="segment-card__label">Interiores</span>
             <span class="segment-card__arrow" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
