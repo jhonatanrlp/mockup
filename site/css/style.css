@@ -28,29 +28,33 @@
   --seg-ext-tint:     #E8F5E9;
   --seg-ext-label:    "Área Externa";
 
-  /* Educacional — azul ensino */
-  --seg-edu:          #1565C0;
-  --seg-edu-dark:     #0D47A1;
-  --seg-edu-tint:     #E3F2FD;
-  --seg-edu-label:    "Educacional";
+  /* Escolar — azul ensino */
+  --seg-esc:          #1565C0;
+  --seg-esc-dark:     #0D47A1;
+  --seg-esc-tint:     #E3F2FD;
 
   /* Corporativo — cinza slate */
   --seg-corp:         #37474F;
   --seg-corp-dark:    #263238;
   --seg-corp-tint:    #ECEFF1;
-  --seg-corp-label:   "Corporativo";
 
   /* Alimentação — terra/caramelo */
   --seg-food:         #BF360C;
   --seg-food-dark:    #8D2407;
   --seg-food-tint:    #FBE9E7;
-  --seg-food-label:   "Alimentação";
 
-  /* Interiores — ameixa/vinho */
-  --seg-int:          #6A1B9A;
-  --seg-int-dark:     #4A148C;
-  --seg-int-tint:     #F3E5F5;
-  --seg-int-label:    "Interiores";
+  /* Residencial — ameixa/vinho */
+  --seg-res:          #6A1B9A;
+  --seg-res-dark:     #4A148C;
+  --seg-res-tint:     #F3E5F5;
+
+  /* Aliases de retrocompat (não quebra CSS já escrito) */
+  --seg-edu:    var(--seg-esc);
+  --seg-edu-dark: var(--seg-esc-dark);
+  --seg-edu-tint: var(--seg-esc-tint);
+  --seg-int:    var(--seg-res);
+  --seg-int-dark: var(--seg-res-dark);
+  --seg-int-tint: var(--seg-res-tint);
 
   /* Neutros */
   --color-white:         #FFFFFF;
@@ -107,10 +111,9 @@
   --container-max: 1280px;
   --container-pad: 1.5rem;
 
-  /* Header — altura base + barra de áreas */
-  --header-height:      80px;
-  --areas-bar-height:   40px;
-  --header-total:       120px; /* header + barra */
+  /* Header — uma única barra (igual ao original) */
+  --header-height:  80px;
+  --header-total:   80px; /* sem segunda barra */
 
   /* Bordas */
   --radius-sm:  4px;
@@ -357,17 +360,21 @@ p:last-child { margin-bottom: 0; }
 
 /* ── Badges por segmento ── */
 .badge--ext  { background-color: var(--seg-ext-tint);  color: var(--seg-ext-dark); }
-.badge--edu  { background-color: var(--seg-edu-tint);  color: var(--seg-edu-dark); }
+.badge--esc  { background-color: var(--seg-esc-tint);  color: var(--seg-esc-dark); }
+.badge--edu  { background-color: var(--seg-esc-tint);  color: var(--seg-esc-dark); } /* alias */
 .badge--corp { background-color: var(--seg-corp-tint); color: var(--seg-corp-dark); }
 .badge--food { background-color: var(--seg-food-tint); color: var(--seg-food-dark); }
-.badge--int  { background-color: var(--seg-int-tint);  color: var(--seg-int-dark); }
+.badge--res  { background-color: var(--seg-res-tint);  color: var(--seg-res-dark); }
+.badge--int  { background-color: var(--seg-res-tint);  color: var(--seg-res-dark); } /* alias */
 
 /* ── Card: acento de segmento (faixa superior) ── */
-.product-card[data-area="area-externa"]  { --card-accent: var(--seg-ext); }
-.product-card[data-area="educacional"]   { --card-accent: var(--seg-edu); }
-.product-card[data-area="corporativo"]   { --card-accent: var(--seg-corp); }
-.product-card[data-area="alimentacao"]   { --card-accent: var(--seg-food); }
-.product-card[data-area="interiores"]    { --card-accent: var(--seg-int); }
+.product-card[data-area="area-externa"] { --card-accent: var(--seg-ext); }
+.product-card[data-area="escolar"]      { --card-accent: var(--seg-esc); }
+.product-card[data-area="educacional"]  { --card-accent: var(--seg-esc); } /* alias */
+.product-card[data-area="corporativo"]  { --card-accent: var(--seg-corp); }
+.product-card[data-area="alimentacao"]  { --card-accent: var(--seg-food); }
+.product-card[data-area="residencial"]  { --card-accent: var(--seg-res); }
+.product-card[data-area="interiores"]   { --card-accent: var(--seg-res); } /* alias */
 
 .product-card[data-area]::before {
   content: '';
@@ -451,10 +458,12 @@ p:last-child { margin-bottom: 0; }
 .seg-pill.active        { background-color: var(--pill-color, var(--color-primary)); border-color: var(--pill-color, var(--color-primary)); color: #fff; }
 
 .seg-pill--ext  { --pill-color: var(--seg-ext); }
-.seg-pill--edu  { --pill-color: var(--seg-edu); }
+.seg-pill--esc  { --pill-color: var(--seg-esc); }
+.seg-pill--edu  { --pill-color: var(--seg-esc); } /* alias */
 .seg-pill--corp { --pill-color: var(--seg-corp); }
 .seg-pill--food { --pill-color: var(--seg-food); }
-.seg-pill--int  { --pill-color: var(--seg-int); }
+.seg-pill--res  { --pill-color: var(--seg-res); }
+.seg-pill--int  { --pill-color: var(--seg-res); } /* alias */
 
 /* ── Grid utilitários ── */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }

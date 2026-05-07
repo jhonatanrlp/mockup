@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo Novidário — 204 produtos para área externa, educacional, corporativo, alimentação e interiores." />
+  <meta name="description" content="Catálogo Novidário — 204 produtos para área externa, escolar, corporativo, alimentação e residencial." />
   <title>Produtos | Novidário</title>
   <link rel="icon" type="image/png" href="https://novidario.com.br/wp-content/uploads/2024/07/cropped-favicon-novidario.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,170 +14,205 @@
 </head>
 <body>
 
-  <!-- ═══ HEADER ═══ -->
+  <!-- ═══════════════════════════════════════
+       HEADER — igual ao original novidario.com.br
+  ═══════════════════════════════════════ -->
   <header class="header" id="header">
     <div class="header__inner">
-      <a href="../index.html" class="header__logo" aria-label="Novidário — início">
-        <svg width="150" height="34" viewBox="0 0 160 36" fill="none">
-          <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
-          <text x="30" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
-        </svg>
-      </a>
-      <nav class="header__nav" aria-label="Navegação principal">
-        <a href="produtos.html"  class="nav__link active">Produtos</a>
-        <a href="colecoes.html"  class="nav__link">Coleções</a>
-        <a href="downloads.html" class="nav__link">Downloads</a>
-        <a href="blog.html"      class="nav__link">Blog</a>
-        <a href="sobre.html"     class="nav__link">Sobre</a>
-        <a href="contato.html"   class="nav__link">Contato</a>
-      </nav>
-      <div class="header__actions">
-        <div class="header__search" role="search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="search" placeholder="Buscar produtos…" aria-label="Buscar produtos" id="search-input" />
+
+      <!-- Nav esquerda: Produtos · Coleções · Downloads · Áreas ▾ -->
+      <nav class="header__nav header__nav--left" aria-label="Navegação principal esquerda">
+        <a href="../produtos.html"  class="nav__link active">Produtos</a>
+        <a href="../colecoes.html"   class="nav__link">Coleções</a>
+        <a href="../downloads.html"    class="nav__link">Downloads</a>
+
+        <!-- Dropdown Áreas -->
+        <div class="nav__dropdown" id="nav-areas">
+          <button class="nav__dropdown-trigger" id="areas-trigger"
+                  aria-haspopup="true" aria-expanded="false"
+                  aria-controls="areas-panel">
+            Áreas
+            <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="nav__dropdown-panel" id="areas-panel" role="menu">
+            <p class="nav__dropdown-panel-header">Onde atuamos</p>
+            <a href="../produtos.html?segmento=area-externa" class="nav__area-item nav__area-item--ext" role="menuitem">
+              <span class="nav__area-dot" aria-hidden="true"></span>Área Externa
+            </a>
+            <a href="../produtos.html?segmento=escolar"      class="nav__area-item nav__area-item--esc" role="menuitem">
+              <span class="nav__area-dot" aria-hidden="true"></span>Escolar
+            </a>
+            <a href="../produtos.html?segmento=corporativo"  class="nav__area-item nav__area-item--corp" role="menuitem">
+              <span class="nav__area-dot" aria-hidden="true"></span>Corporativo
+            </a>
+            <a href="../produtos.html?segmento=alimentacao"  class="nav__area-item nav__area-item--food" role="menuitem">
+              <span class="nav__area-dot" aria-hidden="true"></span>Alimentação
+            </a>
+            <a href="../produtos.html?segmento=residencial"  class="nav__area-item nav__area-item--res" role="menuitem">
+              <span class="nav__area-dot" aria-hidden="true"></span>Residencial
+            </a>
+          </div>
         </div>
-        <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+      </nav>
+
+      <!-- Logo centralizado — wordmark laranja -->
+      <a href="../index.html" class="header__logo" aria-label="Novidário — início">
+        <span class="header__logo-mark">novidário</span>
+      </a>
+
+      <!-- Nav direita: Blog · Sobre · Contato + ações -->
+      <div class="header__nav header__nav--right">
+        <nav aria-label="Navegação principal direita">
+          <a href="../blog.html"    class="nav__link">Blog</a>
+          <a href="../sobre.html"   class="nav__link">Sobre</a>
+          <a href="../contato.html" class="nav__link">Contato</a>
+        </nav>
+
+        <!-- Ações: busca + carrinho -->
+        <div class="header__actions">
+          <!-- Botão de busca -->
+          <button class="header__search-btn" id="search-open-btn"
+                  aria-label="Abrir busca" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+
+          <!-- Carrinho / orçamento -->
+          <a href="../contato.html" class="header__cart-wrap" title="Solicitar orçamento" aria-label="Orçamento (0 itens)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span>0</span>
+          </a>
+
+          <!-- Hamburger mobile -->
+          <button class="header__hamburger" id="hamburger"
+                  aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
+
     </div>
   </header>
 
-  <!-- ═══ BARRA DE ÁREAS ═══ -->
-  <nav class="areas-bar" aria-label="Atalhos por segmento">
-    <div class="areas-bar__inner">
-      <span class="areas-bar__label">Áreas:</span>
-      <a href="?segmento=area-externa"
-         class="area-link area-link--ext"
-         data-area="area-externa">
-        <span class="area-link__dot" aria-hidden="true"></span>Área Externa
-      </a>
-      <a href="?segmento=educacional"
-         class="area-link area-link--edu"
-         data-area="educacional">
-        <span class="area-link__dot" aria-hidden="true"></span>Educacional
-      </a>
-      <a href="?segmento=corporativo"
-         class="area-link area-link--corp"
-         data-area="corporativo">
-        <span class="area-link__dot" aria-hidden="true"></span>Corporativo
-      </a>
-      <a href="?segmento=alimentacao"
-         class="area-link area-link--food"
-         data-area="alimentacao">
-        <span class="area-link__dot" aria-hidden="true"></span>Alimentação
-      </a>
-      <a href="?segmento=interiores"
-         class="area-link area-link--int"
-         data-area="interiores">
-        <span class="area-link__dot" aria-hidden="true"></span>Interiores
-      </a>
+  <!-- Overlay de busca -->
+  <div class="search-overlay" id="search-overlay" role="search" aria-label="Busca de produtos">
+    <div class="search-overlay__box">
+      <input class="search-overlay__input" id="search-input"
+             type="search" placeholder="Buscar produtos, coleções…"
+             aria-label="Buscar produtos" autocomplete="off" />
     </div>
-  </nav>
+  </div>
 
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav aria-label="Navegação mobile">
-      <a href="produtos.html"  class="nav__link">Produtos</a>
-      <a href="colecoes.html"  class="nav__link">Coleções</a>
-      <a href="downloads.html" class="nav__link">Downloads</a>
-      <a href="blog.html"      class="nav__link">Blog</a>
-      <a href="sobre.html"     class="nav__link">Sobre</a>
-      <a href="contato.html"   class="nav__link">Contato</a>
+      <a href="../produtos.html"    class="nav__link">Produtos</a>
+      <a href="../colecoes.html"     class="nav__link">Coleções</a>
+      <a href="../downloads.html"      class="nav__link">Downloads</a>
+      <a href="../blog.html"    class="nav__link">Blog</a>
+      <a href="../sobre.html"   class="nav__link">Sobre</a>
+      <a href="../contato.html" class="nav__link">Contato</a>
     </nav>
+    <div>
+      <p class="mobile-menu__areas-title">Áreas</p>
+      <a href="../produtos.html?segmento=area-externa" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>Área Externa
+      </a>
+      <a href="../produtos.html?segmento=escolar"      class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);display:inline-block;"></span>Escolar
+      </a>
+      <a href="../produtos.html?segmento=corporativo"  class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>Corporativo
+      </a>
+      <a href="../produtos.html?segmento=alimentacao"  class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>Alimentação
+      </a>
+      <a href="../produtos.html?segmento=residencial"  class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);display:inline-block;"></span>Residencial
+      </a>
+    </div>
   </div>
 
   <main class="page-content">
 
     <!-- Page hero compacto -->
-    <div class="page-hero" style="padding-block: 2.5rem 1.5rem;">
+    <div class="page-hero" style="padding-block: 2rem 1rem;">
       <div class="container">
         <span class="page-hero__label">Catálogo</span>
         <h1 class="page-hero__title" style="font-size:2rem;">Produtos</h1>
-        <p class="page-hero__subtitle">204 itens para espaços de convivência</p>
+        <p class="page-hero__subtitle">204 itens distribuídos em 5 áreas de atuação</p>
       </div>
     </div>
 
-    <section class="section" style="padding-top: 1rem;">
+    <section class="section" style="padding-top:1rem;">
       <div class="container">
 
-        <!-- ── PILLS DE ÁREA (atalho visual acima dos filtros) ── -->
-        <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1.5rem; align-items:center;">
-          <span style="font-size:.75rem; font-weight:600; color:#999; text-transform:uppercase; letter-spacing:.1em; margin-right:.25rem;">Filtrar por área:</span>
-          <button class="seg-pill seg-pill--ext" data-area="area-externa" aria-pressed="false">
-            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>
-            Área Externa
-          </button>
-          <button class="seg-pill seg-pill--edu" data-area="educacional" aria-pressed="false">
-            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-edu);display:inline-block;"></span>
-            Educacional
-          </button>
-          <button class="seg-pill seg-pill--corp" data-area="corporativo" aria-pressed="false">
-            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>
-            Corporativo
-          </button>
-          <button class="seg-pill seg-pill--food" data-area="alimentacao" aria-pressed="false">
-            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>
-            Alimentação
-          </button>
-          <button class="seg-pill seg-pill--int" data-area="interiores" aria-pressed="false">
-            <span style="width:6px;height:6px;border-radius:50%;background:var(--seg-int);display:inline-block;"></span>
-            Interiores
-          </button>
-        </div>
+        <div style="display:grid; grid-template-columns: 230px 1fr; gap:2rem; align-items:start;">
 
-        <div style="display:grid; grid-template-columns: 240px 1fr; gap: 2rem; align-items:start;">
-
-          <!-- ══ SIDEBAR DE FILTROS ══ -->
+          <!-- ══ SIDEBAR FILTROS ══ -->
           <aside aria-label="Filtros de produto">
             <div class="filters">
               <h2 class="filters__title">Filtrar</h2>
 
-              <!-- Coleção -->
+              <!-- Área de uso (multi-select) -->
               <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
-                  Coleção
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Área de uso
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Broto" /> Broto</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Origem" /> Origem</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pátio" /> Pátio</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Cipó" /> Cipó</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Jataí" /> Jataí</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trilha" /> Trilha</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trevo" /> Trevo</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Voa" /> Voa</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Less" /> Less</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pipa" /> Pipa</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Samba" /> Samba</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Asa" /> Asa</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Aramado" /> Aramado</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="area-externa" />
+                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);flex-shrink:0;display:inline-block;"></span>Área Externa</span>
+                  </label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="escolar" />
+                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);flex-shrink:0;display:inline-block;"></span>Escolar</span>
+                  </label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="corporativo" />
+                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);flex-shrink:0;display:inline-block;"></span>Corporativo</span>
+                  </label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="alimentacao" />
+                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);flex-shrink:0;display:inline-block;"></span>Alimentação</span>
+                  </label>
+                  <label class="filter-option"><input type="checkbox" data-filter="area" value="residencial" />
+                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);flex-shrink:0;display:inline-block;"></span>Residencial</span>
+                  </label>
                 </div>
               </div>
 
               <!-- Tipo de móvel -->
               <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
+                <div class="filter-group__title" role="button" tabindex="0">
                   Tipo de móvel
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
                   <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Cadeira" /> Cadeira</label>
                   <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Mesa" /> Mesa</label>
                   <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Banco" /> Banco</label>
                   <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Poltrona" /> Poltrona</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Lounge" /> Lounge / Sofá</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Banqueta" /> Banqueta</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Sofá" /> Sofá</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Chaise" /> Chaise</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Mesa de apoio" /> Mesa de apoio</label>
                   <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Estante" /> Estante / Armário</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Apoio" /> Mesa de apoio</label>
                 </div>
               </div>
 
               <!-- Material -->
               <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
+                <div class="filter-group__title" role="button" tabindex="0">
                   Material
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
                   <label class="filter-option"><input type="checkbox" data-filter="material" value="Madeira" /> Madeira</label>
@@ -185,26 +220,32 @@
                   <label class="filter-option"><input type="checkbox" data-filter="material" value="Aço" /> Aço</label>
                   <label class="filter-option"><input type="checkbox" data-filter="material" value="Estofado" /> Estofado</label>
                   <label class="filter-option"><input type="checkbox" data-filter="material" value="Reciclado" /> Plástico Reciclado</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Corda" /> Corda</label>
                 </div>
               </div>
 
-              <!-- Área (redundante, mas útil no sidebar) -->
+              <!-- Coleção -->
               <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0" aria-expanded="true">
-                  Área de uso
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Coleção
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="area-externa" /> Área Externa</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="educacional" /> Educacional</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="corporativo" /> Corporativo</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="alimentacao" /> Alimentação</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="interiores" /> Interiores</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Voa" /> Voa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Broto" /> Broto</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Origem" /> Origem</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Cipó" /> Cipó</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pátio" /> Pátio</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trilha" /> Trilha</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Jataí" /> Jataí</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Trevo" /> Trevo</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Samba" /> Samba</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Ponte" /> Ponte</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Pipa" /> Pipa</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Less" /> Less</label>
                 </div>
               </div>
 
-              <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:.5rem; display:none;">
+              <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:.5rem; display:none;" type="button">
                 Limpar filtros
               </button>
             </div>
@@ -213,18 +254,17 @@
           <!-- ══ ÁREA DE PRODUTOS ══ -->
           <div>
 
-            <!-- Barra de controles -->
+            <!-- Controles -->
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:.75rem;">
               <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;">
                 <p style="font-size:.875rem; color:#666;">
-                  <strong id="products-count">12 produtos</strong>
+                  <strong id="products-count">36 produtos</strong>
                 </p>
-                <!-- Chips de filtros ativos -->
                 <div class="active-filters" id="active-filters" aria-live="polite" aria-label="Filtros ativos"></div>
               </div>
               <div style="display:flex; gap:.5rem; align-items:center;">
                 <label for="sort-select" class="sr-only">Ordenação</label>
-                <select id="sort-select" class="form-select" style="height:36px; font-size:.8rem; padding:0 .75rem;">
+                <select id="sort-select" class="form-select" style="height:36px;font-size:.8rem;padding:0 .75rem;">
                   <option value="default">Padrão</option>
                   <option value="recent">Mais recentes</option>
                   <option value="az">Nome A–Z</option>
@@ -233,248 +273,403 @@
               </div>
             </div>
 
-            <!-- Grid de produtos com data-* -->
+            <!-- ── GRID COM 36 PRODUTOS REAIS ── -->
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem;" id="products-grid">
 
-              <!-- ─── Educacional / Madeira / Broto ─── -->
-              <article class="product-card"
-                data-area="educacional"
-                data-material="Madeira"
-                data-colecao="Broto"
-                data-tipo="Mesa">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-broto-600x600.jpg" alt="Mesa Broto" loading="lazy" />
-                </a>
-                <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Broto</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Mesa Broto</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--edu">Educacional</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-              </article>
+              <!-- ═══ ÁREA EXTERNA ═══ -->
 
-              <!-- ─── Educacional / Madeira / Broto ─── -->
-              <article class="product-card"
-                data-area="educacional"
-                data-material="Madeira"
-                data-colecao="Broto"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-broto-600x600.jpg" alt="Cadeira Broto" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-asa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/01/Cadeira-Asa_Still_Novidade-600x600.jpg" alt="Cadeira Asa" loading="lazy" />
                   <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Broto</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Broto</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--edu">Educacional</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Voa</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-asa/" target="_blank" rel="noopener">Cadeira Asa</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-asa/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Interiores / Estofado / Asa ─── -->
-              <article class="product-card"
-                data-area="interiores"
-                data-material="Estofado"
-                data-colecao="Asa"
-                data-tipo="Poltrona">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/poltrona-asa-600x600.jpg" alt="Poltrona Asa" loading="lazy" />
-                </a>
-                <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Asa</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Poltrona Asa</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--int">Interiores</span>
-                    <span class="badge">Estofado</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-              </article>
-
-              <!-- ─── Área externa / Aço / Cipó ─── -->
-              <article class="product-card"
-                data-area="area-externa"
-                data-material="Aço"
-                data-colecao="Cipó"
-                data-tipo="Banco">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-coletivo-curvo-cipo-600x600.jpg" alt="Banco Coletivo Curvo Cipó" loading="lazy" />
-                </a>
-                <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Cipó</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Banco Coletivo Curvo Cipó</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--ext">Área Externa</span>
-                    <span class="badge">Aço</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-              </article>
-
-              <!-- ─── Educacional / Madeira / Origem ─── -->
-              <article class="product-card"
-                data-area="educacional"
-                data-material="Madeira"
-                data-colecao="Origem"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-origem-600x600.jpg" alt="Cadeira Origem" loading="lazy" />
-                </a>
-                <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Origem</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Origem</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--edu">Educacional</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-              </article>
-
-              <!-- ─── Alimentação / Madeira / Voa ─── -->
-              <article class="product-card"
-                data-area="alimentacao"
-                data-material="Madeira"
-                data-colecao="Voa"
-                data-tipo="Mesa">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-redonda-voa-600x600.jpg" alt="Mesa Redonda Voa" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Poltrona">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-asa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/01/Poltrona-Asa_Still_Site_Novidade-600x600.jpg" alt="Poltrona Asa" loading="lazy" />
                   <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Voa</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Mesa Redonda Voa</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--food">Alimentação</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Voa</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-asa/" target="_blank" rel="noopener">Poltrona Asa</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-asa/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Corporativo / Alumínio / Trevo ─── -->
-              <article class="product-card"
-                data-area="corporativo"
-                data-material="Alumínio"
-                data-colecao="Trevo"
-                data-tipo="Mesa">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-quadrada-trevo-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-voa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/01/Mesa-redonda-Voa_Still_Site_Novidade-600x600.jpg" alt="Mesa Redonda Voa" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Trevo</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Mesa Quadrada Trevo</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--corp">Corporativo</span>
-                    <span class="badge">Alumínio</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Voa</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-voa/" target="_blank" rel="noopener">Mesa Redonda Voa</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-voa/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Corporativo / Alumínio / Jataí ─── -->
-              <article class="product-card"
-                data-area="corporativo"
-                data-material="Alumínio"
-                data-colecao="Jataí"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-jatai-600x600.jpg" alt="Cadeira Jataí" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-voa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/01/Mesa-quadrada-Voa_Still_Site_Novidade-600x600.jpg" alt="Mesa Quadrada Voa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Jataí</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Jataí</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--corp">Corporativo</span>
-                    <span class="badge">Alumínio</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Voa</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-voa/" target="_blank" rel="noopener">Mesa Quadrada Voa</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-voa/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Corporativo / Madeira / Less ─── -->
-              <article class="product-card"
-                data-area="corporativo"
-                data-material="Madeira"
-                data-colecao="Less"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-uma-600x600.jpg" alt="Cadeira Uma" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Aço,Madeira" data-colecao="Cipó" data-tipo="Banco">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-curvo-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-coletivo-curvo-cipo-chamada-600x600.jpg" alt="Banco Coletivo Curvo Cipó" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Less</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Uma</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--corp">Corporativo</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Cipó</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-curvo-cipo/" target="_blank" rel="noopener">Banco Coletivo Curvo Cipó</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Aço</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-curvo-cipo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Área externa / Reciclado / Pipa ─── -->
-              <article class="product-card"
-                data-area="area-externa"
-                data-material="Reciclado"
-                data-colecao="Pipa"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-pipa-600x600.jpg" alt="Cadeira Pipa" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Aço,Madeira" data-colecao="Cipó" data-tipo="Banco">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/04/min_Banco-Individual-Cipo-600x600.jpg" alt="Banco Cipó" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Pipa</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Pipa</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--ext">Área Externa</span>
-                    <span class="badge">Reciclado</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Cipó</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-cipo/" target="_blank" rel="noopener">Banco Cipó</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Aço</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-cipo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Área externa / Alumínio / Trilha ─── -->
-              <article class="product-card"
-                data-area="area-externa"
-                data-material="Alumínio"
-                data-colecao="Trilha"
-                data-tipo="Banco">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/banco-trilha-600x600.jpg" alt="Banco Trilha" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-patio-miniatura-600x600.jpeg" alt="Cadeira Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Trilha</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Banco Trilha</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--ext">Área Externa</span>
-                    <span class="badge">Alumínio</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-patio/" target="_blank" rel="noopener">Cadeira Pátio</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-patio/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
-              <!-- ─── Alimentação / Madeira / Samba ─── -->
-              <article class="product-card"
-                data-area="alimentacao"
-                data-material="Madeira"
-                data-colecao="Samba"
-                data-tipo="Cadeira">
-                <a href="produto-detail.html" class="product-card__image-wrap">
-                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/cadeira-samba-600x600.jpg" alt="Cadeira Samba" loading="lazy" />
+              <article class="product-card" data-area="area-externa" data-material="Alumínio,Estofado" data-colecao="Pátio" data-tipo="Sofá">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/05/miniatura_sofa-patio_lancamento-600x600.jpg" alt="Sofá Pátio" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
                 </a>
                 <div class="product-card__body">
-                  <span class="product-card__collection">Coleção Samba</span>
-                  <h3 class="product-card__name"><a href="produto-detail.html">Cadeira Samba</a></h3>
-                  <div class="product-card__tags">
-                    <span class="badge badge--food">Alimentação</span>
-                    <span class="badge">Madeira</span>
-                  </div>
-                  <a href="produto-detail.html" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-patio/" target="_blank" rel="noopener">Sofá Pátio</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-patio/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/05/mesa-redonda-patio-100_miniatura_lancamento-600x600.jpg" alt="Mesa Redonda Pátio 100" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener">Mesa Redonda Pátio 100</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-2-lugares/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-piquenique-trilha-2-lugares-chamada-600x600.jpg" alt="Mesa Piquenique Trilha 2 Lugares" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trilha</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-2-lugares/" target="_blank" rel="noopener">Mesa Piquenique Trilha 2 Lugares</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-2-lugares/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa de apoio">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-auxiliar-trilha/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/12/Mesas-auxiliares-Trilha_Still-600x600.jpg" alt="Mesa Auxiliar Trilha" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trilha</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-auxiliar-trilha/" target="_blank" rel="noopener">Mesa Auxiliar Trilha</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-auxiliar-trilha/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="area-externa" data-material="Madeira,Aço" data-colecao="Origem" data-tipo="Banco">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-origem-lynx/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-origem-lynx-miniatura-600x600.jpg" alt="Banco Origem Lynx" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Origem</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-origem-lynx/" target="_blank" rel="noopener">Banco Origem Lynx</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--ext">Área Externa</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-origem-lynx/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <!-- ═══ ESCOLAR ═══ -->
+
+              <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Broto" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-broto/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/04/Cadeiras-Broto_Still_Novidade-600x600.jpg" alt="Cadeira Broto" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Broto</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-broto/" target="_blank" rel="noopener">Cadeira Broto</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-broto/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Broto" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/mesas/mesa-infantil/mesa-broto/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2026/05/Mesas-Broto_Still_Novidade-600x600.jpg" alt="Mesa Broto" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Broto</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/mesas/mesa-infantil/mesa-broto/" target="_blank" rel="noopener">Mesa Broto</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/mesas/mesa-infantil/mesa-broto/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Origem" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-origem/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-origem-miniatura-600x600.jpg" alt="Cadeira Origem" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Origem</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-origem/" target="_blank" rel="noopener">Cadeira Origem</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-origem/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Origem" data-tipo="Poltrona">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-infantil-origem/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/10/Poltrona-Origem-miniatura-600x600.jpg" alt="Poltrona Infantil Origem" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Origem</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-infantil-origem/" target="_blank" rel="noopener">Poltrona Infantil Origem</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-infantil-origem/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Madeira,Estofado" data-colecao="Jataí" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-jatai/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/jatai-turquesa-e-medit.jpg" alt="Cadeira Jataí" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Jataí</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-jatai/" target="_blank" rel="noopener">Cadeira Jataí</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-jatai/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-infantil-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/02/Cadeira-Patio-Infantil-miniatura-600x600.jpg" alt="Cadeira Infantil Pátio" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-infantil-patio/" target="_blank" rel="noopener">Cadeira Infantil Pátio</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-infantil-patio/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="escolar" data-material="Madeira,Aço" data-colecao="Cipó" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/04/min_mesa_piquenique-600x600.jpg" alt="Mesa Piquenique Cipó" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Cipó</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-cipo/" target="_blank" rel="noopener">Mesa Piquenique Cipó</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--esc">Escolar</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-cipo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <!-- ═══ CORPORATIVO ═══ -->
+
+              <article class="product-card" data-area="corporativo" data-material="Madeira,Estofado" data-colecao="Samba" data-tipo="Poltrona">
+                <a href="https://novidario.com.br/produtos/assentos-individuais/poltronas-assentos-individuais/poltrona-samba-com-prancheta/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/10/poltrona-samba-com-prancheta_miniatura-600x600.jpeg" alt="Poltrona Samba com Prancheta" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Samba</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/assentos-individuais/poltronas-assentos-individuais/poltrona-samba-com-prancheta/" target="_blank" rel="noopener">Poltrona Samba com Prancheta</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--corp">Corporativo</span><span class="badge">Estofado</span></div>
+                  <a href="https://novidario.com.br/produtos/assentos-individuais/poltronas-assentos-individuais/poltrona-samba-com-prancheta/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="corporativo" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-restaurante-Trevo-miniatura-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trevo</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener">Mesa Quadrada Trevo</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--corp">Corporativo</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="corporativo" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-retangular-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-Retangular-Trevo-miniatura-600x600.jpg" alt="Mesa Retangular Trevo" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trevo</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-retangular-trevo/" target="_blank" rel="noopener">Mesa Retangular Trevo</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--corp">Corporativo</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-retangular-trevo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <!-- ═══ ALIMENTAÇÃO ═══ -->
+
+              <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-com-braco-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-com-braco-patio-miniatura-600x600.jpeg" alt="Cadeira com Braço Pátio" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-com-braco-patio/" target="_blank" rel="noopener">Cadeira com Braço Pátio</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--food">Alimentação</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-com-braco-patio/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-restaurante-Trevo-miniatura-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trevo</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener">Mesa Quadrada Trevo</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--food">Alimentação</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/05/mesa-redonda-patio-100_miniatura_lancamento-600x600.jpg" alt="Mesa Redonda Pátio 100" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Pátio</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener">Mesa Redonda Pátio 100</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--food">Alimentação</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="alimentacao" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-4-lugares/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-piquenique-trilha-chamada-600x600.jpg" alt="Mesa Piquenique Trilha 4 Lugares" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Trilha</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-4-lugares/" target="_blank" rel="noopener">Mesa Piquenique Trilha 4 Lugares</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--food">Alimentação</span><span class="badge">Alumínio</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-4-lugares/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <!-- ═══ RESIDENCIAL ═══ -->
+
+              <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Sofá">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-dois-lugares-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/09/miniatura-sofa-2l-ponte-600x600.png" alt="Sofá 2 Lugares Ponte" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Ponte</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-dois-lugares-ponte/" target="_blank" rel="noopener">Sofá 2 Lugares Ponte</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--res">Residencial</span><span class="badge">Estofado</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-dois-lugares-ponte/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Sofá">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/11/miniatura-sofa-3L-ponte-novidade-600x600.jpg" alt="Sofá 3 Lugares Ponte" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Ponte</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener">Sofá 3 Lugares Ponte</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--res">Residencial</span><span class="badge">Estofado</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Poltrona">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/11/poltrona-ponte-chamada-novidade-1-600x600.jpg" alt="Poltrona Ponte" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Ponte</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-ponte/" target="_blank" rel="noopener">Poltrona Ponte</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--res">Residencial</span><span class="badge">Estofado</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-ponte/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Chaise">
+                <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2025/11/Chasie-Ponte-Still-novidade-1-600x600.jpg" alt="Chaise Ponte" loading="lazy" />
+                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Ponte</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener">Chaise Ponte</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--res">Residencial</span><span class="badge">Estofado</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+              </article>
+
+              <article class="product-card" data-area="residencial" data-material="Madeira,Aço" data-colecao="Cipó" data-tipo="Mesa de apoio">
+                <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-lateral-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+                  <img src="https://novidario.com.br/wp-content/uploads/2024/09/Mesa-Lateral-Cipo-chamada-600x600.jpg" alt="Mesa Lateral Cipó" loading="lazy" />
+                </a>
+                <div class="product-card__body">
+                  <span class="product-card__collection">Cipó</span>
+                  <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-lateral-cipo/" target="_blank" rel="noopener">Mesa Lateral Cipó</a></h3>
+                  <div class="product-card__tags"><span class="badge badge--res">Residencial</span><span class="badge">Madeira</span></div>
+                  <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-lateral-cipo/" target="_blank" rel="noopener" class="product-card__cta">Ver produto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
               </article>
 
@@ -482,22 +677,22 @@
               <div class="no-results" id="no-results" aria-live="assertive">
                 <div class="no-results__icon">🔍</div>
                 <p class="no-results__title">Nenhum produto encontrado</p>
-                <p style="font-size:.875rem; color:#999; margin-bottom:1rem;">Tente combinar filtros diferentes ou limpe os filtros ativos.</p>
-                <button class="btn btn--outline" onclick="document.getElementById('clear-filters').click()">Limpar filtros</button>
+                <p style="font-size:.875rem; color:#999; margin-bottom:1rem;">Tente remover algum filtro para ver mais resultados.</p>
+                <button class="btn btn--outline" onclick="document.getElementById('clear-filters').click()" type="button">Limpar filtros</button>
               </div>
 
             </div><!-- /products-grid -->
 
-            <!-- Paginação -->
-            <nav class="pagination" aria-label="Paginação">
-              <a href="#" class="pagination__btn" aria-label="Anterior">‹</a>
-              <a href="#" class="pagination__btn active" aria-current="page">1</a>
-              <a href="#" class="pagination__btn">2</a>
-              <a href="#" class="pagination__btn">3</a>
-              <span class="pagination__btn" style="border:none;color:#999;">…</span>
-              <a href="#" class="pagination__btn">17</a>
-              <a href="#" class="pagination__btn" aria-label="Próxima">›</a>
-            </nav>
+            <!-- CTA para o site real — 204 produtos -->
+            <div style="text-align:center; margin-top:2.5rem; padding:2rem; background:#F7F5F2; border-radius:12px; border:1px dashed #E5E0DA;">
+              <p style="font-size:.875rem; color:#666; margin-bottom:.75rem;">
+                Exibindo <strong>36 produtos</strong> neste mockup — o catálogo real tem <strong>204 itens</strong>.
+              </p>
+              <a href="https://novidario.com.br/produtos/" target="_blank" rel="noopener" class="btn btn--primary">
+                Ver todos os 204 produtos no site oficial
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
 
           </div><!-- /área de produtos -->
         </div>
@@ -506,7 +701,6 @@
 
   </main>
 
-  <!-- Footer simplificado -->
   <footer class="footer">
     <div class="container">
       <div style="padding-block:2rem; border-top:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
@@ -517,6 +711,7 @@
   </footer>
 
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+  <script src="../js/catalogo.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

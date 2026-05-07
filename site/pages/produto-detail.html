@@ -14,33 +14,55 @@
 </head>
 <body>
 
+  <!-- ═══ HEADER ═══ -->
   <header class="header" id="header">
     <div class="header__inner">
-      <a href="../index.html" class="header__logo">
-        <svg width="160" height="36" viewBox="0 0 160 36" fill="none">
-          <path d="M14 8 L6 18 L14 28 L22 18 Z" fill="#E85D20"/>
-          <text x="30" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#2C2C2C" letter-spacing="0.5">novidário</text>
-        </svg>
-      </a>
-      <nav class="header__nav">
+      <nav class="header__nav header__nav--left">
         <a href="produtos.html"  class="nav__link active">Produtos</a>
         <a href="colecoes.html"  class="nav__link">Coleções</a>
         <a href="downloads.html" class="nav__link">Downloads</a>
-        <a href="blog.html"      class="nav__link">Blog</a>
-        <a href="sobre.html"     class="nav__link">Sobre</a>
-        <a href="contato.html"   class="nav__link">Contato</a>
-      </nav>
-      <div class="header__actions">
-        <div class="header__search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="search" placeholder="Buscar produtos…" id="search-input" />
+        <div class="nav__dropdown" id="nav-areas">
+          <button class="nav__dropdown-trigger" id="areas-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="areas-panel">
+            Áreas <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="nav__dropdown-panel" id="areas-panel" role="menu">
+            <p class="nav__dropdown-panel-header">Onde atuamos</p>
+            <a href="produtos.html?segmento=area-externa" class="nav__area-item nav__area-item--ext" role="menuitem"><span class="nav__area-dot"></span>Área Externa</a>
+            <a href="produtos.html?segmento=escolar"      class="nav__area-item nav__area-item--esc" role="menuitem"><span class="nav__area-dot"></span>Escolar</a>
+            <a href="produtos.html?segmento=corporativo"  class="nav__area-item nav__area-item--corp" role="menuitem"><span class="nav__area-dot"></span>Corporativo</a>
+            <a href="produtos.html?segmento=alimentacao"  class="nav__area-item nav__area-item--food" role="menuitem"><span class="nav__area-dot"></span>Alimentação</a>
+            <a href="produtos.html?segmento=residencial"  class="nav__area-item nav__area-item--res" role="menuitem"><span class="nav__area-dot"></span>Residencial</a>
+          </div>
         </div>
-        <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+      </nav>
+      <a href="../index.html" class="header__logo" aria-label="Novidário — início">
+        <span class="header__logo-mark">novidário</span>
+      </a>
+      <div class="header__nav header__nav--right">
+        <nav>
+          <a href="blog.html"     class="nav__link">Blog</a>
+          <a href="sobre.html"    class="nav__link">Sobre</a>
+          <a href="contato.html"  class="nav__link">Contato</a>
+        </nav>
+        <div class="header__actions">
+          <button class="header__search-btn" id="search-open-btn" aria-label="Abrir busca">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="contato.html" class="header__cart-wrap" title="Solicitar orçamento">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>0</span>
+          </a>
+          <button class="header__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
       </div>
     </div>
   </header>
+
+  <div class="search-overlay" id="search-overlay" role="search">
+    <div class="search-overlay__box">
+      <input class="search-overlay__input" id="search-input" type="search" placeholder="Buscar produtos, coleções…" autocomplete="off" />
+    </div>
+  </div>
 
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav>
@@ -51,6 +73,14 @@
       <a href="sobre.html"     class="nav__link">Sobre</a>
       <a href="contato.html"   class="nav__link">Contato</a>
     </nav>
+    <div>
+      <p class="mobile-menu__areas-title">Áreas</p>
+      <a href="produtos.html?segmento=area-externa" class="mobile-menu__area-link"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>Área Externa</a>
+      <a href="produtos.html?segmento=escolar"      class="mobile-menu__area-link"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);display:inline-block;"></span>Escolar</a>
+      <a href="produtos.html?segmento=corporativo"  class="mobile-menu__area-link"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>Corporativo</a>
+      <a href="produtos.html?segmento=alimentacao"  class="mobile-menu__area-link"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>Alimentação</a>
+      <a href="produtos.html?segmento=residencial"  class="mobile-menu__area-link"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);display:inline-block;"></span>Residencial</a>
+    </div>
   </div>
 
   <main class="page-content">

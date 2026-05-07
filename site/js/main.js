@@ -54,18 +54,21 @@
   }
 
   /* ══════════════════════════════════════════
-     HEADER — área ativa na areas-bar
+     DROPDOWN ÁREAS — toggle / fecha ao clicar fora / ESC
   ══════════════════════════════════════════ */
-  (function markActiveArea() {
-    const params = getParams();
-    const segParam = params.get('segmento');
-    if (!segParam) return;
-    document.querySelectorAll('.area-link').forEach(link => {
-      const href = link.getAttribute('href') || '';
-      if (href.includes(`segmento=${segParam}`)) {
-        link.classList.add('active');
-      }
-    });
+  (function initAreasDropdown() {
+    const dropdown = document.getElementById('nav-areas');
+    const trigger  = document.getElementById('areas-trigger');
+    const panel    = document.getElementById('areas-panel');
+    if (!dropdown || !trigger || !panel) return;
+
+    const open  = () => { dropdown.classList.add('open');    trigger.setAttribute('aria-expanded','true'); };
+    const close = () => { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); };
+
+    trigger.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.contains('open') ? close() : open(); });
+    document.addEventListener('click', e => { if (!dropdown.contains(e.target)) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   })();
 
   /* ══════════════════════════════════════════
@@ -90,6 +93,49 @@
       });
     });
   }
+
+  /* ══════════════════════════════════════════
+     SEARCH OVERLAY — abre com botão / fecha com ESC ou clique fora
+  ══════════════════════════════════════════ */
+  (function initSearch() {
+    const openBtn  = document.getElementById('search-open-btn');
+    const overlay  = document.getElementById('search-overlay');
+    const input    = document.getElementById('search-input');
+    if (!openBtn || !overlay || !input) return;
+
+    function openSearch() {
+      overlay.classList.add('open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => input.focus(), 50);
+    }
+    function closeSearch() {
+      overlay.classList.remove('open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openSearch);
+
+    /* Fecha clicando no fundo escuro */
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeSearch();
+    });
+
+    /* Fecha com ESC */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeSearch();
+    });
+
+    /* Enter busca */
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && input.value.trim()) {
+        const isRoot = !window.location.pathname.includes('/pages/');
+        const base   = isRoot ? 'pages/produtos.html' : 'produtos.html';
+        window.location.href = `${base}?q=${encodeURIComponent(input.value.trim())}`;
+      }
+    });
+  })();
 
   /* ══════════════════════════════════════════
      YEAR no footer
