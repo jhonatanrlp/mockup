@@ -1710,11 +1710,15 @@
   /* ══ HEADER MOBILE ══
      Mostra: logo centralizado + botão hambúrguer
      Esconde: todas as navs desktop                */
-  .header__nav--left    { display: none; }
-  .header__nav--util    { display: none; }
+  .header__nav--left          { display: none !important; }
+
+  /* Especificidade dupla para vencer .header__nav--right > nav */
+  .header__nav--right > nav,
+  .header__nav--right .header__nav--util { display: none !important; }
+
   .header__search-btn,
-  .header__cart-wrap    { display: none; }
-  .header__hamburger    { display: flex; }
+  .header__cart-wrap          { display: none !important; }
+  .header__hamburger          { display: flex; }
 
   /* Grid: [vazio] [logo] [hamburger] */
   .header__inner {
