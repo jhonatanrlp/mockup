@@ -21,16 +21,17 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Grid 3 colunas: [nav-esq] [logo-centro] [nav-dir + ações] */
+/* Grid 3 colunas: [nav-esq] [logo-centro] [nav-dir + ações]
+   minmax(0,1fr) força o conteúdo a nunca vazar para fora da coluna */
 .header__inner {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   height: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--container-pad);
-  gap: var(--space-4);
+  gap: 1rem;
 }
 
 /* ── Logo centralizado ── */
@@ -55,15 +56,74 @@
   gap: 0;
 }
 
-.header__nav--left  { justify-self: start; }
+.header__nav--left {
+  justify-self: start;
+  flex-wrap: nowrap;
+  overflow: hidden;    /* nunca vaza para fora da coluna */
+  min-width: 0;
+  gap: 0;
+}
+
 .header__nav--right {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0;
   justify-self: end;
+  min-width: 0;
 }
 
-/* ── Links de nav ── */
+/* ▶ BUG FIX CRÍTICO: <nav> dentro do right-nav é block por padrão.
+   Precisa ser inline-flex para os links ficarem na mesma linha
+   que os botões de ação (search, cart, hamburger).          */
+.header__nav--right > nav {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Links de área (esquerda) — especificidade dupla para vencer .nav__link ── */
+.nav__link.nav__link--area {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: var(--space-2) 0.5rem;
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  letter-spacing: 0;
+}
+
+/* Sublinhado colorido por área */
+.nav__link--ext::after  { background-color: var(--seg-ext); }
+.nav__link--esc::after  { background-color: var(--seg-esc); }
+.nav__link--corp::after { background-color: var(--seg-corp); }
+.nav__link--food::after { background-color: var(--seg-food); }
+.nav__link--res::after  { background-color: var(--seg-res); }
+
+/* Hover/active das áreas — cor por segmento */
+.nav__link.nav__link--ext:hover,  .nav__link.nav__link--ext.active  { color: var(--seg-ext); }
+.nav__link.nav__link--esc:hover,  .nav__link.nav__link--esc.active  { color: var(--seg-esc); }
+.nav__link.nav__link--corp:hover, .nav__link.nav__link--corp.active { color: var(--seg-corp); }
+.nav__link.nav__link--food:hover, .nav__link.nav__link--food.active { color: var(--seg-food); }
+.nav__link.nav__link--res:hover,  .nav__link.nav__link--res.active  { color: var(--seg-res); }
+
+/* Dot desativado — sem dot, mais limpo */
+.nav__area-dot-sm { display: none; }
+
+/* Separador vertical entre grupos de nav */
+.nav__sep {
+  width: 1px;
+  height: 18px;
+  background: var(--color-divider);
+  margin: 0 var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ── Links de nav base ── */
 .nav__link {
   position: relative;
   padding: var(--space-2) var(--space-3);
@@ -79,7 +139,7 @@
 .nav__link::after {
   content: '';
   position: absolute;
-  bottom: -1px;          /* rente à border-bottom do header */
+  bottom: -1px;
   left: var(--space-3);
   right: var(--space-3);
   height: 2px;
@@ -92,6 +152,24 @@
 .nav__link.active { color: var(--color-primary); }
 .nav__link:hover::after,
 .nav__link.active::after { transform: scaleX(1); }
+
+/* ── Links utilitários (direita) — especificidade dupla para vencer .nav__link ── */
+.nav__link.nav__link--util {
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  padding: var(--space-2) 0.5rem;
+  letter-spacing: 0;
+}
+.nav__link.nav__link--util::after { background-color: var(--color-text-muted); }
+.nav__link.nav__link--util:hover  { color: var(--color-text); }
+.nav__link.nav__link--util.active { color: var(--color-primary); font-weight: var(--fw-semibold); }
+
+/* ── Container do nav utilitário ── */
+.header__nav--util {
+  display: inline-flex;
+  align-items: center;
+}
 
 /* ══════════════════════════════════════════
    DROPDOWN "ÁREAS" — no nav esquerdo
@@ -655,10 +733,37 @@
   transform: scale(1.05);
 }
 
+/* badge genérico — posição reservada, usado por outros contextos */
 .product-card__badge {
   position: absolute;
   top: var(--space-3);
   left: var(--space-3);
+  z-index: 3;
+}
+
+/* ── Etiqueta de coleção — presa na borda direita da imagem ── */
+.product-card__col-tag {
+  position: absolute;
+  top: 1rem;
+  right: 0;           /* cola na borda direita */
+  z-index: 2;
+
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-size: 9.5px;
+  font-weight: var(--fw-extra);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px 5px 12px;
+
+  /* Lado direito reto (preso na borda) · esquerdo arredondado */
+  border-radius: 3px 0 0 3px;
+
+  /* Pequena sombra só no lado esquerdo para dar profundidade */
+  box-shadow: -2px 2px 6px rgba(0,0,0,.22);
+
+  user-select: none;
+  line-height: 1.4;
 }
 
 .product-card__actions {
@@ -705,11 +810,11 @@
 }
 
 .product-card__collection {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-text-muted);  /* cinza discreto — o col-tag já faz o trabalho visual */
 }
 
 .product-card__name {
@@ -1266,6 +1371,50 @@
   cursor: pointer;
 }
 
+/* ── Filtros específicos por área (ocultos até a área ser selecionada) ── */
+.filter-group--area-specific {
+  display: none;
+  border-left: 3px solid var(--area-accent-color, var(--color-primary));
+  padding-left: var(--space-3);
+  margin-left: calc(-1 * var(--space-3));
+  animation: fadeIn 0.2s ease;
+}
+
+.filter-group--area-specific.visible {
+  display: block;
+}
+
+.filter-group--area-specific[data-area-filter="area-externa"] {
+  --area-accent-color: var(--seg-ext);
+}
+.filter-group--area-specific[data-area-filter="escolar"] {
+  --area-accent-color: var(--seg-esc);
+}
+.filter-group--area-specific[data-area-filter="corporativo"] {
+  --area-accent-color: var(--seg-corp);
+}
+.filter-group--area-specific[data-area-filter="alimentacao"] {
+  --area-accent-color: var(--seg-food);
+}
+.filter-group--area-specific[data-area-filter="residencial"] {
+  --area-accent-color: var(--seg-res);
+}
+
+/* Rótulo "Filtros de [Área]" antes dos filtros específicos */
+.filter-area-label {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--area-accent-color, var(--color-primary));
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-divider);
+  display: none;
+}
+
+.filter-area-label.visible { display: block; }
+
 .filter-option:hover { color: var(--color-primary); }
 
 /* ══════════════════════════════════════════
@@ -1536,6 +1685,14 @@
 /* ══════════════════════════════════════════
    RESPONSIVE OVERRIDES (components)
 ══════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  /* Header: 5 areas ficam menores no tablet */
+  .nav__link--area {
+    font-size: 11.5px;
+    padding: var(--space-2) 0.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
@@ -1544,26 +1701,40 @@
   .product-detail__layout {
     grid-template-columns: 1fr;
   }
+
+  /* Header tablet: compacto mas ainda visível */
+  .header__logo-mark { font-size: 1.15rem; }
+  .nav__link--area   { font-size: 10.5px; padding: var(--space-2) 0.38rem; }
+  .nav__link--util   { font-size: 11px;   padding: var(--space-2) 0.38rem; }
+  .nav__sep          { margin: 0 2px; }
+  .header__inner     { gap: 0.4rem; }
 }
 
 @media (max-width: 768px) {
-  /* ── Header ── */
-  .header__nav,
-  .header__search {
-    display: none;
-  }
+  /* ══ HEADER MOBILE ══
+     Mostra: logo centralizado + botão hambúrguer
+     Esconde: todas as navs desktop                */
+  .header__nav--left    { display: none; }
+  .header__nav--util    { display: none; }
+  .header__search-btn,
+  .header__cart-wrap    { display: none; }
+  .header__hamburger    { display: flex; }
 
-  .header__hamburger {
-    display: flex;
-  }
-
-  /* Header inner: logo + hamburger side by side */
+  /* Grid: [vazio] [logo] [hamburger] */
   .header__inner {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 44px 1fr 44px;
+    gap: 0;
+    padding-inline: 1rem;
   }
-  .header__nav--left  { display: none; }
-  .header__nav--right { justify-self: end; }
-  .header__logo       { justify-self: center; grid-column: 2; }
+  .header__logo {
+    justify-self: center;
+    grid-column: 2;
+  }
+  .header__nav--right {
+    justify-self: end;
+    grid-column: 3;
+    gap: 0;
+  }
 
   /* ── Footer ── */
   .footer__grid { grid-template-columns: 1fr; }

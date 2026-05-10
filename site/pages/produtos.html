@@ -15,65 +15,56 @@
 <body>
 
   <!-- ═══════════════════════════════════════
-       HEADER — igual ao original novidario.com.br
+       HEADER
   ═══════════════════════════════════════ -->
   <header class="header" id="header">
     <div class="header__inner">
 
-      <!-- Nav esquerda: Produtos · Coleções · Downloads · Áreas ▾ -->
-      <nav class="header__nav header__nav--left" aria-label="Navegação principal esquerda">
-        <a href="../produtos.html"  class="nav__link active">Produtos</a>
-        <a href="../colecoes.html"   class="nav__link">Coleções</a>
-        <a href="../downloads.html"    class="nav__link">Downloads</a>
-
-        <!-- Dropdown Áreas -->
-        <div class="nav__dropdown" id="nav-areas">
-          <button class="nav__dropdown-trigger" id="areas-trigger"
-                  aria-haspopup="true" aria-expanded="false"
-                  aria-controls="areas-panel">
-            Áreas
-            <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="nav__dropdown-panel" id="areas-panel" role="menu">
-            <p class="nav__dropdown-panel-header">Onde atuamos</p>
-            <a href="../produtos.html?segmento=area-externa" class="nav__area-item nav__area-item--ext" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Área Externa
-            </a>
-            <a href="../produtos.html?segmento=escolar"      class="nav__area-item nav__area-item--esc" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Escolar
-            </a>
-            <a href="../produtos.html?segmento=corporativo"  class="nav__area-item nav__area-item--corp" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Corporativo
-            </a>
-            <a href="../produtos.html?segmento=alimentacao"  class="nav__area-item nav__area-item--food" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Alimentação
-            </a>
-            <a href="../produtos.html?segmento=residencial"  class="nav__area-item nav__area-item--res" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Residencial
-            </a>
-          </div>
-        </div>
+      <!-- NAV ESQUERDA: 5 áreas diretas -->
+      <nav class="header__nav header__nav--left" aria-label="Segmentos">
+        <a href="../pages/produtos.html?segmento=area-externa"
+           class="nav__link nav__link--area nav__link--ext"
+           data-area="area-externa">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Área Externa
+        </a>
+        <a href="../pages/produtos.html?segmento=escolar"
+           class="nav__link nav__link--area nav__link--esc"
+           data-area="escolar">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Escolar
+        </a>
+        <a href="../pages/produtos.html?segmento=corporativo"
+           class="nav__link nav__link--area nav__link--corp"
+           data-area="corporativo">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Corporativo
+        </a>
+        <a href="../pages/produtos.html?segmento=alimentacao"
+           class="nav__link nav__link--area nav__link--food"
+           data-area="alimentacao">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Alimentação
+        </a>
+        <a href="../pages/produtos.html?segmento=residencial"
+           class="nav__link nav__link--area nav__link--res"
+           data-area="residencial">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Residencial
+        </a>
       </nav>
 
-      <!-- Logo centralizado — wordmark laranja -->
+      <!-- LOGO CENTRALIZADO -->
       <a href="../index.html" class="header__logo" aria-label="Novidário — início">
         <span class="header__logo-mark">novidário</span>
       </a>
 
-      <!-- Nav direita: Blog · Sobre · Contato + ações -->
+      <!-- NAV DIREITA: utilitários + ações -->
       <div class="header__nav header__nav--right">
-        <nav aria-label="Navegação principal direita">
-          <a href="../blog.html"    class="nav__link">Blog</a>
-          <a href="../sobre.html"   class="nav__link">Sobre</a>
-          <a href="../contato.html" class="nav__link">Contato</a>
+        <nav class="header__nav--util" aria-label="Navegação">
+          <a href="colecoes.html" class="nav__link nav__link--util">Coleções</a>
+          <a href="downloads.html" class="nav__link nav__link--util">Downloads</a>
+          <span class="nav__sep" aria-hidden="true"></span>
+          <a href="blog.html" class="nav__link nav__link--util">Blog</a>
+          <a href="sobre.html" class="nav__link nav__link--util">Sobre</a>
+          <a href="contato.html" class="nav__link nav__link--util">Contato</a>
         </nav>
-
-        <!-- Ações: busca + carrinho -->
         <div class="header__actions">
-          <!-- Botão de busca -->
           <button class="header__search-btn" id="search-open-btn"
                   aria-label="Abrir busca" aria-expanded="false">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -81,9 +72,8 @@
               <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
           </button>
-
-          <!-- Carrinho / orçamento -->
-          <a href="../contato.html" class="header__cart-wrap" title="Solicitar orçamento" aria-label="Orçamento (0 itens)">
+          <a href="contato.html" class="header__cart-wrap"
+             title="Solicitar orçamento" aria-label="Orçamento">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -92,8 +82,6 @@
             </svg>
             <span>0</span>
           </a>
-
-          <!-- Hamburger mobile -->
           <button class="header__hamburger" id="hamburger"
                   aria-label="Abrir menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -105,7 +93,7 @@
   </header>
 
   <!-- Overlay de busca -->
-  <div class="search-overlay" id="search-overlay" role="search" aria-label="Busca de produtos">
+  <div class="search-overlay" id="search-overlay" role="search">
     <div class="search-overlay__box">
       <input class="search-overlay__input" id="search-input"
              type="search" placeholder="Buscar produtos, coleções…"
@@ -115,35 +103,40 @@
 
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+
+    <!-- Seção principal -->
     <nav aria-label="Navegação mobile">
-      <a href="../produtos.html"    class="nav__link">Produtos</a>
-      <a href="../colecoes.html"     class="nav__link">Coleções</a>
-      <a href="../downloads.html"      class="nav__link">Downloads</a>
-      <a href="../blog.html"    class="nav__link">Blog</a>
-      <a href="../sobre.html"   class="nav__link">Sobre</a>
-      <a href="../contato.html" class="nav__link">Contato</a>
+      <a href="colecoes.html"  class="nav__link">Coleções</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="blog.html"      class="nav__link">Blog</a>
+      <a href="sobre.html"     class="nav__link">Sobre</a>
+      <a href="contato.html"   class="nav__link">Contato</a>
     </nav>
+
+    <!-- Seção de áreas -->
     <div>
       <p class="mobile-menu__areas-title">Áreas</p>
-      <a href="../produtos.html?segmento=area-externa" class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>Área Externa
+      <a href="produtos.html?segmento=area-externa" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);flex-shrink:0;display:inline-block;"></span>Área Externa
       </a>
-      <a href="../produtos.html?segmento=escolar"      class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);display:inline-block;"></span>Escolar
+      <a href="produtos.html?segmento=escolar" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);flex-shrink:0;display:inline-block;"></span>Escolar
       </a>
-      <a href="../produtos.html?segmento=corporativo"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>Corporativo
+      <a href="produtos.html?segmento=corporativo" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);flex-shrink:0;display:inline-block;"></span>Corporativo
       </a>
-      <a href="../produtos.html?segmento=alimentacao"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>Alimentação
+      <a href="produtos.html?segmento=alimentacao" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);flex-shrink:0;display:inline-block;"></span>Alimentação
       </a>
-      <a href="../produtos.html?segmento=residencial"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);display:inline-block;"></span>Residencial
+      <a href="produtos.html?segmento=residencial" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);flex-shrink:0;display:inline-block;"></span>Residencial
       </a>
     </div>
+
+  </div>
   </div>
 
-  <main class="page-content">
+  <mainn class="page-content">
 
     <!-- Page hero compacto -->
     <div class="page-hero" style="padding-block: 2rem 1rem;">
@@ -252,6 +245,78 @@
                 </div>
               </div>
 
+
+              <!-- ── FILTROS ESPECÍFICOS POR ÁREA (aparecem conforme área selecionada) ── -->
+              <div id="area-filter-label" class="filter-area-label"></div>
+
+              <!-- Área Externa: Resistência -->
+              <div class="filter-group filter-group--area-specific" data-area-filter="area-externa">
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Resistência
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="filter-group__options">
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="coberto" /> Coberto / Varanda</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="descoberto" /> Descoberto / Jardim / Piscina</label>
+                </div>
+              </div>
+
+              <!-- Escolar: Nível de Ensino -->
+              <div class="filter-group filter-group--area-specific" data-area-filter="escolar">
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Nível de Ensino
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="filter-group__options">
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="infantil" /> Infantil</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="fundamental" /> Fundamental</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="medio" /> Médio</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="universitario" /> Universitário</label>
+                </div>
+              </div>
+
+              <!-- Alimentação: Ambiente -->
+              <div class="filter-group filter-group--area-specific" data-area-filter="alimentacao">
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Ambiente
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="filter-group__options">
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="bar-balcao" /> Bar / Balcão</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="salao-principal" /> Salão Principal</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="cafe" /> Café</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="espera" /> Espera</label>
+                </div>
+              </div>
+
+              <!-- Residencial: Cômodo -->
+              <div class="filter-group filter-group--area-specific" data-area-filter="residencial">
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Cômodo
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="filter-group__options">
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="quarto" /> Quarto</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala" /> Sala</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala-jantar" /> Sala de Jantar</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="escritorio" /> Escritório</label>
+                </div>
+              </div>
+
+              <!-- Corporativo: Uso -->
+              <div class="filter-group filter-group--area-specific" data-area-filter="corporativo">
+                <div class="filter-group__title" role="button" tabindex="0">
+                  Uso
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="filter-group__options">
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="estacao-trabalho" /> Estação de Trabalho</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="reuniao" /> Reunião</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="lounge" /> Lounge</label>
+                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="recepcao" /> Recepção</label>
+                </div>
+              </div>
+
               <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:.5rem; display:none;" type="button">
                 Limpar filtros
               </button>
@@ -287,9 +352,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-asa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Cadeira-Asa_Still_Novidade-600x600.jpg" alt="Cadeira Asa" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Voa</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-asa/" target="_blank" rel="noopener">Cadeira Asa</a></h3>
@@ -300,9 +365,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-asa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Poltrona-Asa_Still_Site_Novidade-600x600.jpg" alt="Poltrona Asa" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Voa</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-asa/" target="_blank" rel="noopener">Poltrona Asa</a></h3>
@@ -313,9 +378,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-voa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Mesa-redonda-Voa_Still_Site_Novidade-600x600.jpg" alt="Mesa Redonda Voa" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Voa</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-voa/" target="_blank" rel="noopener">Mesa Redonda Voa</a></h3>
@@ -326,6 +391,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-voa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Mesa-quadrada-Voa_Still_Site_Novidade-600x600.jpg" alt="Mesa Quadrada Voa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -338,6 +404,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Aço,Madeira" data-colecao="Cipó" data-tipo="Banco">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-curvo-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-coletivo-curvo-cipo-chamada-600x600.jpg" alt="Banco Coletivo Curvo Cipó" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -350,9 +417,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Aço,Madeira" data-colecao="Cipó" data-tipo="Banco">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/04/min_Banco-Individual-Cipo-600x600.jpg" alt="Banco Cipó" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Cipó</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-cipo/" target="_blank" rel="noopener">Banco Cipó</a></h3>
@@ -363,6 +430,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-patio-miniatura-600x600.jpeg" alt="Cadeira Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -375,9 +443,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio,Estofado" data-colecao="Pátio" data-tipo="Sofá">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/05/miniatura_sofa-patio_lancamento-600x600.jpg" alt="Sofá Pátio" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Pátio</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-patio/" target="_blank" rel="noopener">Sofá Pátio</a></h3>
@@ -388,9 +456,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/05/mesa-redonda-patio-100_miniatura_lancamento-600x600.jpg" alt="Mesa Redonda Pátio 100" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Pátio</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener">Mesa Redonda Pátio 100</a></h3>
@@ -401,6 +469,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-2-lugares/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TRILHA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-piquenique-trilha-2-lugares-chamada-600x600.jpg" alt="Mesa Piquenique Trilha 2 Lugares" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -413,9 +482,9 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa de apoio">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-auxiliar-trilha/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TRILHA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/12/Mesas-auxiliares-Trilha_Still-600x600.jpg" alt="Mesa Auxiliar Trilha" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Trilha</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-auxiliar-trilha/" target="_blank" rel="noopener">Mesa Auxiliar Trilha</a></h3>
@@ -426,6 +495,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Madeira,Aço" data-colecao="Origem" data-tipo="Banco">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-origem-lynx/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">ORIGEM</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-origem-lynx-miniatura-600x600.jpg" alt="Banco Origem Lynx" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -440,9 +510,9 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Broto" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-broto/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">BROTO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/04/Cadeiras-Broto_Still_Novidade-600x600.jpg" alt="Cadeira Broto" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Broto</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-broto/" target="_blank" rel="noopener">Cadeira Broto</a></h3>
@@ -453,9 +523,9 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Broto" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/mesas/mesa-infantil/mesa-broto/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">BROTO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/05/Mesas-Broto_Still_Novidade-600x600.jpg" alt="Mesa Broto" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Broto</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/mesas/mesa-infantil/mesa-broto/" target="_blank" rel="noopener">Mesa Broto</a></h3>
@@ -466,6 +536,7 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Origem" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-origem/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">ORIGEM</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-origem-miniatura-600x600.jpg" alt="Cadeira Origem" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -478,6 +549,7 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira" data-colecao="Origem" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-infantil-origem/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">ORIGEM</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/Poltrona-Origem-miniatura-600x600.jpg" alt="Poltrona Infantil Origem" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -490,6 +562,7 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira,Estofado" data-colecao="Jataí" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/assentos-individuais/cadeiras/cadeira-jatai/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">JATAÍ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/jatai-turquesa-e-medit.jpg" alt="Cadeira Jataí" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -502,9 +575,9 @@
 
               <article class="product-card" data-area="escolar" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-infantil-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/02/Cadeira-Patio-Infantil-miniatura-600x600.jpg" alt="Cadeira Infantil Pátio" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Pátio</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-infantil-patio/" target="_blank" rel="noopener">Cadeira Infantil Pátio</a></h3>
@@ -515,9 +588,9 @@
 
               <article class="product-card" data-area="escolar" data-material="Madeira,Aço" data-colecao="Cipó" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/04/min_mesa_piquenique-600x600.jpg" alt="Mesa Piquenique Cipó" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Cipó</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-cipo/" target="_blank" rel="noopener">Mesa Piquenique Cipó</a></h3>
@@ -530,6 +603,7 @@
 
               <article class="product-card" data-area="corporativo" data-material="Madeira,Estofado" data-colecao="Samba" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/assentos-individuais/poltronas-assentos-individuais/poltrona-samba-com-prancheta/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">SAMBA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/poltrona-samba-com-prancheta_miniatura-600x600.jpeg" alt="Poltrona Samba com Prancheta" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -542,6 +616,7 @@
 
               <article class="product-card" data-area="corporativo" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TREVO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-restaurante-Trevo-miniatura-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -554,6 +629,7 @@
 
               <article class="product-card" data-area="corporativo" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-retangular-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TREVO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-Retangular-Trevo-miniatura-600x600.jpg" alt="Mesa Retangular Trevo" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -568,6 +644,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-com-braco-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/cadeira-com-braco-patio-miniatura-600x600.jpeg" alt="Cadeira com Braço Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -580,6 +657,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Trevo" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-quadrada-trevo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TREVO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-restaurante-Trevo-miniatura-600x600.jpg" alt="Mesa Quadrada Trevo" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -592,6 +670,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-redonda-patio-100/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/05/mesa-redonda-patio-100_miniatura_lancamento-600x600.jpg" alt="Mesa Redonda Pátio 100" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -604,6 +683,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-4-lugares/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TRILHA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-piquenique-trilha-chamada-600x600.jpg" alt="Mesa Piquenique Trilha 4 Lugares" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -618,9 +698,9 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Sofá">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-dois-lugares-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/09/miniatura-sofa-2l-ponte-600x600.png" alt="Sofá 2 Lugares Ponte" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Ponte</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-dois-lugares-ponte/" target="_blank" rel="noopener">Sofá 2 Lugares Ponte</a></h3>
@@ -631,9 +711,9 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Sofá">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/11/miniatura-sofa-3L-ponte-novidade-600x600.jpg" alt="Sofá 3 Lugares Ponte" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Ponte</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener">Sofá 3 Lugares Ponte</a></h3>
@@ -644,9 +724,9 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/11/poltrona-ponte-chamada-novidade-1-600x600.jpg" alt="Poltrona Ponte" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Ponte</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-ponte/" target="_blank" rel="noopener">Poltrona Ponte</a></h3>
@@ -657,9 +737,9 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Chaise">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/11/Chasie-Ponte-Still-novidade-1-600x600.jpg" alt="Chaise Ponte" loading="lazy" />
-                  <div class="product-card__badge"><span class="badge badge--primary">Novo</span></div>
-                </a>
+                  </a>
                 <div class="product-card__body">
                   <span class="product-card__collection">Ponte</span>
                   <h3 class="product-card__name"><a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener">Chaise Ponte</a></h3>
@@ -670,6 +750,7 @@
 
               <article class="product-card" data-area="residencial" data-material="Madeira,Aço" data-colecao="Cipó" data-tipo="Mesa de apoio">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-lateral-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/Mesa-Lateral-Cipo-chamada-600x600.jpg" alt="Mesa Lateral Cipó" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -684,6 +765,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Aço,Madeira" data-colecao="Cipó" data-tipo="Banco">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-com-encosto-cipo/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-coletivo-com-encosto-cipo-chamada-600x600.jpg" alt="Banco Coletivo com Encosto Cipó" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -696,6 +778,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/poltrona-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/poltrona-patio-miniatura-600x600.jpg" alt="Poltrona Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -708,6 +791,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Chaise">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/Chaise-Patio-miniatura-600x600.jpg" alt="Chaise Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -720,6 +804,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Cadeira">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/cadeira-com-braco-asa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Cadeira-com-braco-Asa_Still_Site_Novidade-600x600.jpg" alt="Cadeira com Braço Asa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -732,6 +817,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Voa" data-tipo="Banqueta">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banqueta-voa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">VOA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2026/01/Banqueta-sem-encosto-Voa_Still_Site_Novidade-600x600.jpg" alt="Banqueta Voa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -744,6 +830,7 @@
 
               <article class="product-card" data-area="area-externa" data-material="Alumínio" data-colecao="Trilha" data-tipo="Mesa">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-piquenique-trilha-4-lugares/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">TRILHA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/08/mesa-piquenique-trilha-chamada-600x600.jpg" alt="Mesa Piquenique Trilha 4 Lugares" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -756,6 +843,7 @@
 
               <article class="product-card" data-area="escolar" data-material="Reciclado" data-colecao="Pipa" data-tipo="Estante">
                 <a href="https://novidario.com.br/produtos/area-externa/estantes/estante-pipa/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PIPA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/Estante-Pipa-chamada-600x600.jpg" alt="Estante Pipa" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -768,6 +856,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Alumínio,Madeira" data-colecao="Pátio" data-tipo="Banco">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/banco-coletivo-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PÁTIO</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/09/banco-coletivo-patio-miniatura-600x600.jpeg" alt="Banco Coletivo Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -780,6 +869,7 @@
 
               <article class="product-card" data-area="alimentacao" data-material="Madeira" data-colecao="Samba" data-tipo="Poltrona">
                 <a href="https://novidario.com.br/produtos/assentos-individuais/poltronas-assentos-individuais/poltrona-samba-com-prancheta/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">SAMBA</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/poltrona-samba-com-prancheta_miniatura-600x600.jpeg" alt="Poltrona Samba com Prancheta" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -792,6 +882,7 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Chaise">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/chaise-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/11/Chasie-Ponte-Still-novidade-1-600x600.jpg" alt="Chaise Ponte" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -804,6 +895,7 @@
 
               <article class="product-card" data-area="residencial" data-material="Madeira,Aço" data-colecao="Cipó" data-tipo="Mesa de apoio">
                 <a href="https://novidario.com.br/produtos/area-externa/mesas-para-area-externa/mesa-lateral-patio/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">CIPÓ</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2024/10/Mesa-Lateral-Patio-miniatura-600x600.jpg" alt="Mesa Lateral Pátio" loading="lazy" />
                 </a>
                 <div class="product-card__body">
@@ -816,6 +908,7 @@
 
               <article class="product-card" data-area="residencial" data-material="Estofado,Alumínio" data-colecao="Ponte" data-tipo="Sofá">
                 <a href="https://novidario.com.br/produtos/area-externa/assentos-para-area-externa/sofa-tres-lugares-ponte/" target="_blank" rel="noopener" class="product-card__image-wrap">
+              <span class="product-card__col-tag">PONTE</span>
                   <img src="https://novidario.com.br/wp-content/uploads/2025/11/miniatura-sofa-3L-ponte-novidade-600x600.jpg" alt="Sofá 3 Lugares Ponte" loading="lazy" />
                 </a>
                 <div class="product-card__body">

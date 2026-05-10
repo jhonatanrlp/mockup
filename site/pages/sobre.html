@@ -44,65 +44,56 @@
 
   
   <!-- ═══════════════════════════════════════
-       HEADER — igual ao original novidario.com.br
+       HEADER
   ═══════════════════════════════════════ -->
   <header class="header" id="header">
     <div class="header__inner">
 
-      <!-- Nav esquerda: Produtos · Coleções · Downloads · Áreas ▾ -->
-      <nav class="header__nav header__nav--left" aria-label="Navegação principal esquerda">
-        <a href="../produtos.html"  class="nav__link">Produtos</a>
-        <a href="../colecoes.html"   class="nav__link">Coleções</a>
-        <a href="../downloads.html"    class="nav__link">Downloads</a>
-
-        <!-- Dropdown Áreas -->
-        <div class="nav__dropdown" id="nav-areas">
-          <button class="nav__dropdown-trigger" id="areas-trigger"
-                  aria-haspopup="true" aria-expanded="false"
-                  aria-controls="areas-panel">
-            Áreas
-            <svg class="nav__dropdown-chevron" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="nav__dropdown-panel" id="areas-panel" role="menu">
-            <p class="nav__dropdown-panel-header">Onde atuamos</p>
-            <a href="../produtos.html?segmento=area-externa" class="nav__area-item nav__area-item--ext" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Área Externa
-            </a>
-            <a href="../produtos.html?segmento=escolar"      class="nav__area-item nav__area-item--esc" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Escolar
-            </a>
-            <a href="../produtos.html?segmento=corporativo"  class="nav__area-item nav__area-item--corp" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Corporativo
-            </a>
-            <a href="../produtos.html?segmento=alimentacao"  class="nav__area-item nav__area-item--food" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Alimentação
-            </a>
-            <a href="../produtos.html?segmento=residencial"  class="nav__area-item nav__area-item--res" role="menuitem">
-              <span class="nav__area-dot" aria-hidden="true"></span>Residencial
-            </a>
-          </div>
-        </div>
+      <!-- NAV ESQUERDA: 5 áreas diretas -->
+      <nav class="header__nav header__nav--left" aria-label="Segmentos">
+        <a href="../pages/produtos.html?segmento=area-externa"
+           class="nav__link nav__link--area nav__link--ext"
+           data-area="area-externa">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Área Externa
+        </a>
+        <a href="../pages/produtos.html?segmento=escolar"
+           class="nav__link nav__link--area nav__link--esc"
+           data-area="escolar">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Escolar
+        </a>
+        <a href="../pages/produtos.html?segmento=corporativo"
+           class="nav__link nav__link--area nav__link--corp"
+           data-area="corporativo">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Corporativo
+        </a>
+        <a href="../pages/produtos.html?segmento=alimentacao"
+           class="nav__link nav__link--area nav__link--food"
+           data-area="alimentacao">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Alimentação
+        </a>
+        <a href="../pages/produtos.html?segmento=residencial"
+           class="nav__link nav__link--area nav__link--res"
+           data-area="residencial">
+          <span class="nav__area-dot-sm" aria-hidden="true"></span>Residencial
+        </a>
       </nav>
 
-      <!-- Logo centralizado — wordmark laranja -->
+      <!-- LOGO CENTRALIZADO -->
       <a href="../index.html" class="header__logo" aria-label="Novidário — início">
         <span class="header__logo-mark">novidário</span>
       </a>
 
-      <!-- Nav direita: Blog · Sobre · Contato + ações -->
+      <!-- NAV DIREITA: utilitários + ações -->
       <div class="header__nav header__nav--right">
-        <nav aria-label="Navegação principal direita">
-          <a href="../blog.html"    class="nav__link">Blog</a>
-          <a href="../sobre.html"   class="nav__link active">Sobre</a>
-          <a href="../contato.html" class="nav__link">Contato</a>
+        <nav class="header__nav--util" aria-label="Navegação">
+          <a href="colecoes.html" class="nav__link nav__link--util">Coleções</a>
+          <a href="downloads.html" class="nav__link nav__link--util">Downloads</a>
+          <span class="nav__sep" aria-hidden="true"></span>
+          <a href="blog.html" class="nav__link nav__link--util">Blog</a>
+          <a href="sobre.html" class="nav__link nav__link--util active">Sobre</a>
+          <a href="contato.html" class="nav__link nav__link--util">Contato</a>
         </nav>
-
-        <!-- Ações: busca + carrinho -->
         <div class="header__actions">
-          <!-- Botão de busca -->
           <button class="header__search-btn" id="search-open-btn"
                   aria-label="Abrir busca" aria-expanded="false">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -110,9 +101,8 @@
               <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
           </button>
-
-          <!-- Carrinho / orçamento -->
-          <a href="../contato.html" class="header__cart-wrap" title="Solicitar orçamento" aria-label="Orçamento (0 itens)">
+          <a href="contato.html" class="header__cart-wrap"
+             title="Solicitar orçamento" aria-label="Orçamento">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -121,8 +111,6 @@
             </svg>
             <span>0</span>
           </a>
-
-          <!-- Hamburger mobile -->
           <button class="header__hamburger" id="hamburger"
                   aria-label="Abrir menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -134,7 +122,7 @@
   </header>
 
   <!-- Overlay de busca -->
-  <div class="search-overlay" id="search-overlay" role="search" aria-label="Busca de produtos">
+  <div class="search-overlay" id="search-overlay" role="search">
     <div class="search-overlay__box">
       <input class="search-overlay__input" id="search-input"
              type="search" placeholder="Buscar produtos, coleções…"
@@ -144,35 +132,40 @@
 
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+
+    <!-- Seção principal -->
     <nav aria-label="Navegação mobile">
-      <a href="../produtos.html"    class="nav__link">Produtos</a>
-      <a href="../colecoes.html"     class="nav__link">Coleções</a>
-      <a href="../downloads.html"      class="nav__link">Downloads</a>
-      <a href="../blog.html"    class="nav__link">Blog</a>
-      <a href="../sobre.html"   class="nav__link">Sobre</a>
-      <a href="../contato.html" class="nav__link">Contato</a>
+      <a href="colecoes.html"  class="nav__link">Coleções</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="blog.html"      class="nav__link">Blog</a>
+      <a href="sobre.html"     class="nav__link">Sobre</a>
+      <a href="contato.html"   class="nav__link">Contato</a>
     </nav>
+
+    <!-- Seção de áreas -->
     <div>
       <p class="mobile-menu__areas-title">Áreas</p>
-      <a href="../produtos.html?segmento=area-externa" class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);display:inline-block;"></span>Área Externa
+      <a href="produtos.html?segmento=area-externa" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);flex-shrink:0;display:inline-block;"></span>Área Externa
       </a>
-      <a href="../produtos.html?segmento=escolar"      class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);display:inline-block;"></span>Escolar
+      <a href="produtos.html?segmento=escolar" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);flex-shrink:0;display:inline-block;"></span>Escolar
       </a>
-      <a href="../produtos.html?segmento=corporativo"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);display:inline-block;"></span>Corporativo
+      <a href="produtos.html?segmento=corporativo" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);flex-shrink:0;display:inline-block;"></span>Corporativo
       </a>
-      <a href="../produtos.html?segmento=alimentacao"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);display:inline-block;"></span>Alimentação
+      <a href="produtos.html?segmento=alimentacao" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);flex-shrink:0;display:inline-block;"></span>Alimentação
       </a>
-      <a href="../produtos.html?segmento=residencial"  class="mobile-menu__area-link">
-        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);display:inline-block;"></span>Residencial
+      <a href="produtos.html?segmento=residencial" class="mobile-menu__area-link">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);flex-shrink:0;display:inline-block;"></span>Residencial
       </a>
     </div>
+
+  </div>
   </div>
 
-  <main class="page-content">
+  <mainn class="page-content">
 
     <!-- Hero sobre -->
     <div style="position:relative; min-height:420px; display:flex; align-items:center; overflow:hidden; background:#1E1E1E;">

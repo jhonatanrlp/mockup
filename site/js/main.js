@@ -54,21 +54,19 @@
   }
 
   /* ══════════════════════════════════════════
-     DROPDOWN ÁREAS — toggle / fecha ao clicar fora / ESC
+     HEADER — marca área ativa nos links diretos
   ══════════════════════════════════════════ */
-  (function initAreasDropdown() {
-    const dropdown = document.getElementById('nav-areas');
-    const trigger  = document.getElementById('areas-trigger');
-    const panel    = document.getElementById('areas-panel');
-    if (!dropdown || !trigger || !panel) return;
+  (function markActiveAreaLinks() {
+    const params   = getParams();
+    const segParam = params.get('segmento');
+    if (!segParam) return;
 
-    const open  = () => { dropdown.classList.add('open');    trigger.setAttribute('aria-expanded','true'); };
-    const close = () => { dropdown.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); };
-
-    trigger.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.contains('open') ? close() : open(); });
-    document.addEventListener('click', e => { if (!dropdown.contains(e.target)) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    // Marca o link da área ativa no header
+    document.querySelectorAll('.nav__link--area[data-area]').forEach(link => {
+      if (link.dataset.area === segParam) {
+        link.classList.add('active');
+      }
+    });
   })();
 
   /* ══════════════════════════════════════════
@@ -435,6 +433,61 @@
       }
 
       applyFilters();
+    })();
+
+    /* ── Filtros específicos por área ── */
+    (function initAreaSpecificFilters() {
+      const areaGroups = document.querySelectorAll('.filter-group--area-specific');
+      const areaLabel  = document.getElementById('area-filter-label');
+      const AREA_NAMES = {
+        'area-externa': 'Área Externa',
+        'escolar':      'Escolar',
+        'corporativo':  'Corporativo',
+        'alimentacao':  'Alimentação',
+        'residencial':  'Residencial',
+      };
+
+      /* Atualiza visibilidade dos filtros específicos baseado nas áreas selecionadas */
+      function updateAreaFilters() {
+        const activeAreas = Array.from(state.area);
+
+        areaGroups.forEach(group => {
+          const areaKey = group.dataset.areaFilter;
+          const show = activeAreas.length === 0 ? false : activeAreas.includes(areaKey);
+          group.classList.toggle('visible', show);
+        });
+
+        /* Atualiza label */
+        if (areaLabel) {
+          if (activeAreas.length === 1) {
+            const name = AREA_NAMES[activeAreas[0]] || activeAreas[0];
+            areaLabel.textContent = `Filtros — ${name}`;
+            areaLabel.style.setProperty('--area-accent-color', `var(--seg-${activeAreas[0].replace('area-externa','ext').replace('escolar','esc').replace('corporativo','corp').replace('alimentacao','food').replace('residencial','res')})`);
+            areaLabel.classList.add('visible');
+          } else {
+            areaLabel.textContent = '';
+            areaLabel.classList.remove('visible');
+          }
+        }
+      }
+
+      /* Registra observer no state.area via proxy ou hook em applyFilters */
+      const origApply = applyFilters;
+      // applyFilters já foi definida — fazemos um wrapper
+      const wrappedApply = function() {
+        origApply.apply(this, arguments);
+        updateAreaFilters();
+      };
+      // Substitui applyFilters no escopo do productsGrid
+      // (mais simples: chamar updateAreaFilters diretamente nos event listeners)
+
+      // Ouve checkboxes de área para atualizar filtros específicos
+      document.querySelectorAll('input[data-filter="area"]').forEach(cb => {
+        cb.addEventListener('change', updateAreaFilters);
+      });
+
+      // Executa na inicialização
+      updateAreaFilters();
     })();
 
     /* ── Botão de filtro mobile ── */
