@@ -810,11 +810,7 @@
 }
 
 .product-card__collection {
-  font-size: 10px;
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);  /* cinza discreto — o col-tag já faz o trabalho visual */
+  display: none;  /* a etiqueta na imagem (col-tag) já mostra a coleção */
 }
 
 .product-card__name {
