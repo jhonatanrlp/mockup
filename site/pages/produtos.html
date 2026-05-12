@@ -164,72 +164,156 @@
             <div class="filters">
               <h2 class="filters__title">Filtrar</h2>
 
-              <!-- Área de uso (multi-select) -->
-              <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Área de uso
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+              <!-- ── NÍVEL 1: AMBIENTE ── -->
+              <div class="filter-group filter-group--ambiente">
+                <p class="filter-group__label">Para onde é esse móvel?</p>
+                <div class="filter-pills-stack">
+                  <button class="seg-pill seg-pill--ext area-env-pill" data-area="area-externa" type="button" aria-pressed="false">
+                    <span class="pill-dot pill-dot--ext"></span>Área Externa
+                  </button>
+                  <button class="seg-pill seg-pill--esc area-env-pill" data-area="escolar" type="button" aria-pressed="false">
+                    <span class="pill-dot pill-dot--esc"></span>Escolar
+                  </button>
+                  <button class="seg-pill seg-pill--food area-env-pill" data-area="alimentacao" type="button" aria-pressed="false">
+                    <span class="pill-dot pill-dot--food"></span>Restaurante
+                  </button>
+                  <button class="seg-pill seg-pill--res area-env-pill" data-area="residencial" type="button" aria-pressed="false">
+                    <span class="pill-dot pill-dot--res"></span>Residencial
+                  </button>
+                  <button class="seg-pill seg-pill--corp area-env-pill" data-area="corporativo" type="button" aria-pressed="false">
+                    <span class="pill-dot pill-dot--corp"></span>Corporativo
+                  </button>
                 </div>
+              </div>
+
+              <!-- ── NÍVEL 2: FILTROS CONTEXTUAIS (aparecem ao selecionar ambiente) ── -->
+              <div id="context-filters-wrapper">
+
+                <!-- Área Externa -->
+                <div class="filter-group filter-group--context" data-area-filter="area-externa" style="display:none;">
+                  <div class="filter-group__context-header">
+                    <span class="context-dot" style="background:var(--seg-ext);"></span>
+                    Área Externa — Onde vai usar?
+                  </div>
+                  <div class="filter-group__options">
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="coberto" /> Varanda / coberto</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="descoberto" /> Jardim / piscina</label>
+                  </div>
+                </div>
+
+                <!-- Escolar -->
+                <div class="filter-group filter-group--context" data-area-filter="escolar" style="display:none;">
+                  <div class="filter-group__context-header">
+                    <span class="context-dot" style="background:var(--seg-esc);"></span>
+                    Escolar — Para qual faixa etária?
+                  </div>
+                  <div class="filter-group__options">
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="infantil" /> Infantil</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="fundamental" /> Fundamental</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="medio" /> Médio</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="universitario" /> Universitário</label>
+                  </div>
+                </div>
+
+                <!-- Restaurante -->
+                <div class="filter-group filter-group--context" data-area-filter="alimentacao" style="display:none;">
+                  <div class="filter-group__context-header">
+                    <span class="context-dot" style="background:var(--seg-food);"></span>
+                    Restaurante — Qual tipo de espaço?
+                  </div>
+                  <div class="filter-group__options">
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="bar-balcao" /> Bar / balcão</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="salao-principal" /> Salão principal</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="cafe" /> Café</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="espera" /> Área de espera</label>
+                  </div>
+                </div>
+
+                <!-- Residencial -->
+                <div class="filter-group filter-group--context" data-area-filter="residencial" style="display:none;">
+                  <div class="filter-group__context-header">
+                    <span class="context-dot" style="background:var(--seg-res);"></span>
+                    Residencial — Em qual ambiente?
+                  </div>
+                  <div class="filter-group__options">
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="quarto" /> Quarto</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala" /> Sala</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala-jantar" /> Sala de jantar</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="escritorio" /> Escritório</label>
+                  </div>
+                </div>
+
+                <!-- Corporativo -->
+                <div class="filter-group filter-group--context" data-area-filter="corporativo" style="display:none;">
+                  <div class="filter-group__context-header">
+                    <span class="context-dot" style="background:var(--seg-corp);"></span>
+                    Corporativo — Qual ambiente do escritório?
+                  </div>
+                  <div class="filter-group__options">
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="estacao-trabalho" /> Estação de trabalho</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="reuniao" /> Reunião</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="lounge" /> Lounge</label>
+                    <label class="filter-option"><input type="checkbox" data-filter="contexto" value="recepcao" /> Recepção</label>
+                  </div>
+                </div>
+
+              </div><!-- /context-filters-wrapper -->
+
+              <hr class="filter-divider" />
+
+              <!-- ── NÍVEL 3: O QUE PROCURA? ── -->
+              <div class="filter-group">
+                <p class="filter-group__label">O que você está procurando?</p>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="area-externa" />
-                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-ext);flex-shrink:0;display:inline-block;"></span>Área Externa</span>
+                  <label class="filter-option filter-option--card">
+                    <input type="checkbox" data-filter-group="tipo" value="assentos" />
+                    <span class="filter-option__info">
+                      <strong>Assentos</strong>
+                      <em>Cadeira, poltrona, banco, sofá</em>
+                    </span>
                   </label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="escolar" />
-                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-esc);flex-shrink:0;display:inline-block;"></span>Escolar</span>
+                  <label class="filter-option filter-option--card">
+                    <input type="checkbox" data-filter-group="tipo" value="mesas" />
+                    <span class="filter-option__info">
+                      <strong>Mesas</strong>
+                      <em>Mesa principal e de apoio</em>
+                    </span>
                   </label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="corporativo" />
-                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-corp);flex-shrink:0;display:inline-block;"></span>Corporativo</span>
-                  </label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="alimentacao" />
-                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-food);flex-shrink:0;display:inline-block;"></span>Alimentação</span>
-                  </label>
-                  <label class="filter-option"><input type="checkbox" data-filter="area" value="residencial" />
-                    <span style="display:inline-flex;align-items:center;gap:.4rem;"><span style="width:8px;height:8px;border-radius:50%;background:var(--seg-res);flex-shrink:0;display:inline-block;"></span>Residencial</span>
+                  <label class="filter-option filter-option--card">
+                    <input type="checkbox" data-filter-group="tipo" value="outros" />
+                    <span class="filter-option__info">
+                      <strong>Outros móveis</strong>
+                      <em>Estante, carrinho</em>
+                    </span>
                   </label>
                 </div>
               </div>
 
-              <!-- Tipo de móvel -->
+              <hr class="filter-divider" />
+
+              <!-- ── NÍVEL 4: MATERIAL ── -->
               <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Tipo de móvel
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
+                <p class="filter-group__label">Material</p>
                 <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Cadeira" /> Cadeira</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Mesa" /> Mesa</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Banco" /> Banco</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Poltrona" /> Poltrona</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Banqueta" /> Banqueta</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Sofá" /> Sofá</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Chaise" /> Chaise</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Mesa de apoio" /> Mesa de apoio</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="tipo" value="Estante" /> Estante / Armário</label>
+                  <label class="filter-option"><input type="checkbox" data-filter-material value="Madeira" /> Madeira</label>
+                  <label class="filter-option"><input type="checkbox" data-filter-material value="Metal" /> Metal</label>
+                  <label class="filter-option"><input type="checkbox" data-filter-material value="Estofado" /> Com estofado</label>
+                  <label class="filter-option"><input type="checkbox" data-filter-material value="Reciclado" /> Material reciclado</label>
                 </div>
               </div>
 
-              <!-- Material -->
-              <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Material
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Madeira" /> Madeira</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Alumínio" /> Alumínio</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Aço" /> Aço</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Estofado" /> Estofado</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="material" value="Reciclado" /> Plástico Reciclado</label>
-                </div>
-              </div>
+              <hr class="filter-divider" />
 
-              <!-- Coleção -->
-              <div class="filter-group">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Coleção
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+              <!-- ── NÍVEL 5: COLEÇÃO (colapsado por padrão) ── -->
+              <div class="filter-group filter-group--colecao">
+                <div class="filter-group__title filter-group__title--colecao" role="button" tabindex="0">
+                  <div>
+                    <span class="filter-group__title-text">Por coleção</span>
+                    <span class="filter-group__subtitle">Se você já conhece uma linha</span>
+                  </div>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s; transform:rotate(-90deg); flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
-                <div class="filter-group__options">
+                <div class="filter-group__options" style="display:none;">
                   <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Voa" /> Voa</label>
                   <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Broto" /> Broto</label>
                   <label class="filter-option"><input type="checkbox" data-filter="colecao" value="Origem" /> Origem</label>
@@ -245,79 +329,7 @@
                 </div>
               </div>
 
-
-              <!-- ── FILTROS ESPECÍFICOS POR ÁREA (aparecem conforme área selecionada) ── -->
-              <div id="area-filter-label" class="filter-area-label"></div>
-
-              <!-- Área Externa: Resistência -->
-              <div class="filter-group filter-group--area-specific" data-area-filter="area-externa">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Resistência
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="coberto" /> Coberto / Varanda</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="descoberto" /> Descoberto / Jardim / Piscina</label>
-                </div>
-              </div>
-
-              <!-- Escolar: Nível de Ensino -->
-              <div class="filter-group filter-group--area-specific" data-area-filter="escolar">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Nível de Ensino
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="infantil" /> Infantil</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="fundamental" /> Fundamental</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="medio" /> Médio</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="universitario" /> Universitário</label>
-                </div>
-              </div>
-
-              <!-- Alimentação: Ambiente -->
-              <div class="filter-group filter-group--area-specific" data-area-filter="alimentacao">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Ambiente
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="bar-balcao" /> Bar / Balcão</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="salao-principal" /> Salão Principal</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="cafe" /> Café</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="espera" /> Espera</label>
-                </div>
-              </div>
-
-              <!-- Residencial: Cômodo -->
-              <div class="filter-group filter-group--area-specific" data-area-filter="residencial">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Cômodo
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="quarto" /> Quarto</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala" /> Sala</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="sala-jantar" /> Sala de Jantar</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="escritorio" /> Escritório</label>
-                </div>
-              </div>
-
-              <!-- Corporativo: Uso -->
-              <div class="filter-group filter-group--area-specific" data-area-filter="corporativo">
-                <div class="filter-group__title" role="button" tabindex="0">
-                  Uso
-                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-                <div class="filter-group__options">
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="estacao-trabalho" /> Estação de Trabalho</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="reuniao" /> Reunião</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="lounge" /> Lounge</label>
-                  <label class="filter-option"><input type="checkbox" data-filter="contexto" value="recepcao" /> Recepção</label>
-                </div>
-              </div>
-
-              <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:.5rem; display:none;" type="button">
+              <button class="btn btn--outline btn--full" id="clear-filters" style="margin-top:1rem; display:none;" type="button">
                 Limpar filtros
               </button>
             </div>

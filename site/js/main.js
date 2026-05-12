@@ -212,14 +212,37 @@
 
   if (productsGrid) {
 
+    /* ── Mapeamentos de grupos ── */
+    const TIPO_GROUPS = {
+      assentos: ['Cadeira', 'Poltrona', 'Banco', 'Banqueta', 'Sofá', 'Chaise'],
+      mesas:    ['Mesa', 'Mesa de apoio'],
+      outros:   ['Estante', 'Carrinho'],
+    };
+    const TIPO_GROUP_LABELS = {
+      assentos: 'Assentos',
+      mesas:    'Mesas',
+      outros:   'Outros móveis',
+    };
+    const MATERIAL_GROUPS = {
+      'Madeira':  ['Madeira'],
+      'Metal':    ['Alumínio', 'Aço'],
+      'Estofado': ['Estofado'],
+      'Reciclado':['Reciclado'],
+    };
+
     /* ── Estado do filtro ── */
     const state = {
-      area:     new Set(),
-      material: new Set(),
-      colecao:  new Set(),
-      tipo:     new Set(),
-      query:    '',
+      area:          new Set(),
+      material:      new Set(),
+      colecao:       new Set(),
+      tipo:          new Set(),
+      tipoGroup:     new Set(),
+      materialGroup: new Set(),
+      query:         '',
     };
+
+    /* Referência exposta para que initAreaSpecificFilters a use */
+    let _updateContextFilters = null;
 
     /* ── Elementos ── */
     const countEl        = document.getElementById('products-count');
@@ -272,10 +295,10 @@
       activeChipsEl.innerHTML = '';
 
       const allActive = [
-        ...Array.from(state.area,     v => ({ key: 'area',     val: v, label: labelFor('area', v) })),
-        ...Array.from(state.material, v => ({ key: 'material', val: v, label: labelFor('material', v) })),
-        ...Array.from(state.colecao,  v => ({ key: 'colecao',  val: v, label: v })),
-        ...Array.from(state.tipo,     v => ({ key: 'tipo',     val: v, label: v })),
+        ...Array.from(state.area,          v => ({ key: 'area',          val: v, label: labelFor('area', v) })),
+        ...Array.from(state.tipoGroup,     v => ({ key: 'tipoGroup',     val: v, label: TIPO_GROUP_LABELS[v] || v })),
+        ...Array.from(state.materialGroup, v => ({ key: 'materialGroup', val: v, label: v })),
+        ...Array.from(state.colecao,       v => ({ key: 'colecao',       val: v, label: v })),
         ...(state.query ? [{ key: 'query', val: state.query, label: `"${state.query}"` }] : []),
       ];
 
@@ -287,7 +310,6 @@
         activeChipsEl.appendChild(chip);
       });
 
-      /* Botão limpar tudo — visível só se houver chips */
       if (clearAllBtn) {
         clearAllBtn.style.display = allActive.length ? '' : 'none';
       }
@@ -296,10 +318,10 @@
     /** Labels legíveis para cada valor de filtro */
     const AREA_LABELS = {
       'area-externa': 'Área Externa',
-      'educacional':  'Educacional',
+      'escolar':      'Escolar',
       'corporativo':  'Corporativo',
-      'alimentacao':  'Alimentação',
-      'interiores':   'Interiores',
+      'alimentacao':  'Restaurante',
+      'residencial':  'Residencial',
     };
     function labelFor(key, val) {
       if (key === 'area') return AREA_LABELS[val] || val;
@@ -311,17 +333,25 @@
       if (key === 'query') {
         state.query = '';
         if (searchInputEl) searchInputEl.value = '';
+      } else if (key === 'tipoGroup') {
+        state.tipoGroup.delete(val);
+        (TIPO_GROUPS[val] || []).forEach(t => state.tipo.delete(t));
+        const cb = document.querySelector(`input[data-filter-group="tipo"][value="${val}"]`);
+        if (cb) cb.checked = false;
+      } else if (key === 'materialGroup') {
+        state.materialGroup.delete(val);
+        (MATERIAL_GROUPS[val] || []).forEach(m => state.material.delete(m));
+        const cb = document.querySelector(`input[data-filter-material][value="${val}"]`);
+        if (cb) cb.checked = false;
       } else {
         state[key].delete(val);
-        /* Desmarca checkbox correspondente */
         const cb = productsGrid.closest('section')
           ?.querySelector(`input[data-filter="${key}"][value="${val}"]`);
         if (cb) cb.checked = false;
-
-        /* Desmarca seg-pill se for área */
         if (key === 'area') {
           document.querySelectorAll(`.seg-pill[data-area="${val}"]`)
             .forEach(p => p.classList.remove('active'));
+          if (_updateContextFilters) _updateContextFilters();
         }
       }
       applyFilters();
@@ -338,19 +368,50 @@
       });
     });
 
-    /* ── Seg-pills (atalhos de segmento) ── */
+    /* ── Seg-pills de ambiente ── */
     document.querySelectorAll('.seg-pill[data-area]').forEach(pill => {
       pill.addEventListener('click', (e) => {
         e.preventDefault();
         const area = pill.dataset.area;
         const isActive = pill.classList.toggle('active');
-
-        /* Sincroniza com o checkbox correspondente */
-        const cb = document.querySelector(`input[data-filter="area"][value="${area}"]`);
-        if (cb) cb.checked = isActive;
+        pill.setAttribute('aria-pressed', String(isActive));
 
         if (isActive) state.area.add(area);
         else           state.area.delete(area);
+
+        if (_updateContextFilters) _updateContextFilters();
+        applyFilters();
+      });
+    });
+
+    /* ── Grupos de tipo (Assentos / Mesas / Outros) ── */
+    document.querySelectorAll('input[data-filter-group="tipo"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const group = cb.value;
+        const tipos = TIPO_GROUPS[group] || [];
+        if (cb.checked) {
+          state.tipoGroup.add(group);
+          tipos.forEach(t => state.tipo.add(t));
+        } else {
+          state.tipoGroup.delete(group);
+          tipos.forEach(t => state.tipo.delete(t));
+        }
+        applyFilters();
+      });
+    });
+
+    /* ── Grupos de material (Madeira / Metal / Estofado / Reciclado) ── */
+    document.querySelectorAll('input[data-filter-material]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const group = cb.value;
+        const mats = MATERIAL_GROUPS[group] || [];
+        if (cb.checked) {
+          state.materialGroup.add(group);
+          mats.forEach(m => state.material.add(m));
+        } else {
+          state.materialGroup.delete(group);
+          mats.forEach(m => state.material.delete(m));
+        }
         applyFilters();
       });
     });
@@ -368,12 +429,20 @@
       clearAllBtn.addEventListener('click', () => {
         state.area.clear();
         state.material.clear();
+        state.materialGroup.clear();
         state.colecao.clear();
         state.tipo.clear();
+        state.tipoGroup.clear();
         state.query = '';
         if (searchInputEl) searchInputEl.value = '';
         document.querySelectorAll('input[data-filter]').forEach(cb => cb.checked = false);
-        document.querySelectorAll('.seg-pill').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('input[data-filter-group]').forEach(cb => cb.checked = false);
+        document.querySelectorAll('input[data-filter-material]').forEach(cb => cb.checked = false);
+        document.querySelectorAll('.seg-pill').forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-pressed', 'false');
+        });
+        if (_updateContextFilters) _updateContextFilters();
         applyFilters();
       });
     }
@@ -419,12 +488,12 @@
 
       if (seg) {
         state.area.add(seg);
-        /* Marca checkbox */
-        const cb = document.querySelector(`input[data-filter="area"][value="${seg}"]`);
-        if (cb) cb.checked = true;
-        /* Marca pill */
+        /* Marca pill de ambiente */
         const pill = document.querySelector(`.seg-pill[data-area="${seg}"]`);
-        if (pill) pill.classList.add('active');
+        if (pill) {
+          pill.classList.add('active');
+          pill.setAttribute('aria-pressed', 'true');
+        }
       }
 
       if (q) {
@@ -435,59 +504,23 @@
       applyFilters();
     })();
 
-    /* ── Filtros específicos por área ── */
+    /* ── Filtros contextuais por área ── */
     (function initAreaSpecificFilters() {
-      const areaGroups = document.querySelectorAll('.filter-group--area-specific');
-      const areaLabel  = document.getElementById('area-filter-label');
-      const AREA_NAMES = {
-        'area-externa': 'Área Externa',
-        'escolar':      'Escolar',
-        'corporativo':  'Corporativo',
-        'alimentacao':  'Alimentação',
-        'residencial':  'Residencial',
-      };
+      const contextGroups = document.querySelectorAll('.filter-group--context');
 
-      /* Atualiza visibilidade dos filtros específicos baseado nas áreas selecionadas */
-      function updateAreaFilters() {
+      function updateContextFilters() {
         const activeAreas = Array.from(state.area);
-
-        areaGroups.forEach(group => {
+        contextGroups.forEach(group => {
           const areaKey = group.dataset.areaFilter;
-          const show = activeAreas.length === 0 ? false : activeAreas.includes(areaKey);
-          group.classList.toggle('visible', show);
+          group.style.display = activeAreas.includes(areaKey) ? '' : 'none';
         });
-
-        /* Atualiza label */
-        if (areaLabel) {
-          if (activeAreas.length === 1) {
-            const name = AREA_NAMES[activeAreas[0]] || activeAreas[0];
-            areaLabel.textContent = `Filtros — ${name}`;
-            areaLabel.style.setProperty('--area-accent-color', `var(--seg-${activeAreas[0].replace('area-externa','ext').replace('escolar','esc').replace('corporativo','corp').replace('alimentacao','food').replace('residencial','res')})`);
-            areaLabel.classList.add('visible');
-          } else {
-            areaLabel.textContent = '';
-            areaLabel.classList.remove('visible');
-          }
-        }
       }
 
-      /* Registra observer no state.area via proxy ou hook em applyFilters */
-      const origApply = applyFilters;
-      // applyFilters já foi definida — fazemos um wrapper
-      const wrappedApply = function() {
-        origApply.apply(this, arguments);
-        updateAreaFilters();
-      };
-      // Substitui applyFilters no escopo do productsGrid
-      // (mais simples: chamar updateAreaFilters diretamente nos event listeners)
+      /* Expõe para o escopo externo (seg-pill, removeFilter, clearAllBtn) */
+      _updateContextFilters = updateContextFilters;
 
-      // Ouve checkboxes de área para atualizar filtros específicos
-      document.querySelectorAll('input[data-filter="area"]').forEach(cb => {
-        cb.addEventListener('change', updateAreaFilters);
-      });
-
-      // Executa na inicialização
-      updateAreaFilters();
+      /* Executa na inicialização */
+      updateContextFilters();
     })();
 
     /* ── Botão de filtro mobile ── */
