@@ -29,6 +29,10 @@
   ::-webkit-scrollbar-thumb:hover { background: #d4d4d4; }
   .recharts-cartesian-axis-tick-line { stroke: #e5e5e5; }
   .recharts-tooltip-cursor { stroke: #d4d4d4; stroke-dasharray: 3 3; }
+  @media (max-width: 767px) {
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    .recharts-cartesian-axis-tick-value tspan { font-size: 10px; }
+  }
 </style>
 
 <script>
@@ -3308,7 +3312,7 @@ function Input({ className = '', error, ...rest }) {
   );
 }
 
-function Sidebar({ route, onNavigate, onGuide }) {
+function Sidebar({ route, onNavigate, onGuide, open, onClose }) {
   const stageItems = [
     { id: 'awareness',    label: 'Awareness',    sub: 'Quem está vendo sua marca' },
     { id: 'consideracao', label: 'Consideração', sub: 'Quem está se aprofundando' },
@@ -3328,12 +3332,15 @@ function Sidebar({ route, onNavigate, onGuide }) {
   };
 
   return (
-    <aside id="nav-sidebar" className="fixed left-0 top-0 bottom-0 w-[240px] border-r border-neutral-200 bg-white flex flex-col">
+    <>
+      {open && <div className="fixed inset-0 bg-neutral-900/40 z-30 md:hidden" onClick={onClose} />}
+      <aside id="nav-sidebar" className={`fixed left-0 top-0 bottom-0 w-[240px] border-r border-neutral-200 bg-white flex flex-col z-40 transition-transform duration-300 md:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="px-5 py-4 border-b border-neutral-100">
         <div className="flex items-center gap-2">
           <img src="logonovidario.png" alt="Novidário" className="h-7 w-auto"
             onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           <span className="font-bold tracking-tight text-[16px] text-neutral-900">novidário</span>
+          <button className="ml-auto md:hidden p-1 rounded text-neutral-400 hover:bg-neutral-100" onClick={onClose}><L.X size={16} /></button>
         </div>
         <p className="text-[11px] text-neutral-400 mt-1 leading-snug">Painel de resultados digitais</p>
       </div>
@@ -3381,6 +3388,7 @@ function Sidebar({ route, onNavigate, onGuide }) {
         </button>
       </div>
     </aside>
+    </>
   );
 }
 
@@ -3392,7 +3400,7 @@ function PeriodFilter({ value, onChange }) {
   return (
     <div className="flex items-center gap-2">
       <L.Calendar size={14} className="text-neutral-500" />
-      <Select value={value} onChange={onChange} options={options} className="w-[170px]" />
+      <Select value={value} onChange={onChange} options={options} className="w-[120px] sm:w-[170px]" />
     </div>
   );
 }
@@ -3411,9 +3419,9 @@ function SegmentFilter({ selected, onChange }) {
   };
   return (
     <div className="relative" ref={ref}>
-      <button onClick={() => setOpen(o => !o)} className="h-9 inline-flex items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 text-sm hover:bg-neutral-50">
+      <button onClick={() => setOpen(o => !o)} className="h-9 inline-flex items-center gap-1.5 rounded-md border border-neutral-200 bg-white px-3 text-sm hover:bg-neutral-50">
         <L.Filter size={14} className="text-neutral-500" />
-        <span>Segmentos: {selected.length} de {SEGMENTS.length}</span>
+        <span className="hidden sm:inline">Segmentos: {selected.length} de {SEGMENTS.length}</span>
         <L.ChevronDown size={14} className="text-neutral-500" />
       </button>
       {open && (
@@ -3439,14 +3447,19 @@ function SegmentFilter({ selected, onChange }) {
   );
 }
 
-function Topbar({ route, period, onPeriod, segments, onSegments, onEdit, canEdit }) {
+function Topbar({ route, period, onPeriod, segments, onSegments, onEdit, canEdit, onMenuToggle }) {
   const isOverview  = route.channel === 'overview';
   const channelLabel = { instagram: 'Instagram', site: 'Site' }[route.channel] || '';
   const stageLabel   = ({ awareness: 'Awareness', consideracao: 'Consideração', conversao: 'Conversão' })[route.stage] || '';
   return (
     <header className="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-neutral-200">
-      <div className="px-8 h-16 flex items-center gap-3">
-        <div className="text-sm">
+      <div className="px-4 md:px-8 flex flex-wrap items-center gap-x-2 gap-y-1.5 py-2 md:py-0 md:h-16">
+        <button className="md:hidden flex-shrink-0 p-1.5 rounded-md text-neutral-600 hover:bg-neutral-100" onClick={onMenuToggle} aria-label="Abrir menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <div className="text-sm flex-1 md:flex-none min-w-0">
           {isOverview
             ? <span className="font-semibold text-neutral-900">Visão geral</span>
             : <>
@@ -3456,10 +3469,12 @@ function Topbar({ route, period, onPeriod, segments, onSegments, onEdit, canEdit
               </>
           }
         </div>
-        <div className="flex-1"></div>
-        {canEdit && <PeriodFilter value={period} onChange={onPeriod} />}
-        {canEdit && <SegmentFilter selected={segments} onChange={onSegments} />}
-        {canEdit && <Button id="btn-atualizar" onClick={onEdit}><L.Pencil size={14} /> Atualizar meus números</Button>}
+        <div className="hidden md:block flex-1"></div>
+        <div className="hidden sm:flex items-center gap-2">
+          {canEdit && <PeriodFilter value={period} onChange={onPeriod} />}
+          {canEdit && <SegmentFilter selected={segments} onChange={onSegments} />}
+        </div>
+        {canEdit && <Button id="btn-atualizar" onClick={onEdit}><L.Pencil size={14} /><span className="hidden sm:inline"> Atualizar meus números</span></Button>}
       </div>
     </header>
   );
@@ -3493,7 +3508,7 @@ function MiniCard({ segment, value, prev, target, unit }) {
 
 function MiniCardRow({ segments, currentBySegment, prevBySegment, targetsBySegment, unit }) {
   return (
-    <div className="grid grid-cols-5 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
       {segments.map((seg) => (
         <MiniCard key={seg.id} segment={seg} value={currentBySegment[seg.id]} prev={prevBySegment[seg.id]} target={targetsBySegment[seg.id]} unit={unit} />
       ))}
@@ -3510,7 +3525,7 @@ function ComparisonChart({ data, unit }) {
       {sorted.map((d) => {
         const pct = (d.value / max) * 100;
         return (
-          <div key={d.id} className="grid grid-cols-[110px_1fr_70px] items-center gap-3">
+          <div key={d.id} className="grid grid-cols-[90px_1fr_60px] sm:grid-cols-[110px_1fr_70px] items-center gap-2 sm:gap-3">
             <div className="text-xs font-medium text-neutral-700 truncate">{d.name}</div>
             <div className="h-7 rounded-md bg-neutral-100 relative overflow-hidden">
               <div className={`h-full rounded-md ${d.id === leaderId ? 'bg-[#ff4100]' : 'bg-neutral-400'}`} style={{ width: `${pct}%`, transition: 'width 400ms ease' }}></div>
@@ -3546,7 +3561,7 @@ function HistoryChart({ months, valuesBySegment, segments, unit }) {
         </div>
         {mode === 'isolate' && <Select value={iso} onChange={setIso} options={segments.map(s => ({ value: s.id, label: s.name }))} className="w-[170px]" />}
       </div>
-      <div className="h-[260px]">
+      <div className="h-[200px] sm:h-[260px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 8, right: 16, left: 4, bottom: 4 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0ee" vertical={false} />
@@ -3685,15 +3700,15 @@ function KpiBlock({ index, kpi, segments, months, measurements, targets, active 
   return (
     <>
       <Card id={index === 1 ? 'first-kpi-card' : undefined} className={`overflow-hidden ${active ? 'border-l-[3px] border-l-[#ff4100]' : ''}`}>
-        <div className="px-6 py-5 border-b border-neutral-100 flex items-start gap-4">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-neutral-100 flex items-start gap-3 sm:gap-4 flex-wrap">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400">KPI {String(index).padStart(2, '0')}</span>
             </div>
-            <h2 className="text-[19px] font-semibold tracking-tight text-neutral-900 leading-tight">{kpi.name}</h2>
-            <p className="mt-1 text-[13px] text-neutral-500 leading-snug max-w-[640px]">{kpi.description}</p>
+            <h2 className="text-[17px] sm:text-[19px] font-semibold tracking-tight text-neutral-900 leading-tight">{kpi.name}</h2>
+            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 leading-snug max-w-[640px]">{kpi.description}</p>
           </div>
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-start sm:items-end gap-2 w-full sm:w-auto">
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
                 <Badge tone="neutral" id={index === 1 ? 'first-kpi-source' : undefined}><L.Database size={11} /> {kpi.source}</Badge>
@@ -3711,10 +3726,10 @@ function KpiBlock({ index, kpi, segments, months, measurements, targets, active 
             </div>
           </div>
         </div>
-        <div className="px-6 pt-5">
+        <div className="px-4 sm:px-6 pt-4 sm:pt-5">
           <MiniCardRow segments={segments} currentBySegment={currentBySegment} prevBySegment={prevBySegment} targetsBySegment={targetsBySegment} unit={kpi.unit} />
         </div>
-        <div className="px-6 py-6 grid grid-cols-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-6">
+        <div className="px-4 sm:px-6 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-4 sm:gap-6">
           <div>
             <div className="text-[12px] font-semibold uppercase tracking-wider text-neutral-500 mb-3">Comparação · período selecionado</div>
             <ComparisonChart data={compareData} unit={kpi.unit} />
@@ -3783,7 +3798,7 @@ function EditDrawer({ open, onClose, kpis, segments, onSaved }) {
   return (
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-neutral-900/40 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="absolute right-0 top-0 bottom-0 w-[480px] bg-white shadow-2xl border-l border-neutral-200 flex flex-col">
+      <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[480px] bg-white shadow-2xl border-l border-neutral-200 flex flex-col">
         <div className="px-6 py-5 border-b border-neutral-100 flex items-start gap-3">
           <div className="flex-1">
             <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400">Atualizar dados</div>
@@ -3928,7 +3943,7 @@ function SectionContextBox({ channel, stage }) {
           <div className="text-[13px] font-semibold text-neutral-900">{ctx.title}</div>
           <p className="text-[12px] text-neutral-600 mt-0.5 leading-snug">{ctx.what}</p>
           {expanded && (
-            <div className="mt-3 pt-3 border-t border-[#ffd4c2] grid grid-cols-2 gap-4">
+            <div className="mt-3 pt-3 border-t border-[#ffd4c2] grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <div className="text-[11px] font-semibold uppercase tracking-wider text-[#ff4100] mb-1">Por que importa</div>
                 <p className="text-[12px] text-neutral-600 leading-snug">{ctx.why}</p>
@@ -3977,37 +3992,37 @@ function OverviewPage({ onNavigate }) {
     },
   ];
   return (
-    <div className="px-8 pt-8 pb-16 max-w-[780px]">
-      <div className="mb-6">
-        <h1 className="text-[26px] font-semibold text-neutral-900">Olá! Aqui estão seus resultados.</h1>
-        <p className="text-[14px] text-neutral-500 mt-1">Escolha uma área abaixo para ver os números do mês.</p>
+    <div className="px-4 sm:px-8 pt-6 sm:pt-8 pb-16 max-w-[780px]">
+      <div className="mb-5 sm:mb-6">
+        <h1 className="text-[22px] sm:text-[26px] font-semibold text-neutral-900">Olá! Aqui estão seus resultados.</h1>
+        <p className="text-[13px] sm:text-[14px] text-neutral-500 mt-1">Escolha uma área abaixo para ver os números do mês.</p>
       </div>
 
-      <div className="flex items-center gap-2 mb-7 px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-[13px] flex-wrap">
+      <div className="flex items-center gap-2 mb-6 sm:mb-7 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-neutral-50 border border-neutral-200 text-[12px] sm:text-[13px] flex-wrap">
         <span>📡 <strong className="text-neutral-900">Descoberta</strong></span>
         <span className="text-neutral-300">→</span>
         <span>🔍 <strong className="text-neutral-900">Interesse</strong></span>
         <span className="text-neutral-300">→</span>
         <span>✅ <strong className="text-neutral-900">Ação</strong></span>
-        <span className="ml-auto text-[12px] text-neutral-400">O caminho do cliente até o orçamento</span>
+        <span className="w-full sm:w-auto sm:ml-auto text-[11px] sm:text-[12px] text-neutral-400">O caminho do cliente até o orçamento</span>
       </div>
 
-      <div className="grid grid-cols-[110px_1fr_1fr] gap-3 mb-6">
-        <div />
+      <div className="grid grid-cols-2 sm:grid-cols-[110px_1fr_1fr] gap-2 sm:gap-3 mb-6">
+        <div className="hidden sm:block" />
         <div className="text-center text-[11px] font-semibold uppercase tracking-wider text-neutral-400 pb-1">📱 Instagram</div>
         <div className="text-center text-[11px] font-semibold uppercase tracking-wider text-neutral-400 pb-1">🌐 Site</div>
         {rows.map((row) => (
           <React.Fragment key={row.stage}>
-            <div className={`flex items-center text-[12px] font-semibold rounded-lg px-3 py-2 border self-start mt-1 ${row.badgeClass}`}>
+            <div className={`col-span-full sm:col-span-1 flex items-center text-[11px] sm:text-[12px] font-semibold rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 border self-start mt-1 ${row.badgeClass}`}>
               {row.label}
             </div>
             {row.cards.map((card) => (
               <button key={card.channel}
                 onClick={() => onNavigate({ channel: card.channel, stage: row.stage })}
-                className="text-left rounded-xl border border-neutral-200 bg-white p-4 hover:border-[#ff4100] hover:shadow-sm transition-all group cursor-pointer">
-                <div className="text-2xl mb-2">{card.icon}</div>
-                <div className="text-[13px] font-medium text-neutral-800 group-hover:text-[#ff4100] transition-colors leading-snug">{card.sub}</div>
-                <div className="text-[11px] text-[#ff4100] mt-2 font-medium">Ver indicadores →</div>
+                className="text-left rounded-xl border border-neutral-200 bg-white p-3 sm:p-4 hover:border-[#ff4100] hover:shadow-sm transition-all group cursor-pointer">
+                <div className="text-xl sm:text-2xl mb-1 sm:mb-2">{card.icon}</div>
+                <div className="text-[11px] sm:text-[13px] font-medium text-neutral-800 group-hover:text-[#ff4100] transition-colors leading-snug">{card.sub}</div>
+                <div className="text-[10px] sm:text-[11px] text-[#ff4100] mt-1 sm:mt-2 font-medium">Ver →</div>
               </button>
             ))}
           </React.Fragment>
@@ -4085,7 +4100,7 @@ function GuideDrawer({ open, onClose }) {
   return (
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-neutral-900/40 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="absolute right-0 top-0 bottom-0 w-[500px] bg-white shadow-2xl border-l border-neutral-200 flex flex-col">
+      <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[500px] bg-white shadow-2xl border-l border-neutral-200 flex flex-col">
         <div className="px-6 py-5 border-b border-neutral-100 flex items-start gap-3">
           <div className="flex-1">
             <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400">Ajuda</div>
@@ -4230,11 +4245,11 @@ function FunnelPage({ channel, stage, period, segments }) {
   const subtitle     = PAGE_SUBTITLES[`${channel}-${stage}`] || 'Lançamentos manuais por mês.';
 
   return (
-    <div className="px-8 pt-7 pb-16 max-w-[1480px]">
+    <div className="px-4 sm:px-8 pt-5 sm:pt-7 pb-16 max-w-[1480px]">
       <div className="mb-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-400">
         <span>{channelLabel}</span><span>·</span><span>{stageContext}</span>
       </div>
-      <h1 className="text-[26px] font-semibold tracking-tight text-neutral-900 leading-none mb-6">{stageLabel} no {channelLabel}</h1>
+      <h1 className="text-[22px] sm:text-[26px] font-semibold tracking-tight text-neutral-900 leading-none mb-5 sm:mb-6">{stageLabel} no {channelLabel}</h1>
       <SectionContextBox channel={channel} stage={stage} />
       <div className="flex flex-col gap-6">
         {kpis.map((kpi, i) => (
@@ -4432,6 +4447,7 @@ function App() {
   const [guideOpen,      setGuideOpen]      = React.useState(false);
   const [showOnboarding, setShowOnboarding] = React.useState(() => !localStorage.getItem(ONBOARDING_KEY));
   const [tick,           setTick]           = React.useState(0);
+  const [sidebarOpen,    setSidebarOpen]    = React.useState(false);
 
   React.useEffect(() => { seedIfEmpty(); }, []);
   React.useEffect(() => {
@@ -4440,6 +4456,7 @@ function App() {
     return () => window.removeEventListener('novidario:refresh', refresh);
   }, []);
   React.useEffect(() => {
+    setSidebarOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [route.channel, route.stage]);
 
@@ -4452,9 +4469,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Sidebar route={route} onNavigate={navigate} onGuide={() => setGuideOpen(true)} />
-      <div className="ml-[240px] min-h-screen flex flex-col">
-        <Topbar route={route} period={period} onPeriod={setPeriod} segments={segments} onSegments={setSegments} onEdit={() => setDrawerOpen(true)} canEdit={!isOverview} />
+      <Sidebar route={route} onNavigate={navigate} onGuide={() => setGuideOpen(true)} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="md:ml-[240px] min-h-screen flex flex-col">
+        <Topbar route={route} period={period} onPeriod={setPeriod} segments={segments} onSegments={setSegments} onEdit={() => setDrawerOpen(true)} canEdit={!isOverview} onMenuToggle={() => setSidebarOpen(o => !o)} />
         {isOverview
           ? <OverviewPage onNavigate={navigate} />
           : <FunnelPage key={`${route.channel}-${route.stage}`} channel={route.channel} stage={route.stage} period={period} segments={segments} />
